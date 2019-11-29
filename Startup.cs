@@ -26,6 +26,7 @@ namespace final_project
         {
             Configuration = configuration;
         }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public IConfiguration Configuration { get; }
 
@@ -39,7 +40,7 @@ namespace final_project
              services.AddScoped<ICategoryService,CategoryService>(); 
               services.AddScoped<IUserService,UserService>(); 
              services.AddMvc().AddNewtonsoftJson();
-             services.AddMvc();
+            services.AddMvc();
             services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = "JwtBearer";
@@ -58,12 +59,23 @@ namespace final_project
                 ClockSkew = TimeSpan.FromMinutes(5)
             };
         });
-        
+         
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:8000").AllowAnyHeader()
+                                .AllowAnyMethod();
+                });
+            });
+
+     
+        //services.AddMvc();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
+        {  if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
@@ -73,6 +85,8 @@ namespace final_project
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+           app.UseCors(MyAllowSpecificOrigins); 
+           //app.UseCors(options => options.AllowAnyOrigin());  
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -80,13 +94,17 @@ namespace final_project
             app.UseAuthentication();  // Must be before app.UseMvc
             //app.UseMvc();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            
         }
+     
+
+           
     }
+
 }

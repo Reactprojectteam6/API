@@ -10,7 +10,7 @@ using final_project;
 namespace final_project.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191125035739_InitDatabase")]
+    [Migration("20191128080557_InitDatabase")]
     partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,7 +36,7 @@ namespace final_project.Migrations
 
                     b.HasIndex("parent_id");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Check_paid_shop", b =>
@@ -75,7 +75,7 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("colors");
+                    b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Comment", b =>
@@ -98,7 +98,7 @@ namespace final_project.Migrations
 
                     b.HasIndex("user_id");
 
-                    b.ToTable("comments");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Order", b =>
@@ -179,7 +179,7 @@ namespace final_project.Migrations
                         .IsUnique()
                         .HasFilter("[size_id] IS NOT NULL");
 
-                    b.ToTable("order_details");
+                    b.ToTable("Order_details");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Payment_method", b =>
@@ -192,7 +192,7 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("payment_methods");
+                    b.ToTable("Payment_methods");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Picture", b =>
@@ -242,7 +242,7 @@ namespace final_project.Migrations
 
                     b.HasIndex("shop_id");
 
-                    b.ToTable("products");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Reciever", b =>
@@ -269,7 +269,7 @@ namespace final_project.Migrations
 
                     b.HasIndex("order_id");
 
-                    b.ToTable("recievers");
+                    b.ToTable("Recievers");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Shop", b =>
@@ -298,7 +298,7 @@ namespace final_project.Migrations
                         .IsUnique()
                         .HasFilter("[user_id] IS NOT NULL");
 
-                    b.ToTable("shops");
+                    b.ToTable("Shops");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Size", b =>
@@ -311,7 +311,7 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("sizes");
+                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.User", b =>
@@ -322,9 +322,6 @@ namespace final_project.Migrations
                     b.Property<string>("address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("admin")
-                        .HasColumnType("bit");
-
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
@@ -334,12 +331,15 @@ namespace final_project.Migrations
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("role")
+                        .HasColumnType("int");
+
                     b.Property<string>("user_name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("users");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Category", b =>

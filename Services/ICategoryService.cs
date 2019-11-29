@@ -12,7 +12,7 @@ namespace final_project.Services
         public void UpdateCategory(string id,Category category);
         public void DeleteCategory(string id);
         public List <Category> GetSubCategory(string id); 
-
+        public List<Category> GetCategory();
 
     }
 }

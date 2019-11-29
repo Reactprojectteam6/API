@@ -11,8 +11,9 @@ namespace final_project.Services
         public void AddUser(User user);
         public void UpdateUser(string id,User user);
         public void DeleteUser(string id);
-        public User CheckLoginUser(string username,string password);
-
+        public User CheckLoginUser(string email,string password);
+        public User GetUserByEmail(string email);
+        public string GetMaxId();
 
 
     }

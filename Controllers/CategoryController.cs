@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using final_project;
 using final_project.Models.Entities;
 using final_project.Services;
+using Microsoft.AspNetCore.Authorization;
+
 namespace final_project.Controllers
 {
     [Route("api/[controller]")]
@@ -50,7 +52,13 @@ namespace final_project.Controllers
           public ActionResult<IEnumerable<Category>> Getsubcategory(string id) //get list
         {  
             return _categoryservice.GetSubCategory(id);
+        } 
+        [HttpGet("parent")] //delete sv
+          public ActionResult<IEnumerable<Category>> Getcategory() //get list
+        {  
+            return _categoryservice.GetCategory();
         }
+        
         
     }
 }

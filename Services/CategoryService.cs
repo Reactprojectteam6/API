@@ -57,5 +57,13 @@ namespace final_project.Services
           return list;
           
          } 
+         public List<Category> GetCategory()
+         {  
+             var list=new List<Category>();
+             var s=from p in _context.Categories where p.parent_id==p.id select p;
+               list=s.ToList();
+               return list;
+
+         }
     }
 }

@@ -287,3 +287,7 @@ C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\Micros
 C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.JWT.dll
 C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\System.Web.Cors.dll
+C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\System.Net.Http.Formatting.dll
+C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\System.Web.Http.dll
+C:\Users\kieu\Desktop\final_project\final_project\bin\Debug\netcoreapp3.0\System.Web.Http.Cors.dll

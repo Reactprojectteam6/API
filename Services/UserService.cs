@@ -52,9 +52,24 @@ namespace final_project.Services
         }
            public User CheckLoginUser(string email,string password)
         {    User existUser= new User();
-              existUser = _context.Users.FirstOrDefault(u => u.email ==email && u.password ==password);
-              return existUser;
-
+              existUser = _context.Users.FirstOrDefault(u => u.email ==email&&u.password==password);
+               if(existUser!=null) return existUser;
+               else return existUser;
+            
         }
+          public User GetUserByEmail(string email){
+            
+            User existUser= new User();
+              existUser = _context.Users.FirstOrDefault(u => u.email ==email);
+               if(existUser!=null) return existUser;
+               else return existUser;
+          }
+          public string GetMaxId()
+          {   string id="";
+              var existUser = _context.Users.Max(x=>x.id);
+              if(existUser!=null) id=existUser;
+              return id;
+
+          }
     }
 }

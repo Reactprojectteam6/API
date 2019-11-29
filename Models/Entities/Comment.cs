@@ -11,6 +11,7 @@ namespace final_project.Models.Entities
         public string id{get;set;}
         public string contents{get;set;}
         public string product_id{get;set;}
+        public int rate{get;set;}
         [ForeignKey("product_id")]
         public Product Product{get;set;}
         public string user_id{get;set;}
