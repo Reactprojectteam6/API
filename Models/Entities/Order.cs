@@ -11,7 +11,7 @@ namespace final_project.Models.Entities
         public string id {get;set;}
         public DateTime date_create{get;set;}
         public DateTime date_paid{get;set;}
-        public string status {get;set;}
+        public int status {get;set;}
         public int total{get;set;}
         public string payment_id{get;set;}
         [ForeignKey("payment_id")]

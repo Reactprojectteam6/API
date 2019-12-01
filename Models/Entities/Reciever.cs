@@ -13,8 +13,6 @@ namespace final_project.Models.Entities
         public string email {get;set;}
         public string fullname{get;set;}
         public string phone{get;set;}
-        public string order_id{get;set;}
-        [ForeignKey("order_id")]
         public Order Order{get;set;}
     }
 }

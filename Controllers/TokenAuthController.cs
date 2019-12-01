@@ -45,8 +45,8 @@ public class TokenController : ControllerBase
             if(role=="2") roles="Shop";
             if(role=="3") roles="Admin";
            var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Role,roles));
-            claims.Add(new Claim(ClaimTypes.Name,id));
+            claims.Add(new Claim("Role",roles));
+            claims.Add(new Claim("ID",id));
             claims.Add(new Claim("Our_Custom_Claim", "Our custom value"));
             claims.Add(new Claim("Id", "110"));
            var token = new JwtSecurityToken(

@@ -17,6 +17,9 @@ namespace final_project.Models.Entities
         [IgnoreDataMember] 
         [ForeignKey("parent_id")]
         public ICollection<Category> Categories{get;set;}
+        
+        [JsonIgnore] 
+        [IgnoreDataMember] 
         public ICollection<Product> Products{get;set;}
     }
 }

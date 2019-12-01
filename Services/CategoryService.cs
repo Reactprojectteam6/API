@@ -50,10 +50,10 @@ namespace final_project.Services
            _context.SaveChanges();
             //throw new NotImplementedException();
         }
-         public List <Category> GetSubCategory(string id)
+         public List <Category> GetSubCategory()
          { var list=new List<Category>();
-           var s=from p in _context.Categories where p.parent_id==id select p;
-          list=s.ToList();
+           var s=from p in _context.Categories where p.parent_id!=p.id select p;
+           list=s.ToList();
           return list;
           
          } 
@@ -65,5 +65,33 @@ namespace final_project.Services
                return list;
 
          }
-    }
-}
+          public List<Product> GetProductByCategory(string id)
+          {  
+            List<Product> list=new List<Product>();
+            List<Category> listsub= new List<Category>();
+            var s=from p in _context.Products where (p.cat_id==id) select p;
+            if(s.ToList().Count>=1) list=s.ToList();
+            else
+            {  
+          
+               var l=from p in _context.Categories where (p.parent_id==id) select p;
+              foreach(var lists in l.ToList())
+              {
+                  var s1=from p in _context.Products where (p.cat_id==lists.id) select p;
+                  foreach(var product in s1.ToList())
+                  list.Add(product);
+              }
+                  
+               
+            }
+            
+            return list;
+         
+
+
+
+          }
+
+    
+          }
+    }        

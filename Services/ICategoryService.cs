@@ -11,8 +11,8 @@ namespace final_project.Services
         public void AddCategory(Category category);
         public void UpdateCategory(string id,Category category);
         public void DeleteCategory(string id);
-        public List <Category> GetSubCategory(string id); 
+        public List <Category> GetSubCategory(); 
         public List<Category> GetCategory();
-
+        public  List<Product>  GetProductByCategory(string id);
     }
 }

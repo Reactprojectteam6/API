@@ -48,17 +48,25 @@ namespace final_project.Controllers
         {
            _categoryservice.DeleteCategory(id);
         }
-        [HttpGet("{id}/subcategory")] //delete sv
-          public ActionResult<IEnumerable<Category>> Getsubcategory(string id) //get list
+        [HttpGet("subcategory")] //delete sv
+          public ActionResult<IEnumerable<Category>> Getsubcategory() //get list
         {  
-            return _categoryservice.GetSubCategory(id);
+            return _categoryservice.GetSubCategory();
         } 
         [HttpGet("parent")] //delete sv
           public ActionResult<IEnumerable<Category>> Getcategory() //get list
         {  
             return _categoryservice.GetCategory();
         }
-        
+           
+
+        [HttpGet("{id}/products")] //delete sv
+          public ActionResult<IEnumerable<Product>> Getproduct(string id) //get list
+        {  
+            return _categoryservice.GetProductByCategory(id);
+        }   
+           
+      
         
     }
 }

@@ -10,6 +10,6 @@ namespace final_project.Models.Entities
     {
         public string id{get;set;}
         public string name{get;set;}
-        public Order Order{get;set;}
+        public ICollection<Order> Orders{get;set;}
     }
 }

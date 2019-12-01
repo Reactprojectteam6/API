@@ -24,7 +24,7 @@ namespace final_project.Controllers
         }
 
         [HttpGet("{id}")]   //get sv
-        public ActionResult<Product> Get(string id)
+        public ActionResult<dynamic> Get(string id)
         { 
             return _productservice.GetProductById(id);
         }
@@ -46,6 +46,22 @@ namespace final_project.Controllers
         {
            _productservice.DeleteProduct(id);
         }
-        
+     
+         [HttpGet("Name={name}")]
+        public ActionResult<IEnumerable<Product>> GetProductByName(string name) //get list
+        {  
+            return _productservice.GetProductsByName(name);
+        }
+        [HttpGet("{id}/Shop")]
+        public ActionResult<string> GetSize(string id) //get list
+        {  
+            return _productservice.GetName(id);
+        }
+       [HttpGet("Colors")]
+        public ActionResult<IEnumerable<Color>> GetColor() //get list
+        {  
+            return _productservice.GetColors();
+        }
+
     }
 }

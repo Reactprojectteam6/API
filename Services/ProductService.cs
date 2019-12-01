@@ -26,19 +26,18 @@ namespace final_project.Services
             //throw new NotImplementedException();
         }
 
-        public Product GetProductById(string id)
+        public dynamic GetProductById(string id)
         {   var product=new Product();
-           product=_context.Products.FirstOrDefault(x=>x.id==id);
-            return product;
-            //throw new NotImplementedException();
+            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.image,p.price,p.quantity,p.Shop.name});
+            return s.FirstOrDefault();
+            
         }
 
         public List<Product> GetProducts()
         {    var products =new List<Product>();
            products=_context.Products.ToList();
-           // return new string[] { "value1", "value2" };
             return products;
-           // throw new NotImplementedException();
+           
         }
 
         public void UpdateProduct(string id, Product product)
@@ -54,5 +53,24 @@ namespace final_project.Services
              _context.SaveChanges();
             //throw new NotImplementedException();
         }
+          public List<Product> GetProductsByName(string name){
+           List<Product> list=new List<Product>();
+           var s=_context.Products.Select(p=>p).Where(s=>s.product_name.Contains(name)).Distinct();
+           list=s.ToList();
+           return list;
+
+
+          }
+              public string GetName(string id){
+               
+               var s=from p in _context.Products where (p.id==id) select  new {p.Shop.name};
+               return s.First().name;
+              }
+               public List<Color> GetColors()
+               {
+                 var s=_context.Colors.Select(p=>p);
+                 return s.ToList();
+               }
+            
     }
 }

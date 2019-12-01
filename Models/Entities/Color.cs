@@ -10,6 +10,6 @@ namespace final_project.Models.Entities
     {
         public string id{get;set;}
         public string name{get;set;}
-        public Order_detail Order_Detail{get;set;}
+        public ICollection<Product_Color> Product_Colors{get;set;}
     }
 }
