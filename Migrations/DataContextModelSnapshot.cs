@@ -140,24 +140,24 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_expired = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(1968),
-                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 777, DateTimeKind.Local).AddTicks(7072),
+                            date_expired = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(1624),
+                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 38, DateTimeKind.Local).AddTicks(9648),
                             money = 200000,
                             shop_id = "1"
                         },
                         new
                         {
                             id = "2",
-                            date_expired = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4067),
-                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4019),
+                            date_expired = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4455),
+                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4383),
                             money = 200000,
                             shop_id = "2"
                         },
                         new
                         {
                             id = "3",
-                            date_expired = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4110),
-                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4108),
+                            date_expired = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4518),
+                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4514),
                             money = 200000,
                             shop_id = "3"
                         });
@@ -304,7 +304,7 @@ namespace final_project.Migrations
                     b.Property<string>("payment_id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("reciever_id")
+                    b.Property<string>("receiver_id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("status")
@@ -320,9 +320,9 @@ namespace final_project.Migrations
 
                     b.HasIndex("payment_id");
 
-                    b.HasIndex("reciever_id")
+                    b.HasIndex("receiver_id")
                         .IsUnique()
-                        .HasFilter("[reciever_id] IS NOT NULL");
+                        .HasFilter("[receiver_id] IS NOT NULL");
 
                     b.HasIndex("user_id");
 
@@ -332,10 +332,10 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_create = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5061),
-                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5727),
+                            date_create = new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(6667),
+                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(7926),
                             payment_id = "1",
-                            reciever_id = "1",
+                            receiver_id = "1",
                             status = 1,
                             total = 900000,
                             user_id = "1"
@@ -343,10 +343,10 @@ namespace final_project.Migrations
                         new
                         {
                             id = "2",
-                            date_create = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9663),
-                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9689),
+                            date_create = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2685),
+                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2732),
                             payment_id = "1",
-                            reciever_id = "3",
+                            receiver_id = "3",
                             status = 2,
                             total = 800000,
                             user_id = "3"
@@ -354,10 +354,10 @@ namespace final_project.Migrations
                         new
                         {
                             id = "3",
-                            date_create = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9759),
-                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9761),
+                            date_create = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2844),
+                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2849),
                             payment_id = "1",
-                            reciever_id = "4",
+                            receiver_id = "4",
                             status = 3,
                             total = 1000000,
                             user_id = "4"
@@ -1590,7 +1590,7 @@ namespace final_project.Migrations
 
                     b.HasOne("final_project.Models.Entities.Receiver", "Reciever")
                         .WithOne("Order")
-                        .HasForeignKey("final_project.Models.Entities.Order", "reciever_id");
+                        .HasForeignKey("final_project.Models.Entities.Order", "receiver_id");
 
                     b.HasOne("final_project.Models.Entities.User", "User")
                         .WithMany("Orders")

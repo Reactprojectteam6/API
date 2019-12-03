@@ -52,7 +52,7 @@ public class TokenController : ControllerBase
            var token = new JwtSecurityToken(
             claims:  claims,
             notBefore: new DateTimeOffset(DateTime.Now).DateTime,
-            expires:   new DateTimeOffset(DateTime.Now.AddMinutes(60)).DateTime,
+            expires:   new DateTimeOffset(DateTime.Now.AddMinutes(600)).DateTime,
             signingCredentials: new SigningCredentials(SIGNING_KEY,
                                                 SecurityAlgorithms.HmacSha256)
             );

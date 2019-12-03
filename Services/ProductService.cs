@@ -40,16 +40,16 @@ namespace final_project.Services
            
         }
 
-        public void UpdateProduct(string id, Product product)
+        public void UpdateProduct( Product product)
         {  
              var old_product=new Product();
-             old_product=_context.Products.FirstOrDefault(x=>x.id==id);
+             old_product=_context.Products.FirstOrDefault(x=>x.id==product.id);
              old_product.product_name=product.product_name;
              old_product.description=product.description;
-             old_product.cat_id=old_product.cat_id;
-             old_product.price=old_product.price;
-             old_product.quantity=old_product.quantity;
-             old_product.shop_id=old_product.shop_id;
+             old_product.cat_id=product.cat_id;
+             old_product.price=product.price;
+             old_product.quantity=product.quantity;
+             old_product.shop_id=product.shop_id;
              _context.SaveChanges();
             //throw new NotImplementedException();
         }

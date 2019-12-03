@@ -43,7 +43,7 @@ namespace final_project.Services
             old_order.status=order.status;
             old_order.total=order.total;
             old_order.payment_id=order.payment_id;
-            old_order.reciever_id=order.reciever_id;
+            old_order.receiver_id=order.receiver_id;
             old_order.user_id=order.user_id;
            _context.SaveChanges();
 

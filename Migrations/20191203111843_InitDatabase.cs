@@ -92,7 +92,7 @@ namespace final_project.Migrations
                     status = table.Column<int>(nullable: false),
                     total = table.Column<int>(nullable: false),
                     payment_id = table.Column<string>(nullable: true),
-                    reciever_id = table.Column<string>(nullable: true),
+                    receiver_id = table.Column<string>(nullable: true),
                     user_id = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -105,8 +105,8 @@ namespace final_project.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Orders_Receivers_reciever_id",
-                        column: x => x.reciever_id,
+                        name: "FK_Orders_Receivers_receiver_id",
+                        column: x => x.receiver_id,
                         principalTable: "Receivers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -348,12 +348,12 @@ namespace final_project.Migrations
 
             migrationBuilder.InsertData(
                 table: "Orders",
-                columns: new[] { "id", "date_create", "date_paid", "payment_id", "reciever_id", "status", "total", "user_id" },
+                columns: new[] { "id", "date_create", "date_paid", "payment_id", "receiver_id", "status", "total", "user_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5061), new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5727), "1", "1", 1, 900000, "1" },
-                    { "2", new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9663), new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9689), "1", "3", 2, 800000, "3" },
-                    { "3", new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9759), new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9761), "1", "4", 3, 1000000, "4" }
+                    { "1", new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(6667), new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(7926), "1", "1", 1, 900000, "1" },
+                    { "2", new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2685), new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2732), "1", "3", 2, 800000, "3" },
+                    { "3", new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2844), new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2849), "1", "4", 3, 1000000, "4" }
                 });
 
             migrationBuilder.InsertData(
@@ -371,9 +371,9 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_expired", "date_paid", "money", "shop_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(1968), new DateTime(2019, 12, 3, 14, 40, 39, 777, DateTimeKind.Local).AddTicks(7072), 200000, "1" },
-                    { "2", new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4067), new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4019), 200000, "2" },
-                    { "3", new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4110), new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4108), 200000, "3" }
+                    { "1", new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(1624), new DateTime(2019, 12, 3, 18, 18, 42, 38, DateTimeKind.Local).AddTicks(9648), 200000, "1" },
+                    { "2", new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4455), new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4383), 200000, "2" },
+                    { "3", new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4518), new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4514), 200000, "3" }
                 });
 
             migrationBuilder.InsertData(
@@ -545,11 +545,11 @@ namespace final_project.Migrations
                 column: "payment_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_reciever_id",
+                name: "IX_Orders_receiver_id",
                 table: "Orders",
-                column: "reciever_id",
+                column: "receiver_id",
                 unique: true,
-                filter: "[reciever_id] IS NOT NULL");
+                filter: "[receiver_id] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_user_id",

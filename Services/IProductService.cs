@@ -9,7 +9,7 @@ namespace final_project.Services
         public List<Product> GetProducts();
         public dynamic GetProductById(string id);
         public void AddProduct(Product product);
-        public void UpdateProduct(string id,Product product);
+        public void UpdateProduct(Product product);
         public void DeleteProduct(string id);
         
         public List<Product> GetProductsByName(string name);

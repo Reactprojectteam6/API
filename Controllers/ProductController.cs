@@ -35,9 +35,9 @@ namespace final_project.Controllers
         }
 
         [HttpPut("{id}")]  //update sv
-        public void Put(string  id, [FromBody] Product product)
+        public void Put( [FromBody] Product product)
         {
-           _productservice.UpdateProduct(id,product);
+           _productservice.UpdateProduct(product);
              
         }
 

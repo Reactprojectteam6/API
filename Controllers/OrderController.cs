@@ -14,7 +14,6 @@ namespace final_project.Controllers
 {  
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class OrderController : ControllerBase
     {   
         private IOrderService _orderService;
