@@ -27,5 +27,11 @@ namespace final_project.Services
              return order;
              
         }
+        public dynamic GetOrderDetailOfOrder(string id)
+        {
+            var s=_context.Order_details.Where(p=>p.order_id==id).Select(p=>new{p.Product.product_name,p.quantity,p.price,p.id,p.Product.product_Colors.First().Color.name});
+            return s;
+
+        }
     }
 }

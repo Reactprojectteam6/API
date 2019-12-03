@@ -43,7 +43,7 @@ namespace final_project.Controllers
 
         [HttpGet("{id}")]
         [Authorize]
-        public ActionResult<User> Get(string id)
+        public  ActionResult<User> Get(string id)
         {   //Get user by id chi co user do or admin dc get
             var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
@@ -60,18 +60,18 @@ namespace final_project.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public void Put(string  id, [FromBody] User user)
+        public void Put([FromBody] User user)
         {  //Chi co user do or admin dc update infor
             var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
             authHeader = authHeader.Replace("Bearer ", "");
             var jsonToken = handler.ReadToken(authHeader);
              var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
-
+   
         var ID = tokenS.Claims.First(claim => claim.Type =="ID").Value;
         var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
-        if(ID==id||Role=="Admin")
-            _userService.UpdateUser(id,user);
+        if(ID==user.id||Role=="Admin")
+            _userService.UpdateUser(user);
         }
          
 

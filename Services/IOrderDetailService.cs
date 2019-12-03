@@ -10,5 +10,6 @@ namespace final_project.Services
     { 
       
       public Order_detail AddOrderDetail(Order_detail order);
+      public dynamic GetOrderDetailOfOrder(string id);
     }
 }

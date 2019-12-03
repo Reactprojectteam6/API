@@ -42,12 +42,16 @@ namespace final_project.Services
             //throw new NotImplementedException();
         }
 
-        public void UpdateUser(string id, User user)
-        {     if (id == user.id)
-            {
-                _context.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                _context.SaveChanges();
-            }
+        public void UpdateUser( User user)
+        {   var old_user=new User();
+             old_user=_context.Users.FirstOrDefault(x=>x.id==user.id);
+               old_user.user_name =user.user_name;
+              old_user.password =user.password;
+              old_user.email =user.email;
+              old_user.phone =user.phone;
+              old_user.role =user.role;
+              old_user.address =user.address;
+             _context.SaveChanges();
             //throw new NotImplementedException();
         }
            public User CheckLoginUser(string email,string password)

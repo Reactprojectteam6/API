@@ -29,6 +29,12 @@ namespace final_project.Controllers
         public Order_detail Post([FromBody] Order_detail order)
         {  return   _Service.AddOrderDetail(order);
         }
+        [HttpGet("Order/{id}")]
+        public  ActionResult<dynamic> GetOrderDetailOfOrder(string id)
+        {  
+           return _Service.GetOrderDetailOfOrder(id);
+        
+        }
 
       
     }

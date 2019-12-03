@@ -54,5 +54,10 @@ namespace final_project.Services
           _context.Orders.Remove(order);
           _context.SaveChanges();
         }
+          public dynamic GetOrderByID(string id)
+          {
+            var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create});
+            return s;
+          }
     }
 }
