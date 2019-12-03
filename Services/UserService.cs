@@ -71,32 +71,5 @@ namespace final_project.Services
               return id;
 
           }
-          public string GetShopID(string id)
-          {
-              // var user=new User();
-              // user=_context.Users.FirstOrDefault(x=>x.id==id);
-            var shop = new Shop();
-            shop = _context.Shops.FirstOrDefault(x=>x.user_id==id);
-            return shop.id;
-          }
-
-          public Shop GetShop(string id)
-          {
-            var shop = new Shop();
-            shop = _context.Shops.FirstOrDefault(x=>x.id==id);
-            return shop;
-          }
-          public void UpdateShop(string shop_id,Shop newShop)
-          {
-            
-            var shop = _context.Shops.FirstOrDefault(x=>x.id==shop_id);
-            if(shop != null)
-            {
-              shop.name = newShop.name;
-              shop.address = newShop.address;
-            }
-            _context.SaveChanges();
-          }
-
     }
 }

@@ -65,7 +65,7 @@ namespace final_project
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("http://localhost:9000").AllowAnyHeader()
+                    builder.WithOrigins("http://localhost:8000").AllowAnyHeader()
                                 .AllowAnyMethod();
                 });
             });

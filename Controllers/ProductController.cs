@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using final_project;
 using final_project.Models.Entities;
 using final_project.Services;
-using Microsoft.AspNetCore.Authorization;
-using System.IdentityModel.Tokens.Jwt;
-
 namespace final_project.Controllers
 {
     [Route("api/[controller]")]
@@ -65,11 +62,6 @@ namespace final_project.Controllers
         {  
             return _productservice.GetColors();
         }
-        [HttpGet("Shop/{shop_id}")]
-        [Authorize]
-        public ActionResult<IEnumerable<Product>> GetProductsOnShop(string shop_id)
-        {
-            return _productservice.GetProductsOnShop(shop_id);
-        }
+
     }
 }

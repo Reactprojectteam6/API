@@ -112,24 +112,6 @@ namespace final_project.Controllers
             return _userService.GetUserByEmail(email);
             else return BadRequest();
         }
-        [HttpGet("{id}/shop")]
-        [Authorize]
-        public ActionResult<string> GetShopID(string id)
-        {
-            return _userService.GetShopID(id);
-        }
-
-        [HttpGet("shop/{id}")]
-        [Authorize]
-        public ActionResult<Shop> GetShop(string id)
-        {
-            return _userService.GetShop(id);
-        }
-        [HttpPut("shop/{shop_id}")]
-        [Authorize]
-        public void UpdateShop(string shop_id,Shop newShop)
-        {
-            _userService.UpdateShop(shop_id,newShop);
-        }
+        
     }
 }

@@ -14,9 +14,7 @@ namespace final_project.Services
         public User CheckLoginUser(string email,string password);
         public User GetUserByEmail(string email);
         public string GetMaxId();
-        public string GetShopID(string id);
-        public Shop GetShop(string id);
-        public void UpdateShop(string shop_id,Shop newShop);
+
 
     }
 }

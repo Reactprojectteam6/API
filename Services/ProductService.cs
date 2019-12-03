@@ -71,11 +71,6 @@ namespace final_project.Services
                  var s=_context.Colors.Select(p=>p);
                  return s.ToList();
                }
-        public List<Product> GetProductsOnShop(string shop_id)
-        {
-            List<Product> list=new List<Product>();
-            list=_context.Products.Select(p=>p).Where(s=>s.shop_id==shop_id).ToList();
-            return list;
-        }
+            
     }
 }
