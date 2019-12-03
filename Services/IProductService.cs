@@ -15,8 +15,8 @@ namespace final_project.Services
         public List<Product> GetProductsByName(string name);
         public string GetName(string id);
         
-         public  List<Color> GetColors();
-      
+        public  List<Color> GetColors();
+        public List<Product> GetProductsOnShop(string shop_id);
 
 
     }
