@@ -214,6 +214,11 @@ namespace final_project.Models.Entities.DataConfiguration
                     id = "41",
                     product_id = "48",
                     color_id = "1"
+                },
+                  new Product_Color{
+                    id = "42",
+                    product_id = "50",
+                    color_id = "1"
                 }
             );
         }

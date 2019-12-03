@@ -24,6 +24,6 @@ namespace final_project.Models.Entities
        
         public Shop Shop{get;set;}
         public ICollection<Product_Color> product_Colors {get;set;}
-        public ICollection<Product_Size> Product_Sizes{get;set;}
+        
     }
 }

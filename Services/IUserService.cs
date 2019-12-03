@@ -13,7 +13,7 @@ namespace final_project.Services
         public void DeleteUser(string id);
         public User CheckLoginUser(string email,string password);
         public User GetUserByEmail(string email);
-        public string GetMaxId();
+      
 
 
     }

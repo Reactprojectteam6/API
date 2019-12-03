@@ -500,6 +500,15 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     shop_id = "3",
                     image="Tinhchat.jpg"
+                } , new Product{
+                    id = "50",
+                    product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
+                    description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
+                    cat_id = "3",
+                    price = 900000,
+                    quantity = 100,
+                    shop_id = "1",
+                    image = "ChongNang1.jpg"
                 }
             );
         }

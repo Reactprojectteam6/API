@@ -64,12 +64,6 @@ namespace final_project.Services
                if(existUser!=null) return existUser;
                else return existUser;
           }
-          public string GetMaxId()
-          {   string id="";
-              var existUser = _context.Users.Max(x=>x.id);
-              if(existUser!=null) id=existUser;
-              return id;
-
-          }
+       
     }
 }

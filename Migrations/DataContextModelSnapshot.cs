@@ -140,24 +140,24 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_expired = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(6539),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 6, DateTimeKind.Local).AddTicks(6959),
+                            date_expired = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(1968),
+                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 777, DateTimeKind.Local).AddTicks(7072),
                             money = 200000,
                             shop_id = "1"
                         },
                         new
                         {
                             id = "2",
-                            date_expired = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9567),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9529),
+                            date_expired = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4067),
+                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4019),
                             money = 200000,
                             shop_id = "2"
                         },
                         new
                         {
                             id = "3",
-                            date_expired = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9631),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9626),
+                            date_expired = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4110),
+                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4108),
                             money = 200000,
                             shop_id = "3"
                         });
@@ -332,8 +332,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_create = new DateTime(2019, 12, 1, 15, 52, 3, 26, DateTimeKind.Local).AddTicks(5746),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 26, DateTimeKind.Local).AddTicks(6659),
+                            date_create = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5061),
+                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5727),
                             payment_id = "1",
                             reciever_id = "1",
                             status = 1,
@@ -343,8 +343,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "2",
-                            date_create = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3114),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3165),
+                            date_create = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9663),
+                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9689),
                             payment_id = "1",
                             reciever_id = "3",
                             status = 2,
@@ -354,8 +354,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "3",
-                            date_create = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3301),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3307),
+                            date_create = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9759),
+                            date_paid = new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9761),
                             payment_id = "1",
                             reciever_id = "4",
                             status = 3,
@@ -1014,6 +1014,17 @@ namespace final_project.Migrations
                             product_name = "Tinh chất dưỡng ",
                             quantity = 100,
                             shop_id = "3"
+                        },
+                        new
+                        {
+                            id = "50",
+                            cat_id = "3",
+                            description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
+                            image = "ChongNang1.jpg",
+                            price = 900000,
+                            product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
+                            quantity = 100,
+                            shop_id = "1"
                         });
                 });
 
@@ -1282,158 +1293,16 @@ namespace final_project.Migrations
                             id = "41",
                             color_id = "1",
                             product_id = "48"
+                        },
+                        new
+                        {
+                            id = "42",
+                            color_id = "1",
+                            product_id = "50"
                         });
                 });
 
-            modelBuilder.Entity("final_project.Models.Entities.Product_Size", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("product_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("size_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("product_id");
-
-                    b.HasIndex("size_id");
-
-                    b.ToTable("product_Sizes");
-
-                    b.HasData(
-                        new
-                        {
-                            id = "1",
-                            product_id = "1",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "2",
-                            product_id = "1",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "3",
-                            product_id = "2",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "4",
-                            product_id = "2",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "5",
-                            product_id = "3",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "6",
-                            product_id = "3",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "7",
-                            product_id = "4",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "8",
-                            product_id = "5",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "9",
-                            product_id = "6",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "10",
-                            product_id = "7",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "11",
-                            product_id = "8",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "12",
-                            product_id = "9",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "13",
-                            product_id = "10",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "14",
-                            product_id = "11",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "15",
-                            product_id = "6",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "16",
-                            product_id = "25",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "17",
-                            product_id = "26",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "18",
-                            product_id = "27",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "19",
-                            product_id = "28",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "20",
-                            product_id = "29",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "21",
-                            product_id = "30",
-                            size_id = "2"
-                        });
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Reciever", b =>
+            modelBuilder.Entity("final_project.Models.Entities.Receiver", b =>
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
@@ -1452,7 +1321,7 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Recievers");
+                    b.ToTable("Receivers");
 
                     b.HasData(
                         new
@@ -1575,31 +1444,6 @@ namespace final_project.Migrations
                             name = "Bé Sơn Parody",
                             payment_accont = "abcxyz",
                             user_id = "8"
-                        });
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Size", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Sizes");
-
-                    b.HasData(
-                        new
-                        {
-                            id = "1",
-                            name = "250 ml"
-                        },
-                        new
-                        {
-                            id = "2",
-                            name = "500 ml"
                         });
                 });
 
@@ -1744,7 +1588,7 @@ namespace final_project.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("payment_id");
 
-                    b.HasOne("final_project.Models.Entities.Reciever", "Reciever")
+                    b.HasOne("final_project.Models.Entities.Receiver", "Reciever")
                         .WithOne("Order")
                         .HasForeignKey("final_project.Models.Entities.Order", "reciever_id");
 
@@ -1784,17 +1628,6 @@ namespace final_project.Migrations
                     b.HasOne("final_project.Models.Entities.Product", "Product")
                         .WithMany("product_Colors")
                         .HasForeignKey("product_id");
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Product_Size", b =>
-                {
-                    b.HasOne("final_project.Models.Entities.Product", "Product")
-                        .WithMany("Product_Sizes")
-                        .HasForeignKey("product_id");
-
-                    b.HasOne("final_project.Models.Entities.Size", "Size")
-                        .WithMany("Product_Sizes")
-                        .HasForeignKey("size_id");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Shop", b =>

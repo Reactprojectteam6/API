@@ -51,7 +51,7 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Recievers",
+                name: "Receivers",
                 columns: table => new
                 {
                     id = table.Column<string>(nullable: false),
@@ -62,19 +62,7 @@ namespace final_project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Recievers", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sizes",
-                columns: table => new
-                {
-                    id = table.Column<string>(nullable: false),
-                    name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sizes", x => x.id);
+                    table.PrimaryKey("PK_Receivers", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,9 +105,9 @@ namespace final_project.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Orders_Recievers_reciever_id",
+                        name: "FK_Orders_Receivers_reciever_id",
                         column: x => x.reciever_id,
-                        principalTable: "Recievers",
+                        principalTable: "Receivers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -282,31 +270,6 @@ namespace final_project.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "product_Sizes",
-                columns: table => new
-                {
-                    id = table.Column<string>(nullable: false),
-                    product_id = table.Column<string>(nullable: true),
-                    size_id = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_product_Sizes", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_product_Sizes_Products_product_id",
-                        column: x => x.product_id,
-                        principalTable: "Products",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_product_Sizes_Sizes_size_id",
-                        column: x => x.size_id,
-                        principalTable: "Sizes",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "id", "name", "parent_id" },
@@ -337,7 +300,7 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Recievers",
+                table: "Receivers",
                 columns: new[] { "id", "address", "email", "fullname", "phone" },
                 values: new object[,]
                 {
@@ -345,19 +308,10 @@ namespace final_project.Migrations
                     { "7", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" },
                     { "6", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" },
                     { "5", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", null },
+                    { "4", "193 NLB", "nguyentruongson@gmail.com", "Nguyễn Trường Sơn", "0988191672" },
                     { "3", "193 NLB", "tranthusuong@gmail.com", "Trần Thu Sương", "0975197462" },
                     { "2", "193 NLB", "buithikieu@gmail.com", "Bùi Thị Kiều", "0975191672" },
-                    { "1", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" },
-                    { "4", "193 NLB", "nguyentruongson@gmail.com", "Nguyễn Trường Sơn", "0988191672" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Sizes",
-                columns: new[] { "id", "name" },
-                values: new object[,]
-                {
-                    { "1", "250 ml" },
-                    { "2", "500 ml" }
+                    { "1", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" }
                 });
 
             migrationBuilder.InsertData(
@@ -365,13 +319,13 @@ namespace final_project.Migrations
                 columns: new[] { "id", "address", "email", "password", "phone", "role", "user_name" },
                 values: new object[,]
                 {
-                    { "7", "193 NLB", "votuonghuan@gmail.com", "123456", "0898237228", 2, "Võ Tường Huân" },
                     { "1", "193 NLB", "damhoangbuu@gmail.com", "123456", "0898237228", 1, "Đàm Văn Hoàng Bửu" },
                     { "2", "193 NLB", "buithikieu@gmail.com", "123456", "0898237228", 2, "Bùi Thị Kiều" },
                     { "3", "193 NLB", "tranthusuong@gmail.com", "123456", "0898237228", 3, "Trần Thu Sương" },
                     { "4", "193 NLB", "tranphuquy@gmail.com", "123456", "0898237228", 3, "Trần Phú Quy" },
                     { "5", "193 NLB", "tranchivi@gmail.com", "123456", "0898237228", 3, "Trần Chí Vĩ" },
                     { "6", "193 NLB", "trananhthu@gmail.com", "123456", "0898237228", 3, "Trần Thị Anh Thư" },
+                    { "7", "193 NLB", "votuonghuan@gmail.com", "123456", "0898237228", 2, "Võ Tường Huân" },
                     { "8", "193 NLB", "nguyentruongson@gmail.com", "123456", "0898237228", 2, "Nguyễn Trường Sơn" }
                 });
 
@@ -397,9 +351,9 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_create", "date_paid", "payment_id", "reciever_id", "status", "total", "user_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 1, 15, 52, 3, 26, DateTimeKind.Local).AddTicks(5746), new DateTime(2019, 12, 1, 15, 52, 3, 26, DateTimeKind.Local).AddTicks(6659), "1", "1", 1, 900000, "1" },
-                    { "2", new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3114), new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3165), "1", "3", 2, 800000, "3" },
-                    { "3", new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3301), new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3307), "1", "4", 3, 1000000, "4" }
+                    { "1", new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5061), new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(5727), "1", "1", 1, 900000, "1" },
+                    { "2", new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9663), new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9689), "1", "3", 2, 800000, "3" },
+                    { "3", new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9759), new DateTime(2019, 12, 3, 14, 40, 39, 791, DateTimeKind.Local).AddTicks(9761), "1", "4", 3, 1000000, "4" }
                 });
 
             migrationBuilder.InsertData(
@@ -417,9 +371,9 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_expired", "date_paid", "money", "shop_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(6539), new DateTime(2019, 12, 1, 15, 52, 3, 6, DateTimeKind.Local).AddTicks(6959), 200000, "1" },
-                    { "2", new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9567), new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9529), 200000, "2" },
-                    { "3", new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9631), new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9626), 200000, "3" }
+                    { "1", new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(1968), new DateTime(2019, 12, 3, 14, 40, 39, 777, DateTimeKind.Local).AddTicks(7072), 200000, "1" },
+                    { "2", new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4067), new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4019), 200000, "2" },
+                    { "3", new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4110), new DateTime(2019, 12, 3, 14, 40, 39, 779, DateTimeKind.Local).AddTicks(4108), 200000, "3" }
                 });
 
             migrationBuilder.InsertData(
@@ -462,19 +416,20 @@ namespace final_project.Migrations
                     { "20", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "ChamSocMoi2.jpg", 210000, "Son Dưỡng Môi Innisfree", 100, "1" },
                     { "23", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi3.jpg", 170000, "Son Dưỡng 16Brand Fruit Chu Petit Lip Balm", 100, "1" },
                     { "25", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi5.jpg", 280000, "Mặt Nạ Ngủ Môi Chiết Xuất Rau Má A'pieu Madecassoside Lip Sleeping Mask 20g", 100, "1" },
-                    { "48", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son4.jpg", 800000, "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ", 100, "3" },
                     { "28", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen3.jpg", 800000, "Kem Nền Siêu Lì, Lâu Trôi A'pieu BB Maker Long Wear SPF30 PA+++", 100, "1" },
+                    { "33", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara2.jpg", 150000, "Mascara Chân Mày Missha Color Wear Browcara", 100, "1" },
                     { "34", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara3.jpg", 350000, "Mascara Chuốt Mi Cong Vút Tự Nhiên, Chống Trôi Etude House Lash Perm Curl Fix Mascara", 100, "1" },
                     { "37", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu1.jpg", 230000, "Phấn phủ Play 101 Setting", 100, "1" },
                     { "40", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu4.jpg", 320000, "Phấn Phủ Bột Kiềm Dầu, Cố Định Lớp Makeup A'pieu Mineral 100 HD Powder", 100, "1" },
                     { "43", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "SonLi.jpg", 430000, "Son Thỏi Lì Merzy The First Lipstick", 100, "1" },
                     { "46", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son2.jpg", 210000, "Son kem lì cực nhẹ môi Romand Zero Velvet Tint", 100, "1" },
+                    { "50", "3", "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè", "ChongNang1.jpg", 900000, "Kem chống nắng Innisfree SPF50+ PA++++", 100, "1" },
                     { "5", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang5.jpg", 900000, "Kem Chống Nắng Dạng Gel Chống Tia Hồng Ngoại, Giảm Nhiệt Độ Tức Thì Make Prem UV Defense Me Blue Ray Sun Gel SPF50/PA++++", 100, "2" },
                     { "6", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang6.jpg", 800000, " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream", 150, "2" },
                     { "10", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAmSauDanHoi.jpg", 700000, "Serum dưỡng ẩm đàn hồi Innisfree", 100, "2" },
                     { "13", "5", "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt", "MatNaCam.jpg", 900000, "Mặt nạ dưỡng da từ quả Cam", 100, "2" },
                     { "17", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa3.jpg", 200000, "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask", 100, "2" },
-                    { "33", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara2.jpg", 150000, "Mascara Chân Mày Missha Color Wear Browcara", 100, "1" },
+                    { "48", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son4.jpg", 800000, "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ", 100, "3" },
                     { "49", "7", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Tinhchat.jpg", 800000, "Tinh chất dưỡng ", 100, "3" }
                 });
 
@@ -484,13 +439,13 @@ namespace final_project.Migrations
                 values: new object[,]
                 {
                     { "1", "Đồ cùi quá", "1", 3, "1" },
-                    { "8", "Oke", "3", 5, "4" },
-                    { "6", "Oke", "2", 4, "2" },
-                    { "5", "Đồ cùi quá", "2", 3, "1" },
-                    { "7", "Oke", "2", 5, "3" },
-                    { "4", "Oke", "1", 5, "4" },
+                    { "2", "Oke", "1", 4, "2" },
                     { "3", "Oke", "1", 5, "3" },
-                    { "2", "Oke", "1", 4, "2" }
+                    { "4", "Oke", "1", 5, "4" },
+                    { "8", "Oke", "3", 5, "4" },
+                    { "5", "Đồ cùi quá", "2", 3, "1" },
+                    { "6", "Oke", "2", 4, "2" },
+                    { "7", "Oke", "2", 5, "3" }
                 });
 
             migrationBuilder.InsertData(
@@ -498,8 +453,8 @@ namespace final_project.Migrations
                 columns: new[] { "id", "order_id", "price", "product_id", "quantity" },
                 values: new object[,]
                 {
-                    { "2", "2", 800000, "2", 1 },
                     { "3", "3", 1000000, "3", 1 },
+                    { "2", "2", 800000, "2", 1 },
                     { "1", "1", 900000, "1", 1 }
                 });
 
@@ -508,75 +463,48 @@ namespace final_project.Migrations
                 columns: new[] { "id", "color_id", "product_id" },
                 values: new object[,]
                 {
-                    { "10", "3", "10" },
-                    { "34", "3", "41" },
-                    { "31", "3", "38" },
-                    { "28", "4", "29" },
-                    { "23", "2", "24" },
-                    { "20", "1", "21" },
-                    { "37", "1", "44" },
-                    { "18", "2", "19" },
-                    { "13", "3", "13" },
                     { "25", "4", "26" },
+                    { "23", "2", "24" },
+                    { "28", "4", "29" },
+                    { "31", "3", "38" },
+                    { "34", "3", "41" },
+                    { "37", "1", "44" },
                     { "40", "2", "47" },
-                    { "14", "3", "14" },
+                    { "7", "3", "7" },
                     { "8", "3", "8" },
-                    { "11", "3", "11" },
-                    { "12", "3", "12" },
-                    { "6", "3", "6" },
-                    { "16", "3", "16" },
                     { "21", "2", "22" },
+                    { "12", "3", "12" },
+                    { "14", "3", "14" },
+                    { "16", "3", "16" },
+                    { "20", "1", "21" },
                     { "26", "4", "27" },
                     { "29", "4", "30" },
                     { "32", "3", "39" },
                     { "35", "3", "42" },
-                    { "7", "3", "7" },
-                    { "38", "2", "45" },
-                    { "5", "3", "5" },
-                    { "36", "1", "43" },
+                    { "11", "3", "11" },
+                    { "18", "2", "19" },
+                    { "42", "1", "50" },
+                    { "10", "3", "10" },
                     { "1", "3", "1" },
                     { "2", "3", "2" },
                     { "3", "3", "3" },
                     { "4", "3", "4" },
-                    { "39", "2", "46" },
+                    { "9", "3", "9" },
                     { "15", "3", "15" },
                     { "17", "1", "18" },
                     { "19", "1", "20" },
+                    { "13", "3", "13" },
                     { "22", "1", "23" },
-                    { "9", "3", "9" },
-                    { "41", "1", "48" },
                     { "27", "4", "28" },
                     { "30", "3", "37" },
                     { "33", "3", "40" },
-                    { "24", "4", "25" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "product_Sizes",
-                columns: new[] { "id", "product_id", "size_id" },
-                values: new object[,]
-                {
-                    { "8", "5", "1" },
-                    { "1", "1", "1" },
-                    { "21", "30", "2" },
-                    { "2", "1", "2" },
-                    { "18", "27", "2" },
-                    { "3", "2", "1" },
-                    { "4", "2", "2" },
-                    { "9", "6", "1" },
-                    { "5", "3", "1" },
-                    { "6", "3", "2" },
-                    { "11", "8", "1" },
-                    { "15", "6", "1" },
-                    { "10", "7", "1" },
-                    { "7", "4", "1" },
-                    { "12", "9", "1" },
-                    { "13", "10", "1" },
-                    { "19", "28", "2" },
-                    { "20", "29", "2" },
-                    { "17", "26", "2" },
-                    { "14", "11", "1" },
-                    { "16", "25", "2" }
+                    { "36", "1", "43" },
+                    { "39", "2", "46" },
+                    { "38", "2", "45" },
+                    { "5", "3", "5" },
+                    { "6", "3", "6" },
+                    { "24", "4", "25" },
+                    { "41", "1", "48" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -639,16 +567,6 @@ namespace final_project.Migrations
                 column: "product_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_product_Sizes_product_id",
-                table: "product_Sizes",
-                column: "product_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_product_Sizes_size_id",
-                table: "product_Sizes",
-                column: "size_id");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Products_cat_id",
                 table: "Products",
                 column: "cat_id");
@@ -681,9 +599,6 @@ namespace final_project.Migrations
                 name: "product_Colors");
 
             migrationBuilder.DropTable(
-                name: "product_Sizes");
-
-            migrationBuilder.DropTable(
                 name: "Orders");
 
             migrationBuilder.DropTable(
@@ -693,13 +608,10 @@ namespace final_project.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Sizes");
-
-            migrationBuilder.DropTable(
                 name: "Payment_methods");
 
             migrationBuilder.DropTable(
-                name: "Recievers");
+                name: "Receivers");
 
             migrationBuilder.DropTable(
                 name: "Categories");

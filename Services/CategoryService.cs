@@ -21,7 +21,7 @@ namespace final_project.Services
             //throw new NotImplementedException();
         }
 
-        public void DeleteCategory(string id)
+        public void DeleteCategory(string  id)
         {  var category=new Category();
            category=_context.Categories.FirstOrDefault(x=>x.id==id);
            _context.Categories.Remove(category);
@@ -36,7 +36,7 @@ namespace final_project.Services
             //throw new NotImplementedException();
         }
 
-        public Category GetCategoryById(string id)
+        public Category GetCategoryById(string  id)
         {   var category=new Category();
          category=_context.Categories.FirstOrDefault(x=>x.id==id);
          return category;
@@ -52,7 +52,7 @@ namespace final_project.Services
         }
          public List <Category> GetSubCategory()
          { var list=new List<Category>();
-           var s=from p in _context.Categories where p.parent_id!=p.id select p;
+           var s=from p in _context.Categories where (p.parent_id!=p.id) select p;
            list=s.ToList();
           return list;
           
@@ -65,7 +65,7 @@ namespace final_project.Services
                return list;
 
          }
-          public List<Product> GetProductByCategory(string id)
+          public List<Product> GetProductByCategory(string  id)
           {  
             List<Product> list=new List<Product>();
             List<Category> listsub= new List<Category>();

@@ -26,9 +26,9 @@ namespace final_project.Services
             //throw new NotImplementedException();
         }
 
-        public dynamic GetProductById(string id)
+        public dynamic GetProductById(string  id)
         {   var product=new Product();
-            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.image,p.price,p.quantity,p.Shop.name});
+            var s= _context.Products.Where(x=>x.id==id).Select(p=>p);
             return s.FirstOrDefault();
             
         }
@@ -36,7 +36,7 @@ namespace final_project.Services
         public List<Product> GetProducts()
         {    var products =new List<Product>();
            products=_context.Products.ToList();
-            return products;
+            return products.GroupBy(p=>p.product_name).Select(p=>p.FirstOrDefault()).ToList();
            
         }
 
@@ -55,22 +55,48 @@ namespace final_project.Services
         }
           public List<Product> GetProductsByName(string name){
            List<Product> list=new List<Product>();
-           var s=_context.Products.Select(p=>p).Where(s=>s.product_name.Contains(name)).Distinct();
-           list=s.ToList();
-           return list;
-
-
+           var s=_context.Products.Select(p=>p).Where(s=>s.product_name.Contains(name)).ToList();
+           return s.GroupBy(p=>p.product_name).Select(p=>p.FirstOrDefault()).ToList();
           }
               public string GetName(string id){
                
                var s=from p in _context.Products where (p.id==id) select  new {p.Shop.name};
                return s.First().name;
               }
-               public List<Color> GetColors()
-               {
-                 var s=_context.Colors.Select(p=>p);
-                 return s.ToList();
+               public List<Color> GetColors(string name)
+               { List<Color> list=new List<Color>();
+                 var s=_context.Products.Where(p=>p.product_name==name).Select(p=>p.id);
+                 foreach( var i in s.ToList())
+                 { var c=_context.product_Colors.Where(p=>p.product_id==i).Select(p=>p.Color);
+                    list.Add(c.First());
+                     
+                     
+                 }
+                 return list;
                }
-            
-    }
+              
+                 public int GetRating(string id){
+                    int sum=0;
+                    int count=0;
+                   var s=_context.Comments.Select(p=>p).Where(p=>p.product_id==id);
+                   foreach(var i in s)
+                   {  sum+=i.rate;
+                      count++;
+
+                   }
+                   if(count!=0) return sum/count;
+                   else return 0;
+                 }
+             public Product GetProductByNameAndColor(string name,string color,string shop_id){
+              Product product=new Product();
+             var s1=_context.Colors.Where(p=>p.name==color).Select(p=>p.id);
+             var s=_context.product_Colors.Where(p=>p.color_id==s1.First()).Select(p=>p.Product);
+             foreach(var i in s.ToList())
+             {
+               if(i.product_name==name&&i.shop_id==shop_id) return i;
+             }
+             return product;
+             }
+             }
+    
 }

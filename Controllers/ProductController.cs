@@ -35,14 +35,14 @@ namespace final_project.Controllers
         }
 
         [HttpPut("{id}")]  //update sv
-        public void Put(string id, [FromBody] Product product)
+        public void Put(string  id, [FromBody] Product product)
         {
            _productservice.UpdateProduct(id,product);
              
         }
 
         [HttpDelete("{id}")] //delete sv
-        public void Delete(string id)
+        public void Delete(string  id)
         {
            _productservice.DeleteProduct(id);
         }
@@ -52,16 +52,24 @@ namespace final_project.Controllers
         {  
             return _productservice.GetProductsByName(name);
         }
-        [HttpGet("{id}/Shop")]
-        public ActionResult<string> GetSize(string id) //get list
+       
+       [HttpGet("{name}/Colors")]
+        public ActionResult<IEnumerable<Color>> GetColor(string name) //get list
         {  
-            return _productservice.GetName(id);
+            return _productservice.GetColors(name);
         }
-       [HttpGet("Colors")]
-        public ActionResult<IEnumerable<Color>> GetColor() //get list
+       
+       [HttpGet("{id}/Rating")]
+        public ActionResult<int> GetRating(string  id) //get list
         {  
-            return _productservice.GetColors();
-        }
+            return _productservice.GetRating(id);
 
+        }
+        [HttpGet("{name}/{color}/{shop_id}")]
+        public ActionResult<Product> GetProductByNameAndColor(string name,string color,string  shop_id) //get list
+        {  
+            return _productservice.GetProductByNameAndColor(name,color,shop_id);
+
+        }
     }
 }
