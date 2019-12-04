@@ -12,7 +12,7 @@ namespace final_project
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
-        public DbSet<Size> Sizes { get; set; }
+    
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Reciever> Recievers { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -23,14 +23,13 @@ namespace final_project
         public DbSet<Color> Colors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product_Color> product_Colors {get;set;}
-        public DbSet<Product_Size> product_Sizes {get;set;}
+    
           protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new ShopConfiguration());
-            modelBuilder.ApplyConfiguration(new SizeConfiguration());
-            modelBuilder.ApplyConfiguration(new Product_SizeConfiguration());
+          
             modelBuilder.ApplyConfiguration(new Check_paid_shopConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());

@@ -18,11 +18,35 @@ namespace final_project.Services
             //throw new NotImplementedException();
         }
 
-        public void DeleteProduct(string id)
-        {  var product=new Product();
+        public bool DeleteProduct(string id){
+         
+         var s=_context.Order_details.Where(p=>p.product_id==id).Select(p=>p);
+         if(s.ToList().Count>0)
+         {  
+            
+           return false;
+         }
+         else { 
+           
+            var c=_context.product_Colors.Where(x=>x.product_id==id).Select(p=>p);
+           foreach(var i in c.ToList())
+         {
+            _context.product_Colors.Remove(i);
+           _context.SaveChanges();
+         }
+           
+            var product=new Product();
+
            product=_context.Products.FirstOrDefault(x=>x.id==id);
            _context.Products.Remove(product);
            _context.SaveChanges();
+          
+      
+
+           return true;
+
+         };
+
             //throw new NotImplementedException();
         }
 

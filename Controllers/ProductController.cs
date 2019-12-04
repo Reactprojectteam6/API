@@ -45,9 +45,10 @@ namespace final_project.Controllers
         }
 
         [HttpDelete("{id}")] //delete sv
-        public void Delete(string id)
-        {
-           _productservice.DeleteProduct(id);
+        public IActionResult Delete(string id)
+        { if( _productservice.DeleteProduct(id)==true) return StatusCode(200);
+           else return BadRequest();
+          
         }
      
          [HttpGet("Name={name}")]
