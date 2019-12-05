@@ -140,24 +140,24 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_expired = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(1624),
-                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 38, DateTimeKind.Local).AddTicks(9648),
+                            date_expired = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(5380),
+                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 918, DateTimeKind.Local).AddTicks(5392),
                             money = 200000,
                             shop_id = "1"
                         },
                         new
                         {
                             id = "2",
-                            date_expired = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4455),
-                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4383),
+                            date_expired = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8335),
+                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8271),
                             money = 200000,
                             shop_id = "2"
                         },
                         new
                         {
                             id = "3",
-                            date_expired = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4518),
-                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4514),
+                            date_expired = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8405),
+                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8400),
                             money = 200000,
                             shop_id = "3"
                         });
@@ -287,6 +287,70 @@ namespace final_project.Migrations
                             product_id = "3",
                             rate = 5,
                             user_id = "4"
+                        },
+                        new
+                        {
+                            id = "9",
+                            contents = "Oke",
+                            product_id = "4",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "10",
+                            contents = "Oke",
+                            product_id = "5",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "11",
+                            contents = "Oke",
+                            product_id = "6",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "12",
+                            contents = "Oke",
+                            product_id = "7",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "13",
+                            contents = "Oke",
+                            product_id = "8",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "14",
+                            contents = "Oke",
+                            product_id = "9",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "15",
+                            contents = "Oke",
+                            product_id = "10",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "16",
+                            contents = "Oke",
+                            product_id = "11",
+                            rate = 1,
+                            user_id = "4"
                         });
                 });
 
@@ -307,6 +371,9 @@ namespace final_project.Migrations
                     b.Property<string>("receiver_id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("shop_id")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("status")
                         .HasColumnType("int");
 
@@ -324,6 +391,8 @@ namespace final_project.Migrations
                         .IsUnique()
                         .HasFilter("[receiver_id] IS NOT NULL");
 
+                    b.HasIndex("shop_id");
+
                     b.HasIndex("user_id");
 
                     b.ToTable("Orders");
@@ -332,10 +401,11 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_create = new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(6667),
-                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(7926),
+                            date_create = new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(8671),
+                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(9521),
                             payment_id = "1",
                             receiver_id = "1",
+                            shop_id = "1",
                             status = 1,
                             total = 900000,
                             user_id = "1"
@@ -343,10 +413,11 @@ namespace final_project.Migrations
                         new
                         {
                             id = "2",
-                            date_create = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2685),
-                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2732),
+                            date_create = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4821),
+                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4861),
                             payment_id = "1",
                             receiver_id = "3",
+                            shop_id = "1",
                             status = 2,
                             total = 800000,
                             user_id = "3"
@@ -354,10 +425,11 @@ namespace final_project.Migrations
                         new
                         {
                             id = "3",
-                            date_create = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2844),
-                            date_paid = new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2849),
+                            date_create = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5008),
+                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5013),
                             payment_id = "1",
                             receiver_id = "4",
+                            shop_id = "1",
                             status = 3,
                             total = 1000000,
                             user_id = "4"
@@ -1403,7 +1475,7 @@ namespace final_project.Migrations
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("payment_accont")
+                    b.Property<string>("payment_account")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("user_id")
@@ -1424,7 +1496,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "buithikieu@gmail.com",
                             name = "Shop mỹ phẩm bà Kèo",
-                            payment_accont = "abcxyz",
+                            payment_account = "abcxyz",
                             user_id = "2"
                         },
                         new
@@ -1433,7 +1505,7 @@ namespace final_project.Migrations
                             address = "194 NLB",
                             email = "votuonghuan@gmail.com",
                             name = "Ông Huân Vlog",
-                            payment_accont = "abcxyz",
+                            payment_account = "abcxyz",
                             user_id = "7"
                         },
                         new
@@ -1442,7 +1514,7 @@ namespace final_project.Migrations
                             address = "195 NLB",
                             email = "nguyentruongson@gmail.com",
                             name = "Bé Sơn Parody",
-                            payment_accont = "abcxyz",
+                            payment_account = "abcxyz",
                             user_id = "8"
                         });
                 });
@@ -1591,6 +1663,10 @@ namespace final_project.Migrations
                     b.HasOne("final_project.Models.Entities.Receiver", "Reciever")
                         .WithOne("Order")
                         .HasForeignKey("final_project.Models.Entities.Order", "receiver_id");
+
+                    b.HasOne("final_project.Models.Entities.Shop", "shop")
+                        .WithMany("Orders")
+                        .HasForeignKey("shop_id");
 
                     b.HasOne("final_project.Models.Entities.User", "User")
                         .WithMany("Orders")

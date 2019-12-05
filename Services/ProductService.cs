@@ -28,16 +28,16 @@ namespace final_project.Services
 
         public dynamic GetProductById(string  id)
         {   var product=new Product();
-            var s= _context.Products.Where(x=>x.id==id).Select(p=>p);
-            return s.FirstOrDefault();
+            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
+            return s;
             
         }
 
-        public List<Product> GetProducts()
+        public dynamic GetProducts()
         {    var products =new List<Product>();
-           products=_context.Products.ToList();
+            products=_context.Products.ToList();
             return products.GroupBy(p=>p.product_name).Select(p=>p.FirstOrDefault()).ToList();
-           
+             
         }
 
         public void UpdateProduct( Product product)
@@ -87,16 +87,63 @@ namespace final_project.Services
                    if(count!=0) return sum/count;
                    else return 0;
                  }
-             public Product GetProductByNameAndColor(string name,string color,string shop_id){
-              Product product=new Product();
+             public dynamic GetProductByNameAndColor(string name,string color,string shop_id){
+              dynamic a=new object();
              var s1=_context.Colors.Where(p=>p.name==color).Select(p=>p.id);
              var s=_context.product_Colors.Where(p=>p.color_id==s1.First()).Select(p=>p.Product);
              foreach(var i in s.ToList())
              {
-               if(i.product_name==name&&i.shop_id==shop_id) return i;
+               if(i.product_name==name&&i.shop_id==shop_id) {
+                  var pro= _context.Products.Where(x=>x.id==i.id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
+                  return pro;
              }
-             return product;
              }
+             return a;
+            
+             }
+
+
+              public List<Product> GetProductByRating(int a,int b)
+              {
+               int sum=0;
+               int count=0;
+               List<Product> products=new List<Product>();
+               var s=_context.Products.Select(p=>p);
+               foreach(var i in s.ToList())
+               {  var comments=_context.Comments.Select(p=>p).Where(p=>p.product_id==i.id);
+                   foreach(var j in comments.ToList())
+                   {  sum+=j.rate;
+                      count++;
+
+                   }
+                   if(count!=0)  if(sum/count>=a&&sum/count<=b) products.Add(i);
+                    count=0;
+                    sum=0;
+
+               }
+             return products;
+
+              }
+                public List<Product> GetHotProduct(){
+                 
+                int sum=0;
+               int count=0;
+               List<Product> products=new List<Product>();
+               var s=_context.Products.Select(p=>p);
+               foreach(var i in s.ToList())
+               {  var comments=_context.Comments.Select(p=>p).Where(p=>p.product_id==i.id);
+                   foreach(var j in comments.ToList())
+                   {  sum+=j.rate;
+                      count++;
+
+                   }
+                   if(count!=0)  if(sum/count>=4&&sum/count<=5) products.Add(i);
+                    count=0;
+                    sum=0;
+
+               }
+             return products;
+                }
              }
     
 }

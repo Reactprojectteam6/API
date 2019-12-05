@@ -18,7 +18,7 @@ namespace final_project.Controllers
           _productservice=productServcie;
       }
         [HttpGet]
-        public ActionResult<IEnumerable<Product>> Get() //get list
+        public ActionResult<dynamic> Get() //get list
         {  
             return _productservice.GetProducts();
         }
@@ -66,9 +66,21 @@ namespace final_project.Controllers
 
         }
         [HttpGet("{name}/{color}/{shop_id}")]
-        public ActionResult<Product> GetProductByNameAndColor(string name,string color,string  shop_id) //get list
+        public ActionResult<dynamic> GetProductByNameAndColor(string name,string color,string  shop_id) //get list
         {  
             return _productservice.GetProductByNameAndColor(name,color,shop_id);
+
+        }
+         [HttpGet("Rating/{a}-{b}")]
+        public ActionResult<IEnumerable<Product>> GetProductByRating(int a,int b) //get list
+        {  
+            return _productservice.GetProductByRating(a,b);
+
+        }
+          [HttpGet("Hot")]
+        public ActionResult<IEnumerable<Product>> GetHotProduct() //get list
+        {  
+            return _productservice.GetHotProduct();
 
         }
     }

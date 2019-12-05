@@ -93,8 +93,7 @@ namespace final_project
            //app.UseCors(options => options.AllowAnyOrigin());  
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
+           app.UseRouting();
             app.UseAuthentication();  // Must be before app.UseMvc
             //app.UseMvc();
             app.UseAuthorization();

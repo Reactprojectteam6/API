@@ -83,48 +83,12 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    id = table.Column<string>(nullable: false),
-                    date_create = table.Column<DateTime>(nullable: false),
-                    date_paid = table.Column<DateTime>(nullable: false),
-                    status = table.Column<int>(nullable: false),
-                    total = table.Column<int>(nullable: false),
-                    payment_id = table.Column<string>(nullable: true),
-                    receiver_id = table.Column<string>(nullable: true),
-                    user_id = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.id);
-                    table.ForeignKey(
-                        name: "FK_Orders_Payment_methods_payment_id",
-                        column: x => x.payment_id,
-                        principalTable: "Payment_methods",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_Receivers_receiver_id",
-                        column: x => x.receiver_id,
-                        principalTable: "Receivers",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Orders_Users_user_id",
-                        column: x => x.user_id,
-                        principalTable: "Users",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Shops",
                 columns: table => new
                 {
                     id = table.Column<string>(nullable: false),
                     name = table.Column<string>(nullable: true),
-                    payment_accont = table.Column<string>(nullable: true),
+                    payment_account = table.Column<string>(nullable: true),
                     user_id = table.Column<string>(nullable: true),
                     address = table.Column<string>(nullable: true),
                     email = table.Column<string>(nullable: true)
@@ -157,6 +121,49 @@ namespace final_project.Migrations
                         name: "FK_Check_paid_shop_Shops_shop_id",
                         column: x => x.shop_id,
                         principalTable: "Shops",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    id = table.Column<string>(nullable: false),
+                    date_create = table.Column<DateTime>(nullable: false),
+                    date_paid = table.Column<DateTime>(nullable: false),
+                    status = table.Column<int>(nullable: false),
+                    total = table.Column<int>(nullable: false),
+                    payment_id = table.Column<string>(nullable: true),
+                    receiver_id = table.Column<string>(nullable: true),
+                    user_id = table.Column<string>(nullable: true),
+                    shop_id = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Orders_Payment_methods_payment_id",
+                        column: x => x.payment_id,
+                        principalTable: "Payment_methods",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Receivers_receiver_id",
+                        column: x => x.receiver_id,
+                        principalTable: "Receivers",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Shops_shop_id",
+                        column: x => x.shop_id,
+                        principalTable: "Shops",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Users_user_id",
+                        column: x => x.user_id,
+                        principalTable: "Users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -347,18 +354,8 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Orders",
-                columns: new[] { "id", "date_create", "date_paid", "payment_id", "receiver_id", "status", "total", "user_id" },
-                values: new object[,]
-                {
-                    { "1", new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(6667), new DateTime(2019, 12, 3, 18, 18, 42, 62, DateTimeKind.Local).AddTicks(7926), "1", "1", 1, 900000, "1" },
-                    { "2", new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2685), new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2732), "1", "3", 2, 800000, "3" },
-                    { "3", new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2844), new DateTime(2019, 12, 3, 18, 18, 42, 63, DateTimeKind.Local).AddTicks(2849), "1", "4", 3, 1000000, "4" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Shops",
-                columns: new[] { "id", "address", "email", "name", "payment_accont", "user_id" },
+                columns: new[] { "id", "address", "email", "name", "payment_account", "user_id" },
                 values: new object[,]
                 {
                     { "1", "193 NLB", "buithikieu@gmail.com", "Shop mỹ phẩm bà Kèo", "abcxyz", "2" },
@@ -371,9 +368,19 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_expired", "date_paid", "money", "shop_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(1624), new DateTime(2019, 12, 3, 18, 18, 42, 38, DateTimeKind.Local).AddTicks(9648), 200000, "1" },
-                    { "2", new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4455), new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4383), 200000, "2" },
-                    { "3", new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4518), new DateTime(2019, 12, 3, 18, 18, 42, 41, DateTimeKind.Local).AddTicks(4514), 200000, "3" }
+                    { "1", new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(5380), new DateTime(2019, 12, 5, 15, 27, 2, 918, DateTimeKind.Local).AddTicks(5392), 200000, "1" },
+                    { "2", new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8335), new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8271), 200000, "2" },
+                    { "3", new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8405), new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8400), 200000, "3" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Orders",
+                columns: new[] { "id", "date_create", "date_paid", "payment_id", "receiver_id", "shop_id", "status", "total", "user_id" },
+                values: new object[,]
+                {
+                    { "1", new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(8671), new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(9521), "1", "1", "1", 1, 900000, "1" },
+                    { "2", new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4821), new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4861), "1", "3", "1", 2, 800000, "3" },
+                    { "3", new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5008), new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5013), "1", "4", "1", 3, 1000000, "4" }
                 });
 
             migrationBuilder.InsertData(
@@ -390,8 +397,8 @@ namespace final_project.Migrations
                     { "47", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son3.jpg", 370000, "Son Kem Lì Black Rouge Air Fit Velvet", 100, "2" },
                     { "7", "3", "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.", "ChongNang7.jpg", 1000000, "Kem Chống Nắng Chiết Xuất Măng Cụt It's Skin Tropical Sun Gel Mangosteen SPF50+/PA++++ ", 50, "3" },
                     { "8", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang8.jpg", 1500000, "Xịt Chống Nắng Làm Dịu Da Giảm Nhiệt Tức Thì Mediheal Labocare Ceramatica Sun Spray", 50, "3" },
-                    { "11", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAm.jpg", 600000, "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream", 100, "3" },
                     { "12", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNaDatSet.jpg", 400000, "Mặt nạ dưỡng da đất sét", 100, "3" },
+                    { "26", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen1.jpg", 670000, "Kem nền Innisfree", 100, "2" },
                     { "14", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa1.jpg", 300000, "Mặt Nạ Vitamin Dưỡng Trắng Da By Wishtrend Natural Vitamin 21.5% Enhancing Sheet Mask", 100, "3" },
                     { "16", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa4.jpg", 270000, "Mặt Nạ Ngủ Dưỡng Trắng Chiết Xuất Từ Trái Thanh Yên Some By Mi Yuja Niacin 30 Days Miracle Brightening Sleeping Mask", 100, "3" },
                     { "22", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi2.jpg", 810000, "Son Dưỡng Môi Có Màu Innisfree Glow Tint Lip Balm", 100, "3" },
@@ -402,9 +409,9 @@ namespace final_project.Migrations
                     { "39", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu3.jpg", 290000, "Phấn Phủ Bột Kiềm Dầu Innisfree No Sebum Mineral Powder", 100, "3" },
                     { "42", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu6.jpg", 290000, "Phấn Phủ Kiềm Dầu I'm Meme I'm Oil Cut Pact ", 100, "3" },
                     { "45", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son1.jpg", 350000, "Son Kem Lì Black Rouge Air Fit Velvet Tint", 100, "3" },
-                    { "26", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen1.jpg", 670000, "Kem nền Innisfree", 100, "2" },
+                    { "11", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAm.jpg", 600000, "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream", 100, "3" },
                     { "24", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi4.jpg", 920000, "Mặt Nạ Ngủ Môi Carenel Berry Lip Night Mask", 100, "2" },
-                    { "21", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi1.jpg", 110000, "Son Dưỡng Innisfree Canola Honey Lip Balm", 100, "2" },
+                    { "17", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa3.jpg", 200000, "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask", 100, "2" },
                     { "19", "6", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "NuocHoaHong2.jpg", 900000, "Nước hoa hồng Tea Tree Cica", 100, "2" },
                     { "1", "3", "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè", "ChongNang1.jpg", 900000, "Kem chống nắng Innisfree SPF50+ PA++++", 100, "1" },
                     { "2", "3", "Có khả năng bảo vệ da mạnh mẽ dưới tác động của ánh nắng mặt trời, cung cấp độ ẩm cho da, làn da trắng hồng rạng rỡ, đầy sức sống", "ChongNang3.jpg", 800000, "Kem Chống Nắng Dịu Nhẹ Với Chiết xuất Từ Thiên Nhiên Black Rouge Cica Green Sun Cream SPF50+/PA++++", 150, "1" },
@@ -428,8 +435,8 @@ namespace final_project.Migrations
                     { "6", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang6.jpg", 800000, " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream", 150, "2" },
                     { "10", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAmSauDanHoi.jpg", 700000, "Serum dưỡng ẩm đàn hồi Innisfree", 100, "2" },
                     { "13", "5", "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt", "MatNaCam.jpg", 900000, "Mặt nạ dưỡng da từ quả Cam", 100, "2" },
-                    { "17", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa3.jpg", 200000, "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask", 100, "2" },
                     { "48", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son4.jpg", 800000, "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ", 100, "3" },
+                    { "21", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi1.jpg", 110000, "Son Dưỡng Innisfree Canola Honey Lip Balm", 100, "2" },
                     { "49", "7", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Tinhchat.jpg", 800000, "Tinh chất dưỡng ", 100, "3" }
                 });
 
@@ -439,13 +446,21 @@ namespace final_project.Migrations
                 values: new object[,]
                 {
                     { "1", "Đồ cùi quá", "1", 3, "1" },
-                    { "2", "Oke", "1", 4, "2" },
-                    { "3", "Oke", "1", 5, "3" },
-                    { "4", "Oke", "1", 5, "4" },
+                    { "16", "Oke", "11", 1, "4" },
+                    { "12", "Oke", "7", 1, "4" },
+                    { "10", "Oke", "5", 1, "4" },
+                    { "14", "Oke", "9", 1, "4" },
+                    { "11", "Oke", "6", 1, "4" },
+                    { "9", "Oke", "4", 1, "4" },
                     { "8", "Oke", "3", 5, "4" },
-                    { "5", "Đồ cùi quá", "2", 3, "1" },
+                    { "15", "Oke", "10", 1, "4" },
+                    { "13", "Oke", "8", 1, "4" },
+                    { "7", "Oke", "2", 5, "3" },
                     { "6", "Oke", "2", 4, "2" },
-                    { "7", "Oke", "2", 5, "3" }
+                    { "5", "Đồ cùi quá", "2", 3, "1" },
+                    { "4", "Oke", "1", 5, "4" },
+                    { "3", "Oke", "1", 5, "3" },
+                    { "2", "Oke", "1", 4, "2" }
                 });
 
             migrationBuilder.InsertData(
@@ -453,9 +468,9 @@ namespace final_project.Migrations
                 columns: new[] { "id", "order_id", "price", "product_id", "quantity" },
                 values: new object[,]
                 {
-                    { "3", "3", 1000000, "3", 1 },
+                    { "1", "1", 900000, "1", 1 },
                     { "2", "2", 800000, "2", 1 },
-                    { "1", "1", 900000, "1", 1 }
+                    { "3", "3", 1000000, "3", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -463,28 +478,26 @@ namespace final_project.Migrations
                 columns: new[] { "id", "color_id", "product_id" },
                 values: new object[,]
                 {
-                    { "25", "4", "26" },
-                    { "23", "2", "24" },
-                    { "28", "4", "29" },
+                    { "7", "3", "7" },
                     { "31", "3", "38" },
+                    { "28", "4", "29" },
                     { "34", "3", "41" },
                     { "37", "1", "44" },
                     { "40", "2", "47" },
-                    { "7", "3", "7" },
-                    { "8", "3", "8" },
-                    { "21", "2", "22" },
+                    { "16", "3", "16" },
+                    { "11", "3", "11" },
                     { "12", "3", "12" },
                     { "14", "3", "14" },
-                    { "16", "3", "16" },
-                    { "20", "1", "21" },
+                    { "25", "4", "26" },
+                    { "21", "2", "22" },
                     { "26", "4", "27" },
                     { "29", "4", "30" },
                     { "32", "3", "39" },
                     { "35", "3", "42" },
-                    { "11", "3", "11" },
+                    { "8", "3", "8" },
+                    { "23", "2", "24" },
+                    { "5", "3", "5" },
                     { "18", "2", "19" },
-                    { "42", "1", "50" },
-                    { "10", "3", "10" },
                     { "1", "3", "1" },
                     { "2", "3", "2" },
                     { "3", "3", "3" },
@@ -493,17 +506,19 @@ namespace final_project.Migrations
                     { "15", "3", "15" },
                     { "17", "1", "18" },
                     { "19", "1", "20" },
-                    { "13", "3", "13" },
                     { "22", "1", "23" },
-                    { "27", "4", "28" },
+                    { "20", "1", "21" },
+                    { "24", "4", "25" },
                     { "30", "3", "37" },
                     { "33", "3", "40" },
                     { "36", "1", "43" },
                     { "39", "2", "46" },
+                    { "42", "1", "50" },
                     { "38", "2", "45" },
-                    { "5", "3", "5" },
                     { "6", "3", "6" },
-                    { "24", "4", "25" },
+                    { "10", "3", "10" },
+                    { "13", "3", "13" },
+                    { "27", "4", "28" },
                     { "41", "1", "48" }
                 });
 
@@ -550,6 +565,11 @@ namespace final_project.Migrations
                 column: "receiver_id",
                 unique: true,
                 filter: "[receiver_id] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_shop_id",
+                table: "Orders",
+                column: "shop_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_user_id",

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using final_project.Models.Entities;
 namespace final_project.Services
 {    public interface IProductService   {    
-        public List<Product> GetProducts();
+        public dynamic GetProducts();
         public dynamic GetProductById(string id);
         public void AddProduct(Product product);
         public void UpdateProduct(Product product);
@@ -17,7 +17,8 @@ namespace final_project.Services
         
          public  List<Color> GetColors(string name);
         public int GetRating(string id);
-        public Product GetProductByNameAndColor(string name,string color,string shop_id);
-
+        public dynamic GetProductByNameAndColor(string name,string color,string shop_id);
+        public List<Product> GetProductByRating(int a,int b);
+        public List<Product> GetHotProduct();
     }
 }
