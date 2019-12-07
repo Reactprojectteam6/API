@@ -12,7 +12,7 @@ namespace final_project.Models.Entities
     {
         public string id {get;set;}
         public  string name{get;set;}
-        public string payment_accont{get;set;}
+        public string payment_account{get;set;}
         public string user_id{get;set;}
         public string address{get;set;}
         public string email {get;set;}
@@ -22,5 +22,6 @@ namespace final_project.Models.Entities
          [JsonIgnore] 
         [IgnoreDataMember] 
         public ICollection<Product> Products{get;set;}
+        public ICollection<Order> Orders{get;set;}
     }
 }

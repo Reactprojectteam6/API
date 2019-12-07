@@ -16,12 +16,15 @@ namespace final_project.Models.Entities
         public string payment_id{get;set;}
         [ForeignKey("payment_id")]
         public Payment_method Payment_Method{get;set;}
-        public string reciever_id{get;set;}
-        [ForeignKey("reciever_id")]
+        public string receiver_id{get;set;}
+        [ForeignKey("receiver_id")]
         public Reciever Reciever{get;set;}
         public ICollection<Order_detail> Order_Details{get;set;}
         public string user_id{get;set;}
         [ForeignKey("user_id")]
         public User User{get;set;}
+        public string shop_id{get;set;}
+          [ForeignKey("shop_id")]
+        public Shop shop{get;set;}
     }
 }

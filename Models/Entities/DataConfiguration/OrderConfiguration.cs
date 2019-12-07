@@ -17,8 +17,9 @@ namespace final_project.Models.Entities.DataConfiguration
                     status = 1,
                     total = 900000,
                     payment_id = "1",
-                    reciever_id = "1",
-                    user_id = "1"
+                    receiver_id = "1",
+                    user_id = "1",
+                    shop_id="1"
                 },
                 new Order{
                     id = "2",
@@ -27,8 +28,9 @@ namespace final_project.Models.Entities.DataConfiguration
                     status = 2,
                     total = 800000,
                     payment_id = "1",
-                    reciever_id = "3",
-                    user_id = "3"
+                    receiver_id = "3",
+                    user_id = "3",
+                    shop_id="1"
                 },
                 new Order{
                     id = "3",
@@ -37,8 +39,9 @@ namespace final_project.Models.Entities.DataConfiguration
                     status = 3,
                     total = 1000000,
                     payment_id = "1",
-                    reciever_id = "4",
-                    user_id = "4"
+                    receiver_id = "4",
+                    user_id = "4",
+                    shop_id="1"
                 }
             );
         }

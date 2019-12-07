@@ -39,6 +39,8 @@ namespace final_project
               services.AddScoped<IProductService,ProductService>();  
              services.AddScoped<ICategoryService,CategoryService>(); 
               services.AddScoped<IUserService,UserService>(); 
+              services.AddScoped<IOrderService,OrderService>();
+              services.AddScoped<IOrderDetailService,OrderDetailService>();  
              services.AddMvc().AddNewtonsoftJson();
             services.AddMvc();
             services.AddAuthentication(options =>
