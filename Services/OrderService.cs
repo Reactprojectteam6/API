@@ -56,7 +56,7 @@ namespace final_project.Services
         }
           public dynamic GetOrderByID(string id)
           {
-            var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create,p.Order_Details,p.Reciever.address,p.Reciever.phone,p.User.user_name});
+            var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create,p.Order_Details,p.Reciever.address,p.Reciever.phone,p.User.user_name,p.id});
             return s;
           }
           public dynamic GetOrdersOnShop(string shop_id)
