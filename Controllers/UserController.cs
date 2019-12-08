@@ -92,7 +92,7 @@ namespace final_project.Controllers
 
         [HttpPost]
         public void Post([FromBody] User user)
-        {    user.id="100";//(_userService.GetMaxId())+1;
+        {    //(_userService.GetMaxId())+1;
             _userService.AddUser(user);
         }
         
@@ -112,6 +112,25 @@ namespace final_project.Controllers
             return _userService.GetUserByEmail(email);
             else return BadRequest();
         }
+       [HttpGet("name={name}")]
+        [Authorize]
+        public ActionResult<IEnumerable<User>> GetUserByName(string name)
+        {  //Get all user chi co admin dc get
+            
+             var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+
         
+        var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
+        if(Role=="Admin")
+            return _userService.getUserByName(name);
+            else return BadRequest();
+        }
+
     }
+
+
 }

@@ -14,7 +14,7 @@ namespace final_project.Services
         public User CheckLoginUser(string email,string password);
         public User GetUserByEmail(string email);
       
-
+       public List<User> getUserByName(string name);
 
     }
 }

@@ -105,7 +105,7 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Check_paid_shop",
+                name: "Check_Paid_Shops",
                 columns: table => new
                 {
                     id = table.Column<string>(nullable: false),
@@ -116,9 +116,9 @@ namespace final_project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Check_paid_shop", x => x.id);
+                    table.PrimaryKey("PK_Check_Paid_Shops", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Check_paid_shop_Shops_shop_id",
+                        name: "FK_Check_Paid_Shops_Shops_shop_id",
                         column: x => x.shop_id,
                         principalTable: "Shops",
                         principalColumn: "id",
@@ -364,13 +364,13 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Check_paid_shop",
+                table: "Check_Paid_Shops",
                 columns: new[] { "id", "date_expired", "date_paid", "money", "shop_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(5380), new DateTime(2019, 12, 5, 15, 27, 2, 918, DateTimeKind.Local).AddTicks(5392), 200000, "1" },
-                    { "2", new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8335), new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8271), 200000, "2" },
-                    { "3", new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8405), new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8400), 200000, "3" }
+                    { "1", new DateTime(2019, 12, 8, 22, 33, 39, 71, DateTimeKind.Local).AddTicks(7368), new DateTime(2019, 12, 8, 22, 33, 39, 70, DateTimeKind.Local).AddTicks(3398), 200000, "1" },
+                    { "2", new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(340), new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(270), 200000, "2" },
+                    { "3", new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(418), new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(411), 200000, "3" }
                 });
 
             migrationBuilder.InsertData(
@@ -378,9 +378,9 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_create", "date_paid", "payment_id", "receiver_id", "shop_id", "status", "total", "user_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(8671), new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(9521), "1", "1", "1", 1, 900000, "1" },
-                    { "2", new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4821), new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4861), "1", "3", "1", 2, 800000, "3" },
-                    { "3", new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5008), new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5013), "1", "4", "1", 3, 1000000, "4" }
+                    { "1", new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6254), new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6888), "1", "1", "1", 1, 900000, "1" },
+                    { "2", new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(402), new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(426), "1", "3", "1", 2, 800000, "3" },
+                    { "3", new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(511), new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(513), "1", "4", "1", 3, 1000000, "4" }
                 });
 
             migrationBuilder.InsertData(
@@ -528,8 +528,8 @@ namespace final_project.Migrations
                 column: "parent_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Check_paid_shop_shop_id",
-                table: "Check_paid_shop",
+                name: "IX_Check_Paid_Shops_shop_id",
+                table: "Check_Paid_Shops",
                 column: "shop_id",
                 unique: true,
                 filter: "[shop_id] IS NOT NULL");
@@ -607,7 +607,7 @@ namespace final_project.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Check_paid_shop");
+                name: "Check_Paid_Shops");
 
             migrationBuilder.DropTable(
                 name: "Comments");

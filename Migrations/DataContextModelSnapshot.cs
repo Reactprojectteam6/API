@@ -134,30 +134,30 @@ namespace final_project.Migrations
                         .IsUnique()
                         .HasFilter("[shop_id] IS NOT NULL");
 
-                    b.ToTable("Check_paid_shop");
+                    b.ToTable("Check_Paid_Shops");
 
                     b.HasData(
                         new
                         {
                             id = "1",
-                            date_expired = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(5380),
-                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 918, DateTimeKind.Local).AddTicks(5392),
+                            date_expired = new DateTime(2019, 12, 8, 22, 33, 39, 71, DateTimeKind.Local).AddTicks(7368),
+                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 70, DateTimeKind.Local).AddTicks(3398),
                             money = 200000,
                             shop_id = "1"
                         },
                         new
                         {
                             id = "2",
-                            date_expired = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8335),
-                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8271),
+                            date_expired = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(340),
+                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(270),
                             money = 200000,
                             shop_id = "2"
                         },
                         new
                         {
                             id = "3",
-                            date_expired = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8405),
-                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 920, DateTimeKind.Local).AddTicks(8400),
+                            date_expired = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(418),
+                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(411),
                             money = 200000,
                             shop_id = "3"
                         });
@@ -401,8 +401,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_create = new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(8671),
-                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 939, DateTimeKind.Local).AddTicks(9521),
+                            date_create = new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6254),
+                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6888),
                             payment_id = "1",
                             receiver_id = "1",
                             shop_id = "1",
@@ -413,8 +413,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "2",
-                            date_create = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4821),
-                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(4861),
+                            date_create = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(402),
+                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(426),
                             payment_id = "1",
                             receiver_id = "3",
                             shop_id = "1",
@@ -425,8 +425,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "3",
-                            date_create = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5008),
-                            date_paid = new DateTime(2019, 12, 5, 15, 27, 2, 940, DateTimeKind.Local).AddTicks(5013),
+                            date_create = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(511),
+                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(513),
                             payment_id = "1",
                             receiver_id = "4",
                             shop_id = "1",

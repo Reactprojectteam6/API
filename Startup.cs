@@ -43,6 +43,7 @@ namespace final_project
             services.AddScoped<IOrderService,OrderService>();
             services.AddScoped<IOrderDetailService,OrderDetailService>();
             services.AddScoped<IReceiverService,ReceiverService>();
+            services.AddScoped<IShopService,ShopService>();
              services.AddMvc().AddNewtonsoftJson();
             services.AddMvc();
             services.AddAuthentication(options =>

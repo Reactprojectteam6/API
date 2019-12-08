@@ -23,6 +23,7 @@ namespace final_project
         public DbSet<Color> Colors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product_Color> product_Colors {get;set;}
+        public DbSet<Check_paid_shop> Check_Paid_Shops{get;set;}
              protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());

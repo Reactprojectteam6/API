@@ -33,5 +33,11 @@ namespace final_project.Services
             return s;
 
         }
+        public void DeleteOrderDetail(string id)
+         { var Order_detail=new Order_detail();
+            Order_detail=_context.Order_details.FirstOrDefault(x=>x.id==id);
+           _context.Order_details.Remove(Order_detail);
+           _context.SaveChanges();
+        }
     }
 }

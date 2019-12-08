@@ -31,7 +31,7 @@ namespace final_project.Controllers
 
         [HttpGet("user/{id}")]
         [Authorize]
-        public ActionResult<IEnumerable<Order>> GetOrderOfUser(string id)
+        public ActionResult<dynamic> GetOrderOfUser(string id)
         {  //Get all user chi co admin dc get
              var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
@@ -39,9 +39,9 @@ namespace final_project.Controllers
             var jsonToken = handler.ReadToken(authHeader);
              var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
 
-        var id1=tokenS.Claims.First(claim => claim.Type =="ID").Value;
-        var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
-        if(id==id1||Role=="Admin")
+          var id1=tokenS.Claims.First(claim => claim.Type =="ID").Value;
+          var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
+          if(id==id1||Role=="Admin")
             return _orderService.GetOrderByUser(id);
             else return BadRequest();
         }
@@ -51,6 +51,22 @@ namespace final_project.Controllers
            return _orderService.GetOrderByID(id);
         
         }
+        [HttpPut("{id}/Cancel")]  //update sv
+        public void Put( string id)
+        {
+            _orderService.cancelOrder(id);
+             
+        }
+        //delete order
+        [HttpDelete("{id}")]
+        [Authorize]
+        public void Delete(string  id)
+        {  //Chi co admin moi dc quyen xoa
+        
+            _orderService.DeleteOrder(id);
+        }
+
+
           
       
     }
