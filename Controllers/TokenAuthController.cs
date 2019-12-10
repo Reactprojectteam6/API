@@ -29,11 +29,11 @@ public class TokenController : ControllerBase
     [HttpGet]
     [Route("api/Token/{email}/{password}")]
     public IActionResult Get(string email, string password)
-    {     var user=_userservice.CheckLoginUser(email,password);
-           if(user!=null)
+    {      var user=_userservice.CheckLoginUser(email,password);
+           if(user!=null&&user.permission==true)
             return new ObjectResult(GenerateToken(user.role.ToString(),user.id));
-        else
-            return BadRequest();
+            else
+            return new OkResult();
     }
 
     // Generate a Token with expiration date and Claim meta-data.

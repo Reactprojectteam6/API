@@ -22,21 +22,7 @@ namespace final_project.Controllers
             this._Service=_shop;
             _context = context;
         }
-        [HttpGet("user/{id}")]
-        [Authorize]
-        public ActionResult<string> GetShopOfUser(string id)
-        {   var handler = new JwtSecurityTokenHandler();
-            string authHeader = Request.Headers["Authorization"];
-            authHeader = authHeader.Replace("Bearer ", "");
-            var jsonToken = handler.ReadToken(authHeader);
-             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
-
-          var id1=tokenS.Claims.First(claim => claim.Type =="ID").Value;
-          var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
-          if(id==id1||Role=="Admin")
-            return _Service.getShopOfUser(id);
-            else return BadRequest();
-        }
+      
         //delete order
         [HttpDelete("{id}")]
         [Authorize]
@@ -65,7 +51,7 @@ namespace final_project.Controllers
         }
        [HttpGet("name={name}")]
         [Authorize]
-        public ActionResult<dynamic> GetShopByName(string name)
+        public ActionResult<dynamic> GetShopByName(string name)//Tim kiem shop dua theo ten
         {  //Get all user chi co admin dc get
             
              var handler = new JwtSecurityTokenHandler();
@@ -79,6 +65,16 @@ namespace final_project.Controllers
         if(Role=="Admin")
             return _Service.getShopByName(name);
             else return BadRequest();
+        }
+      //get paypal cua shop
+
+        [HttpGet("Paypal/{id}")]
+        [Authorize]
+        public ActionResult<dynamic> GetPayPal(string id)
+        {  //Get all user chi co admin dc get
+        
+            return _Service.getPaypal(id);
+            
         }
  
           

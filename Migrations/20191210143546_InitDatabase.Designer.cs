@@ -10,7 +10,7 @@ using final_project;
 namespace final_project.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191208153339_InitDatabase")]
+    [Migration("20191210143546_InitDatabase")]
     partial class InitDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -132,9 +132,7 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("shop_id")
-                        .IsUnique()
-                        .HasFilter("[shop_id] IS NOT NULL");
+                    b.HasIndex("shop_id");
 
                     b.ToTable("Check_Paid_Shops");
 
@@ -142,24 +140,32 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_expired = new DateTime(2019, 12, 8, 22, 33, 39, 71, DateTimeKind.Local).AddTicks(7368),
-                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 70, DateTimeKind.Local).AddTicks(3398),
+                            date_expired = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             money = 200000,
                             shop_id = "1"
                         },
                         new
                         {
                             id = "2",
-                            date_expired = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(340),
-                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(270),
+                            date_expired = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             money = 200000,
                             shop_id = "2"
                         },
                         new
                         {
                             id = "3",
-                            date_expired = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(418),
-                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(411),
+                            date_expired = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            money = 200000,
+                            shop_id = "3"
+                        },
+                        new
+                        {
+                            id = "4",
+                            date_expired = new DateTime(2019, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             money = 200000,
                             shop_id = "3"
                         });
@@ -403,8 +409,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_create = new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6254),
-                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6888),
+                            date_create = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             payment_id = "1",
                             receiver_id = "1",
                             shop_id = "1",
@@ -415,8 +421,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "2",
-                            date_create = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(402),
-                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(426),
+                            date_create = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             payment_id = "1",
                             receiver_id = "3",
                             shop_id = "1",
@@ -427,8 +433,8 @@ namespace final_project.Migrations
                         new
                         {
                             id = "3",
-                            date_create = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(511),
-                            date_paid = new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(513),
+                            date_create = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             payment_id = "1",
                             receiver_id = "4",
                             shop_id = "1",
@@ -529,6 +535,9 @@ namespace final_project.Migrations
                     b.Property<string>("image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("permission")
+                        .HasColumnType("bit");
+
                     b.Property<int>("price")
                         .HasColumnType("int");
 
@@ -556,6 +565,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
                             image = "ChongNang1.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
                             quantity = 100,
@@ -567,6 +577,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Có khả năng bảo vệ da mạnh mẽ dưới tác động của ánh nắng mặt trời, cung cấp độ ẩm cho da, làn da trắng hồng rạng rỡ, đầy sức sống",
                             image = "ChongNang3.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Kem Chống Nắng Dịu Nhẹ Với Chiết xuất Từ Thiên Nhiên Black Rouge Cica Green Sun Cream SPF50+/PA++++",
                             quantity = 150,
@@ -578,6 +589,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Kem chống nắng vật lý, chăm sóc da mẫn cảm, dưỡng trắng",
                             image = "ChongNang2.jpg",
+                            permission = true,
                             price = 1000000,
                             product_name = "Kem chống nắng Uriage Bariesun SPF50+ - Kem chống nắng tốt nhất giúp tái tạo da và ngừa da hư tổn",
                             quantity = 50,
@@ -589,6 +601,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang4.jpg",
+                            permission = true,
                             price = 1500000,
                             product_name = "Kem chống nắng kiêm kem lót nâng tone da A'pieu Pure Block Tone-Up Sun Base SPF50+ PA+++",
                             quantity = 50,
@@ -600,6 +613,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang5.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Kem Chống Nắng Dạng Gel Chống Tia Hồng Ngoại, Giảm Nhiệt Độ Tức Thì Make Prem UV Defense Me Blue Ray Sun Gel SPF50/PA++++",
                             quantity = 100,
@@ -611,6 +625,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang6.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream",
                             quantity = 150,
@@ -622,6 +637,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.",
                             image = "ChongNang7.jpg",
+                            permission = true,
                             price = 1000000,
                             product_name = "Kem Chống Nắng Chiết Xuất Măng Cụt It's Skin Tropical Sun Gel Mangosteen SPF50+/PA++++ ",
                             quantity = 50,
@@ -633,6 +649,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang8.jpg",
+                            permission = true,
                             price = 1500000,
                             product_name = "Xịt Chống Nắng Làm Dịu Da Giảm Nhiệt Tức Thì Mediheal Labocare Ceramatica Sun Spray",
                             quantity = 50,
@@ -644,6 +661,7 @@ namespace final_project.Migrations
                             cat_id = "4",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "DuongAmSau.jpg",
+                            permission = true,
                             price = 450000,
                             product_name = "Serum  dưỡng ẩm Innisfree",
                             quantity = 100,
@@ -655,6 +673,7 @@ namespace final_project.Migrations
                             cat_id = "4",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "DuongAmSauDanHoi.jpg",
+                            permission = true,
                             price = 700000,
                             product_name = "Serum dưỡng ẩm đàn hồi Innisfree",
                             quantity = 100,
@@ -666,6 +685,7 @@ namespace final_project.Migrations
                             cat_id = "4",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "DuongAm.jpg",
+                            permission = true,
                             price = 600000,
                             product_name = "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream",
                             quantity = 100,
@@ -677,6 +697,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNaDatSet.jpg",
+                            permission = true,
                             price = 400000,
                             product_name = "Mặt nạ dưỡng da đất sét",
                             quantity = 100,
@@ -688,6 +709,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt",
                             image = "MatNaCam.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Mặt nạ dưỡng da từ quả Cam",
                             quantity = 100,
@@ -699,6 +721,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNa1.jpg",
+                            permission = true,
                             price = 300000,
                             product_name = "Mặt Nạ Vitamin Dưỡng Trắng Da By Wishtrend Natural Vitamin 21.5% Enhancing Sheet Mask",
                             quantity = 100,
@@ -710,6 +733,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Táo được biết đến là top thực phẩm giàu chất chống oxy hóa, giúp ngăn quá trình lão hóa",
                             image = "MatNa2.jpg",
+                            permission = true,
                             price = 500000,
                             product_name = "Mặt Nạ Làm Sáng Da, Loại Bỏ Tế Bào Chết Chiết Xuất Từ TáoROUNDLAB Apple Peeling Mask ",
                             quantity = 100,
@@ -721,6 +745,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNa4.jpg",
+                            permission = true,
                             price = 270000,
                             product_name = "Mặt Nạ Ngủ Dưỡng Trắng Chiết Xuất Từ Trái Thanh Yên Some By Mi Yuja Niacin 30 Days Miracle Brightening Sleeping Mask",
                             quantity = 100,
@@ -732,6 +757,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNa3.jpg",
+                            permission = true,
                             price = 200000,
                             product_name = "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask",
                             quantity = 100,
@@ -743,6 +769,7 @@ namespace final_project.Migrations
                             cat_id = "6",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "NuocHoaHong1.jpg",
+                            permission = true,
                             price = 820000,
                             product_name = "Nước hoa hồng Innisfree",
                             quantity = 100,
@@ -754,6 +781,7 @@ namespace final_project.Migrations
                             cat_id = "6",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "NuocHoaHong2.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Nước hoa hồng Tea Tree Cica",
                             quantity = 100,
@@ -765,6 +793,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "ChamSocMoi2.jpg",
+                            permission = true,
                             price = 210000,
                             product_name = "Son Dưỡng Môi Innisfree",
                             quantity = 100,
@@ -776,6 +805,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi1.jpg",
+                            permission = true,
                             price = 110000,
                             product_name = "Son Dưỡng Innisfree Canola Honey Lip Balm",
                             quantity = 100,
@@ -787,6 +817,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi2.jpg",
+                            permission = true,
                             price = 810000,
                             product_name = "Son Dưỡng Môi Có Màu Innisfree Glow Tint Lip Balm",
                             quantity = 100,
@@ -798,6 +829,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi3.jpg",
+                            permission = true,
                             price = 170000,
                             product_name = "Son Dưỡng 16Brand Fruit Chu Petit Lip Balm",
                             quantity = 100,
@@ -809,6 +841,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi4.jpg",
+                            permission = true,
                             price = 920000,
                             product_name = "Mặt Nạ Ngủ Môi Carenel Berry Lip Night Mask",
                             quantity = 100,
@@ -820,6 +853,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi5.jpg",
+                            permission = true,
                             price = 280000,
                             product_name = "Mặt Nạ Ngủ Môi Chiết Xuất Rau Má A'pieu Madecassoside Lip Sleeping Mask 20g",
                             quantity = 100,
@@ -831,6 +865,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen1.jpg",
+                            permission = true,
                             price = 670000,
                             product_name = "Kem nền Innisfree",
                             quantity = 100,
@@ -842,6 +877,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen2.jpg",
+                            permission = true,
                             price = 100000,
                             product_name = "Kem nền Power Perfection BB cream",
                             quantity = 100,
@@ -853,6 +889,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen3.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Kem Nền Siêu Lì, Lâu Trôi A'pieu BB Maker Long Wear SPF30 PA+++",
                             quantity = 100,
@@ -864,6 +901,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen4.jpg",
+                            permission = true,
                             price = 700000,
                             product_name = "Kem Nền Che Phủ Hoàn Hảo, Giúp Da Bóng Khỏe, Rạng Rỡ Suốt 24 Tiếng Etude House Double Lasting Serum Foundation SPF25 PA++",
                             quantity = 100,
@@ -875,6 +913,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen5.jpg",
+                            permission = true,
                             price = 300000,
                             product_name = "Kem Nền Che Phủ Tốt, Lâu Trôi I'm Meme I'm Genius Foundation All Cover",
                             quantity = 100,
@@ -886,6 +925,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara1.jpg",
+                            permission = true,
                             price = 200000,
                             product_name = "Mascara Làm Dày Mi Không Lem Missha 4D Mascara",
                             quantity = 100,
@@ -897,6 +937,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara.jpg",
+                            permission = true,
                             price = 100000,
                             product_name = "Mascara Siêu Dày Mi Innisfree Super Volumecara ",
                             quantity = 100,
@@ -908,6 +949,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara2.jpg",
+                            permission = true,
                             price = 150000,
                             product_name = "Mascara Chân Mày Missha Color Wear Browcara",
                             quantity = 100,
@@ -919,6 +961,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara3.jpg",
+                            permission = true,
                             price = 350000,
                             product_name = "Mascara Chuốt Mi Cong Vút Tự Nhiên, Chống Trôi Etude House Lash Perm Curl Fix Mascara",
                             quantity = 100,
@@ -930,6 +973,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara4.jpg",
+                            permission = true,
                             price = 180000,
                             product_name = "Mascara Giúp Dài Mi Chống Trôi Missha Length Boost Cara",
                             quantity = 100,
@@ -941,6 +985,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara5.jpg",
+                            permission = true,
                             price = 210000,
                             product_name = "Mascara Chống Trôi , Làm Cong Mi Tự Nhiên Shionle Fixing High Heel Cara",
                             quantity = 100,
@@ -952,6 +997,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu1.jpg",
+                            permission = true,
                             price = 230000,
                             product_name = "Phấn phủ Play 101 Setting",
                             quantity = 100,
@@ -963,6 +1009,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu2.jpg",
+                            permission = true,
                             price = 340000,
                             product_name = "Phấn phủ LANEIGE",
                             quantity = 100,
@@ -974,6 +1021,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu3.jpg",
+                            permission = true,
                             price = 290000,
                             product_name = "Phấn Phủ Bột Kiềm Dầu Innisfree No Sebum Mineral Powder",
                             quantity = 100,
@@ -985,6 +1033,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu4.jpg",
+                            permission = true,
                             price = 320000,
                             product_name = "Phấn Phủ Bột Kiềm Dầu, Cố Định Lớp Makeup A'pieu Mineral 100 HD Powder",
                             quantity = 100,
@@ -996,6 +1045,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu5.jpg",
+                            permission = true,
                             price = 450000,
                             product_name = "Phấn Phủ Dạng Nén Kiềm Dầu, Che Phủ Lỗ Chân Lông A'pieu Oil Control Film Pact",
                             quantity = 100,
@@ -1007,6 +1057,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu6.jpg",
+                            permission = true,
                             price = 290000,
                             product_name = "Phấn Phủ Kiềm Dầu I'm Meme I'm Oil Cut Pact ",
                             quantity = 100,
@@ -1018,6 +1069,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "SonLi.jpg",
+                            permission = true,
                             price = 430000,
                             product_name = "Son Thỏi Lì Merzy The First Lipstick",
                             quantity = 100,
@@ -1029,6 +1081,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "SonThoi.jpg",
+                            permission = true,
                             price = 850000,
                             product_name = "Son Thỏi Lì ROM",
                             quantity = 100,
@@ -1040,6 +1093,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son1.jpg",
+                            permission = true,
                             price = 350000,
                             product_name = "Son Kem Lì Black Rouge Air Fit Velvet Tint",
                             quantity = 100,
@@ -1051,6 +1105,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son2.jpg",
+                            permission = true,
                             price = 210000,
                             product_name = "Son kem lì cực nhẹ môi Romand Zero Velvet Tint",
                             quantity = 100,
@@ -1062,6 +1117,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son3.jpg",
+                            permission = true,
                             price = 370000,
                             product_name = "Son Kem Lì Black Rouge Air Fit Velvet",
                             quantity = 100,
@@ -1073,6 +1129,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son4.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ",
                             quantity = 100,
@@ -1084,6 +1141,7 @@ namespace final_project.Migrations
                             cat_id = "7",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Tinhchat.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Tinh chất dưỡng ",
                             quantity = 100,
@@ -1095,6 +1153,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
                             image = "ChongNang1.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
                             quantity = 100,
@@ -1474,10 +1533,16 @@ namespace final_project.Migrations
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("payment_account")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("payment_account")
+                    b.Property<string>("production")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sandbox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("shop_name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("user_id")
@@ -1497,8 +1562,10 @@ namespace final_project.Migrations
                             id = "1",
                             address = "193 NLB",
                             email = "buithikieu@gmail.com",
-                            name = "Shop mỹ phẩm bà Kèo",
                             payment_account = "abcxyz",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AflZ3L1sfI6M45m8x1OvqF-cLAPO2uWwfQTkTiwqdNrgS-RTQhjuAYqXJYOHDHxW82G_lPur_gGkz2eC",
+                            shop_name = "Shop mỹ phẩm bà Kèo",
                             user_id = "2"
                         },
                         new
@@ -1506,8 +1573,10 @@ namespace final_project.Migrations
                             id = "2",
                             address = "194 NLB",
                             email = "votuonghuan@gmail.com",
-                            name = "Ông Huân Vlog",
                             payment_account = "abcxyz",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AaWOS3eowQdRfXGojWXfp15QEgw4ylIUYw5iittDOOde9XYNAsrwjYW9236KebkAF_FeKR30t4fCjp7w",
+                            shop_name = "Ông Huân Vlog",
                             user_id = "7"
                         },
                         new
@@ -1515,8 +1584,10 @@ namespace final_project.Migrations
                             id = "3",
                             address = "195 NLB",
                             email = "nguyentruongson@gmail.com",
-                            name = "Bé Sơn Parody",
                             payment_account = "abcxyz",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AQk3ajkq4FqLtnXsIliLZ1NZzAHKWJzR70yMQdTfTg_8EbfBrmCJ44Bby1_cVkzFpwsEibf8uu3xGuSS",
+                            shop_name = "Bé Sơn Parody",
                             user_id = "8"
                         });
                 });
@@ -1534,6 +1605,9 @@ namespace final_project.Migrations
 
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("permission")
+                        .HasColumnType("bit");
 
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
@@ -1555,6 +1629,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "damhoangbuu@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 1,
                             user_name = "Đàm Văn Hoàng Bửu"
@@ -1565,6 +1640,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "buithikieu@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 2,
                             user_name = "Bùi Thị Kiều"
@@ -1575,6 +1651,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "tranthusuong@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Thu Sương"
@@ -1585,6 +1662,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "tranphuquy@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Phú Quy"
@@ -1595,6 +1673,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "tranchivi@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Chí Vĩ"
@@ -1605,6 +1684,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "trananhthu@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Thị Anh Thư"
@@ -1615,6 +1695,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "votuonghuan@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 2,
                             user_name = "Võ Tường Huân"
@@ -1625,9 +1706,46 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "nguyentruongson@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 2,
                             user_name = "Nguyễn Trường Sơn"
+                        });
+                });
+
+            modelBuilder.Entity("final_project.Models.Entities.Website", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("production")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sandbox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Websites");
+
+                    b.HasData(
+                        new
+                        {
+                            id = "1",
+                            address = "Núi Thành,Quảng Nam",
+                            email = "buithikieu16tclc3@gmail",
+                            phone = "0372751805",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AYYYpz6WNLv_ibeOkju_7uX2SM1NWRmTd3VrE-HEu7UuXEdvSvQ1vLGUS6upj9TIGV_Cv_wTfG8fZo6O"
                         });
                 });
 
@@ -1641,8 +1759,8 @@ namespace final_project.Migrations
             modelBuilder.Entity("final_project.Models.Entities.Check_paid_shop", b =>
                 {
                     b.HasOne("final_project.Models.Entities.Shop", "Shop")
-                        .WithOne("Check_Paid_Shop")
-                        .HasForeignKey("final_project.Models.Entities.Check_paid_shop", "shop_id");
+                        .WithMany("Check_Paid_Shops")
+                        .HasForeignKey("shop_id");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Comment", b =>

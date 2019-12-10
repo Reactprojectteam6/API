@@ -13,9 +13,7 @@ namespace final_project.Services
         public void DeleteProduct(string id);
         
         public List<Product> GetProductsByName(string name);
-        public string GetName(string id);
-        
-         public  List<Color> GetColors(string name);
+        public  List<Color> GetColors(string name);
         public int GetRating(string id);
         public dynamic GetProductByNameAndColor(string name,string color,string shop_id);
         public List<Product> GetProductByRating(int a,int b);

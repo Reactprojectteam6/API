@@ -75,6 +75,7 @@ namespace final_project.Migrations
                     email = table.Column<string>(nullable: true),
                     phone = table.Column<string>(nullable: true),
                     role = table.Column<int>(nullable: false),
+                    permission = table.Column<bool>(nullable: false),
                     address = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -83,15 +84,33 @@ namespace final_project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Websites",
+                columns: table => new
+                {
+                    id = table.Column<string>(nullable: false),
+                    address = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    phone = table.Column<string>(nullable: true),
+                    sandbox = table.Column<string>(nullable: true),
+                    production = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Websites", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Shops",
                 columns: table => new
                 {
                     id = table.Column<string>(nullable: false),
-                    name = table.Column<string>(nullable: true),
+                    shop_name = table.Column<string>(nullable: true),
                     payment_account = table.Column<string>(nullable: true),
                     user_id = table.Column<string>(nullable: true),
                     address = table.Column<string>(nullable: true),
-                    email = table.Column<string>(nullable: true)
+                    email = table.Column<string>(nullable: true),
+                    sandbox = table.Column<string>(nullable: true),
+                    production = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -179,7 +198,8 @@ namespace final_project.Migrations
                     price = table.Column<int>(nullable: false),
                     quantity = table.Column<int>(nullable: false),
                     image = table.Column<string>(nullable: true),
-                    shop_id = table.Column<string>(nullable: true)
+                    shop_id = table.Column<string>(nullable: true),
+                    permission = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -315,26 +335,31 @@ namespace final_project.Migrations
                     { "7", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" },
                     { "6", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" },
                     { "5", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", null },
-                    { "4", "193 NLB", "nguyentruongson@gmail.com", "Nguyễn Trường Sơn", "0988191672" },
                     { "3", "193 NLB", "tranthusuong@gmail.com", "Trần Thu Sương", "0975197462" },
                     { "2", "193 NLB", "buithikieu@gmail.com", "Bùi Thị Kiều", "0975191672" },
-                    { "1", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" }
+                    { "1", "193 NLB", "damhoangbuu@gmail.com", "Đàm Văn Hoàng Bửu", "0898237228" },
+                    { "4", "193 NLB", "nguyentruongson@gmail.com", "Nguyễn Trường Sơn", "0988191672" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "id", "address", "email", "password", "phone", "role", "user_name" },
+                columns: new[] { "id", "address", "email", "password", "permission", "phone", "role", "user_name" },
                 values: new object[,]
                 {
-                    { "1", "193 NLB", "damhoangbuu@gmail.com", "123456", "0898237228", 1, "Đàm Văn Hoàng Bửu" },
-                    { "2", "193 NLB", "buithikieu@gmail.com", "123456", "0898237228", 2, "Bùi Thị Kiều" },
-                    { "3", "193 NLB", "tranthusuong@gmail.com", "123456", "0898237228", 3, "Trần Thu Sương" },
-                    { "4", "193 NLB", "tranphuquy@gmail.com", "123456", "0898237228", 3, "Trần Phú Quy" },
-                    { "5", "193 NLB", "tranchivi@gmail.com", "123456", "0898237228", 3, "Trần Chí Vĩ" },
-                    { "6", "193 NLB", "trananhthu@gmail.com", "123456", "0898237228", 3, "Trần Thị Anh Thư" },
-                    { "7", "193 NLB", "votuonghuan@gmail.com", "123456", "0898237228", 2, "Võ Tường Huân" },
-                    { "8", "193 NLB", "nguyentruongson@gmail.com", "123456", "0898237228", 2, "Nguyễn Trường Sơn" }
+                    { "8", "193 NLB", "nguyentruongson@gmail.com", "123456", true, "0898237228", 2, "Nguyễn Trường Sơn" },
+                    { "1", "193 NLB", "damhoangbuu@gmail.com", "123456", true, "0898237228", 1, "Đàm Văn Hoàng Bửu" },
+                    { "2", "193 NLB", "buithikieu@gmail.com", "123456", true, "0898237228", 2, "Bùi Thị Kiều" },
+                    { "3", "193 NLB", "tranthusuong@gmail.com", "123456", true, "0898237228", 3, "Trần Thu Sương" },
+                    { "4", "193 NLB", "tranphuquy@gmail.com", "123456", true, "0898237228", 3, "Trần Phú Quy" },
+                    { "5", "193 NLB", "tranchivi@gmail.com", "123456", true, "0898237228", 3, "Trần Chí Vĩ" },
+                    { "6", "193 NLB", "trananhthu@gmail.com", "123456", true, "0898237228", 3, "Trần Thị Anh Thư" },
+                    { "7", "193 NLB", "votuonghuan@gmail.com", "123456", true, "0898237228", 2, "Võ Tường Huân" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Websites",
+                columns: new[] { "id", "address", "email", "phone", "production", "sandbox" },
+                values: new object[] { "1", "Núi Thành,Quảng Nam", "buithikieu16tclc3@gmail", "0372751805", "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr", "AYYYpz6WNLv_ibeOkju_7uX2SM1NWRmTd3VrE-HEu7UuXEdvSvQ1vLGUS6upj9TIGV_Cv_wTfG8fZo6O" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
@@ -355,12 +380,12 @@ namespace final_project.Migrations
 
             migrationBuilder.InsertData(
                 table: "Shops",
-                columns: new[] { "id", "address", "email", "name", "payment_account", "user_id" },
+                columns: new[] { "id", "address", "email", "payment_account", "production", "sandbox", "shop_name", "user_id" },
                 values: new object[,]
                 {
-                    { "1", "193 NLB", "buithikieu@gmail.com", "Shop mỹ phẩm bà Kèo", "abcxyz", "2" },
-                    { "2", "194 NLB", "votuonghuan@gmail.com", "Ông Huân Vlog", "abcxyz", "7" },
-                    { "3", "195 NLB", "nguyentruongson@gmail.com", "Bé Sơn Parody", "abcxyz", "8" }
+                    { "1", "193 NLB", "buithikieu@gmail.com", "abcxyz", "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr", "AflZ3L1sfI6M45m8x1OvqF-cLAPO2uWwfQTkTiwqdNrgS-RTQhjuAYqXJYOHDHxW82G_lPur_gGkz2eC", "Shop mỹ phẩm bà Kèo", "2" },
+                    { "2", "194 NLB", "votuonghuan@gmail.com", "abcxyz", "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr", "AaWOS3eowQdRfXGojWXfp15QEgw4ylIUYw5iittDOOde9XYNAsrwjYW9236KebkAF_FeKR30t4fCjp7w", "Ông Huân Vlog", "7" },
+                    { "3", "195 NLB", "nguyentruongson@gmail.com", "abcxyz", "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr", "AQk3ajkq4FqLtnXsIliLZ1NZzAHKWJzR70yMQdTfTg_8EbfBrmCJ44Bby1_cVkzFpwsEibf8uu3xGuSS", "Bé Sơn Parody", "8" }
                 });
 
             migrationBuilder.InsertData(
@@ -368,9 +393,10 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_expired", "date_paid", "money", "shop_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 8, 22, 33, 39, 71, DateTimeKind.Local).AddTicks(7368), new DateTime(2019, 12, 8, 22, 33, 39, 70, DateTimeKind.Local).AddTicks(3398), 200000, "1" },
-                    { "2", new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(340), new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(270), 200000, "2" },
-                    { "3", new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(418), new DateTime(2019, 12, 8, 22, 33, 39, 72, DateTimeKind.Local).AddTicks(411), 200000, "3" }
+                    { "1", new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 200000, "1" },
+                    { "2", new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 200000, "2" },
+                    { "3", new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 200000, "3" },
+                    { "4", new DateTime(2019, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 200000, "3" }
                 });
 
             migrationBuilder.InsertData(
@@ -378,66 +404,66 @@ namespace final_project.Migrations
                 columns: new[] { "id", "date_create", "date_paid", "payment_id", "receiver_id", "shop_id", "status", "total", "user_id" },
                 values: new object[,]
                 {
-                    { "1", new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6254), new DateTime(2019, 12, 8, 22, 33, 39, 83, DateTimeKind.Local).AddTicks(6888), "1", "1", "1", 1, 900000, "1" },
-                    { "2", new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(402), new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(426), "1", "3", "1", 2, 800000, "3" },
-                    { "3", new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(511), new DateTime(2019, 12, 8, 22, 33, 39, 84, DateTimeKind.Local).AddTicks(513), "1", "4", "1", 3, 1000000, "4" }
+                    { "1", new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "1", "1", 1, 900000, "1" },
+                    { "2", new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "3", "1", 2, 800000, "3" },
+                    { "3", new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1", "4", "1", 3, 1000000, "4" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "id", "cat_id", "description", "image", "price", "product_name", "quantity", "shop_id" },
+                columns: new[] { "id", "cat_id", "description", "image", "permission", "price", "product_name", "quantity", "shop_id" },
                 values: new object[,]
                 {
-                    { "29", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen4.jpg", 700000, "Kem Nền Che Phủ Hoàn Hảo, Giúp Da Bóng Khỏe, Rạng Rỡ Suốt 24 Tiếng Etude House Double Lasting Serum Foundation SPF25 PA++", 100, "2" },
-                    { "32", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara.jpg", 100000, "Mascara Siêu Dày Mi Innisfree Super Volumecara ", 100, "2" },
-                    { "35", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara4.jpg", 180000, "Mascara Giúp Dài Mi Chống Trôi Missha Length Boost Cara", 100, "2" },
-                    { "38", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu2.jpg", 340000, "Phấn phủ LANEIGE", 100, "2" },
-                    { "41", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu5.jpg", 450000, "Phấn Phủ Dạng Nén Kiềm Dầu, Che Phủ Lỗ Chân Lông A'pieu Oil Control Film Pact", 100, "2" },
-                    { "44", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "SonThoi.jpg", 850000, "Son Thỏi Lì ROM", 100, "2" },
-                    { "47", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son3.jpg", 370000, "Son Kem Lì Black Rouge Air Fit Velvet", 100, "2" },
-                    { "7", "3", "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.", "ChongNang7.jpg", 1000000, "Kem Chống Nắng Chiết Xuất Măng Cụt It's Skin Tropical Sun Gel Mangosteen SPF50+/PA++++ ", 50, "3" },
-                    { "8", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang8.jpg", 1500000, "Xịt Chống Nắng Làm Dịu Da Giảm Nhiệt Tức Thì Mediheal Labocare Ceramatica Sun Spray", 50, "3" },
-                    { "12", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNaDatSet.jpg", 400000, "Mặt nạ dưỡng da đất sét", 100, "3" },
-                    { "26", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen1.jpg", 670000, "Kem nền Innisfree", 100, "2" },
-                    { "14", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa1.jpg", 300000, "Mặt Nạ Vitamin Dưỡng Trắng Da By Wishtrend Natural Vitamin 21.5% Enhancing Sheet Mask", 100, "3" },
-                    { "16", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa4.jpg", 270000, "Mặt Nạ Ngủ Dưỡng Trắng Chiết Xuất Từ Trái Thanh Yên Some By Mi Yuja Niacin 30 Days Miracle Brightening Sleeping Mask", 100, "3" },
-                    { "22", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi2.jpg", 810000, "Son Dưỡng Môi Có Màu Innisfree Glow Tint Lip Balm", 100, "3" },
-                    { "27", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen2.jpg", 100000, "Kem nền Power Perfection BB cream", 100, "3" },
-                    { "30", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen5.jpg", 300000, "Kem Nền Che Phủ Tốt, Lâu Trôi I'm Meme I'm Genius Foundation All Cover", 100, "3" },
-                    { "31", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara1.jpg", 200000, "Mascara Làm Dày Mi Không Lem Missha 4D Mascara", 100, "3" },
-                    { "36", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara5.jpg", 210000, "Mascara Chống Trôi , Làm Cong Mi Tự Nhiên Shionle Fixing High Heel Cara", 100, "3" },
-                    { "39", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu3.jpg", 290000, "Phấn Phủ Bột Kiềm Dầu Innisfree No Sebum Mineral Powder", 100, "3" },
-                    { "42", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu6.jpg", 290000, "Phấn Phủ Kiềm Dầu I'm Meme I'm Oil Cut Pact ", 100, "3" },
-                    { "45", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son1.jpg", 350000, "Son Kem Lì Black Rouge Air Fit Velvet Tint", 100, "3" },
-                    { "11", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAm.jpg", 600000, "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream", 100, "3" },
-                    { "24", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi4.jpg", 920000, "Mặt Nạ Ngủ Môi Carenel Berry Lip Night Mask", 100, "2" },
-                    { "17", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa3.jpg", 200000, "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask", 100, "2" },
-                    { "19", "6", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "NuocHoaHong2.jpg", 900000, "Nước hoa hồng Tea Tree Cica", 100, "2" },
-                    { "1", "3", "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè", "ChongNang1.jpg", 900000, "Kem chống nắng Innisfree SPF50+ PA++++", 100, "1" },
-                    { "2", "3", "Có khả năng bảo vệ da mạnh mẽ dưới tác động của ánh nắng mặt trời, cung cấp độ ẩm cho da, làn da trắng hồng rạng rỡ, đầy sức sống", "ChongNang3.jpg", 800000, "Kem Chống Nắng Dịu Nhẹ Với Chiết xuất Từ Thiên Nhiên Black Rouge Cica Green Sun Cream SPF50+/PA++++", 150, "1" },
-                    { "3", "3", "Kem chống nắng vật lý, chăm sóc da mẫn cảm, dưỡng trắng", "ChongNang2.jpg", 1000000, "Kem chống nắng Uriage Bariesun SPF50+ - Kem chống nắng tốt nhất giúp tái tạo da và ngừa da hư tổn", 50, "1" },
-                    { "4", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang4.jpg", 1500000, "Kem chống nắng kiêm kem lót nâng tone da A'pieu Pure Block Tone-Up Sun Base SPF50+ PA+++", 50, "1" },
-                    { "9", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAmSau.jpg", 450000, "Serum  dưỡng ẩm Innisfree", 100, "1" },
-                    { "15", "5", "Táo được biết đến là top thực phẩm giàu chất chống oxy hóa, giúp ngăn quá trình lão hóa", "MatNa2.jpg", 500000, "Mặt Nạ Làm Sáng Da, Loại Bỏ Tế Bào Chết Chiết Xuất Từ TáoROUNDLAB Apple Peeling Mask ", 100, "1" },
-                    { "18", "6", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "NuocHoaHong1.jpg", 820000, "Nước hoa hồng Innisfree", 100, "1" },
-                    { "20", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "ChamSocMoi2.jpg", 210000, "Son Dưỡng Môi Innisfree", 100, "1" },
-                    { "23", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi3.jpg", 170000, "Son Dưỡng 16Brand Fruit Chu Petit Lip Balm", 100, "1" },
-                    { "25", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi5.jpg", 280000, "Mặt Nạ Ngủ Môi Chiết Xuất Rau Má A'pieu Madecassoside Lip Sleeping Mask 20g", 100, "1" },
-                    { "28", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen3.jpg", 800000, "Kem Nền Siêu Lì, Lâu Trôi A'pieu BB Maker Long Wear SPF30 PA+++", 100, "1" },
-                    { "33", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara2.jpg", 150000, "Mascara Chân Mày Missha Color Wear Browcara", 100, "1" },
-                    { "34", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara3.jpg", 350000, "Mascara Chuốt Mi Cong Vút Tự Nhiên, Chống Trôi Etude House Lash Perm Curl Fix Mascara", 100, "1" },
-                    { "37", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu1.jpg", 230000, "Phấn phủ Play 101 Setting", 100, "1" },
-                    { "40", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu4.jpg", 320000, "Phấn Phủ Bột Kiềm Dầu, Cố Định Lớp Makeup A'pieu Mineral 100 HD Powder", 100, "1" },
-                    { "43", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "SonLi.jpg", 430000, "Son Thỏi Lì Merzy The First Lipstick", 100, "1" },
-                    { "46", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son2.jpg", 210000, "Son kem lì cực nhẹ môi Romand Zero Velvet Tint", 100, "1" },
-                    { "50", "3", "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè", "ChongNang1.jpg", 900000, "Kem chống nắng Innisfree SPF50+ PA++++", 100, "1" },
-                    { "5", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang5.jpg", 900000, "Kem Chống Nắng Dạng Gel Chống Tia Hồng Ngoại, Giảm Nhiệt Độ Tức Thì Make Prem UV Defense Me Blue Ray Sun Gel SPF50/PA++++", 100, "2" },
-                    { "6", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang6.jpg", 800000, " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream", 150, "2" },
-                    { "10", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAmSauDanHoi.jpg", 700000, "Serum dưỡng ẩm đàn hồi Innisfree", 100, "2" },
-                    { "13", "5", "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt", "MatNaCam.jpg", 900000, "Mặt nạ dưỡng da từ quả Cam", 100, "2" },
-                    { "48", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son4.jpg", 800000, "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ", 100, "3" },
-                    { "21", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi1.jpg", 110000, "Son Dưỡng Innisfree Canola Honey Lip Balm", 100, "2" },
-                    { "49", "7", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Tinhchat.jpg", 800000, "Tinh chất dưỡng ", 100, "3" }
+                    { "29", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen4.jpg", true, 700000, "Kem Nền Che Phủ Hoàn Hảo, Giúp Da Bóng Khỏe, Rạng Rỡ Suốt 24 Tiếng Etude House Double Lasting Serum Foundation SPF25 PA++", 100, "2" },
+                    { "32", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara.jpg", true, 100000, "Mascara Siêu Dày Mi Innisfree Super Volumecara ", 100, "2" },
+                    { "35", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara4.jpg", true, 180000, "Mascara Giúp Dài Mi Chống Trôi Missha Length Boost Cara", 100, "2" },
+                    { "38", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu2.jpg", true, 340000, "Phấn phủ LANEIGE", 100, "2" },
+                    { "41", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu5.jpg", true, 450000, "Phấn Phủ Dạng Nén Kiềm Dầu, Che Phủ Lỗ Chân Lông A'pieu Oil Control Film Pact", 100, "2" },
+                    { "44", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "SonThoi.jpg", true, 850000, "Son Thỏi Lì ROM", 100, "2" },
+                    { "47", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son3.jpg", true, 370000, "Son Kem Lì Black Rouge Air Fit Velvet", 100, "2" },
+                    { "7", "3", "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.", "ChongNang7.jpg", true, 1000000, "Kem Chống Nắng Chiết Xuất Măng Cụt It's Skin Tropical Sun Gel Mangosteen SPF50+/PA++++ ", 50, "3" },
+                    { "8", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang8.jpg", true, 1500000, "Xịt Chống Nắng Làm Dịu Da Giảm Nhiệt Tức Thì Mediheal Labocare Ceramatica Sun Spray", 50, "3" },
+                    { "12", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNaDatSet.jpg", true, 400000, "Mặt nạ dưỡng da đất sét", 100, "3" },
+                    { "26", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen1.jpg", true, 670000, "Kem nền Innisfree", 100, "2" },
+                    { "14", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa1.jpg", true, 300000, "Mặt Nạ Vitamin Dưỡng Trắng Da By Wishtrend Natural Vitamin 21.5% Enhancing Sheet Mask", 100, "3" },
+                    { "16", "5", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa4.jpg", true, 270000, "Mặt Nạ Ngủ Dưỡng Trắng Chiết Xuất Từ Trái Thanh Yên Some By Mi Yuja Niacin 30 Days Miracle Brightening Sleeping Mask", 100, "3" },
+                    { "22", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi2.jpg", true, 810000, "Son Dưỡng Môi Có Màu Innisfree Glow Tint Lip Balm", 100, "3" },
+                    { "27", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen2.jpg", true, 100000, "Kem nền Power Perfection BB cream", 100, "3" },
+                    { "30", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen5.jpg", true, 300000, "Kem Nền Che Phủ Tốt, Lâu Trôi I'm Meme I'm Genius Foundation All Cover", 100, "3" },
+                    { "31", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara1.jpg", true, 200000, "Mascara Làm Dày Mi Không Lem Missha 4D Mascara", 100, "3" },
+                    { "36", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara5.jpg", true, 210000, "Mascara Chống Trôi , Làm Cong Mi Tự Nhiên Shionle Fixing High Heel Cara", 100, "3" },
+                    { "39", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu3.jpg", true, 290000, "Phấn Phủ Bột Kiềm Dầu Innisfree No Sebum Mineral Powder", 100, "3" },
+                    { "42", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu6.jpg", true, 290000, "Phấn Phủ Kiềm Dầu I'm Meme I'm Oil Cut Pact ", 100, "3" },
+                    { "45", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son1.jpg", true, 350000, "Son Kem Lì Black Rouge Air Fit Velvet Tint", 100, "3" },
+                    { "11", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAm.jpg", true, 600000, "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream", 100, "3" },
+                    { "24", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi4.jpg", true, 920000, "Mặt Nạ Ngủ Môi Carenel Berry Lip Night Mask", 100, "2" },
+                    { "19", "6", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "NuocHoaHong2.jpg", true, 900000, "Nước hoa hồng Tea Tree Cica", 100, "2" },
+                    { "48", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son4.jpg", true, 800000, "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ", 100, "3" },
+                    { "1", "3", "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè", "ChongNang1.jpg", true, 900000, "Kem chống nắng Innisfree SPF50+ PA++++", 100, "1" },
+                    { "2", "3", "Có khả năng bảo vệ da mạnh mẽ dưới tác động của ánh nắng mặt trời, cung cấp độ ẩm cho da, làn da trắng hồng rạng rỡ, đầy sức sống", "ChongNang3.jpg", true, 800000, "Kem Chống Nắng Dịu Nhẹ Với Chiết xuất Từ Thiên Nhiên Black Rouge Cica Green Sun Cream SPF50+/PA++++", 150, "1" },
+                    { "3", "3", "Kem chống nắng vật lý, chăm sóc da mẫn cảm, dưỡng trắng", "ChongNang2.jpg", true, 1000000, "Kem chống nắng Uriage Bariesun SPF50+ - Kem chống nắng tốt nhất giúp tái tạo da và ngừa da hư tổn", 50, "1" },
+                    { "4", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang4.jpg", true, 1500000, "Kem chống nắng kiêm kem lót nâng tone da A'pieu Pure Block Tone-Up Sun Base SPF50+ PA+++", 50, "1" },
+                    { "9", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAmSau.jpg", true, 450000, "Serum  dưỡng ẩm Innisfree", 100, "1" },
+                    { "15", "5", "Táo được biết đến là top thực phẩm giàu chất chống oxy hóa, giúp ngăn quá trình lão hóa", "MatNa2.jpg", true, 500000, "Mặt Nạ Làm Sáng Da, Loại Bỏ Tế Bào Chết Chiết Xuất Từ TáoROUNDLAB Apple Peeling Mask ", 100, "1" },
+                    { "18", "6", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "NuocHoaHong1.jpg", true, 820000, "Nước hoa hồng Innisfree", 100, "1" },
+                    { "20", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "ChamSocMoi2.jpg", true, 210000, "Son Dưỡng Môi Innisfree", 100, "1" },
+                    { "23", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi3.jpg", true, 170000, "Son Dưỡng 16Brand Fruit Chu Petit Lip Balm", 100, "1" },
+                    { "25", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi5.jpg", true, 280000, "Mặt Nạ Ngủ Môi Chiết Xuất Rau Má A'pieu Madecassoside Lip Sleeping Mask 20g", 100, "1" },
+                    { "28", "9", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "KemNen3.jpg", true, 800000, "Kem Nền Siêu Lì, Lâu Trôi A'pieu BB Maker Long Wear SPF30 PA+++", 100, "1" },
+                    { "33", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara2.jpg", true, 150000, "Mascara Chân Mày Missha Color Wear Browcara", 100, "1" },
+                    { "34", "10", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Mascara3.jpg", true, 350000, "Mascara Chuốt Mi Cong Vút Tự Nhiên, Chống Trôi Etude House Lash Perm Curl Fix Mascara", 100, "1" },
+                    { "37", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu1.jpg", true, 230000, "Phấn phủ Play 101 Setting", 100, "1" },
+                    { "40", "11", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "PhanPhu4.jpg", true, 320000, "Phấn Phủ Bột Kiềm Dầu, Cố Định Lớp Makeup A'pieu Mineral 100 HD Powder", 100, "1" },
+                    { "43", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "SonLi.jpg", true, 430000, "Son Thỏi Lì Merzy The First Lipstick", 100, "1" },
+                    { "46", "12", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Son2.jpg", true, 210000, "Son kem lì cực nhẹ môi Romand Zero Velvet Tint", 100, "1" },
+                    { "50", "3", "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè", "ChongNang1.jpg", true, 900000, "Kem chống nắng Innisfree SPF50+ PA++++", 100, "1" },
+                    { "5", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang5.jpg", true, 900000, "Kem Chống Nắng Dạng Gel Chống Tia Hồng Ngoại, Giảm Nhiệt Độ Tức Thì Make Prem UV Defense Me Blue Ray Sun Gel SPF50/PA++++", 100, "2" },
+                    { "6", "3", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "ChongNang6.jpg", true, 800000, " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream", 150, "2" },
+                    { "10", "4", "Sản phẩm đến từ Hàn Quốc chất lượng cao", "DuongAmSauDanHoi.jpg", true, 700000, "Serum dưỡng ẩm đàn hồi Innisfree", 100, "2" },
+                    { "13", "5", "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt", "MatNaCam.jpg", true, 900000, "Mặt nạ dưỡng da từ quả Cam", 100, "2" },
+                    { "17", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "MatNa3.jpg", true, 200000, "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask", 100, "2" },
+                    { "21", "8", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "DuongMoi1.jpg", true, 110000, "Son Dưỡng Innisfree Canola Honey Lip Balm", 100, "2" },
+                    { "49", "7", "Sản phẩm chất lượng cao đến từ Hàn Quốc", "Tinhchat.jpg", true, 800000, "Tinh chất dưỡng ", 100, "3" }
                 });
 
             migrationBuilder.InsertData(
@@ -530,9 +556,7 @@ namespace final_project.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Check_Paid_Shops_shop_id",
                 table: "Check_Paid_Shops",
-                column: "shop_id",
-                unique: true,
-                filter: "[shop_id] IS NOT NULL");
+                column: "shop_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_product_id",
@@ -617,6 +641,9 @@ namespace final_project.Migrations
 
             migrationBuilder.DropTable(
                 name: "product_Colors");
+
+            migrationBuilder.DropTable(
+                name: "Websites");
 
             migrationBuilder.DropTable(
                 name: "Orders");

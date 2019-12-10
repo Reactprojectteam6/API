@@ -17,7 +17,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "damhoangbuu@gmail.com",
                     phone = "0898237228",
                     role = 1,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true,
                 },
                 new User{
                     id = "2",
@@ -26,7 +27,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "buithikieu@gmail.com",
                     phone = "0898237228",
                     role = 2,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 },
                 new User{
                     id = "3",
@@ -35,7 +37,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "tranthusuong@gmail.com",
                     phone = "0898237228",
                     role = 3,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 },
                 new User{
                     id = "4",
@@ -44,7 +47,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "tranphuquy@gmail.com",
                     phone = "0898237228",
                     role = 3,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 },
                     new User{
                     id = "5",
@@ -53,7 +57,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "tranchivi@gmail.com",
                     phone = "0898237228",
                     role = 3,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 },
                     new User{
                     id = "6",
@@ -62,7 +67,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "trananhthu@gmail.com",
                     phone = "0898237228",
                     role = 3,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 },
                     new User{
                     id = "7",
@@ -71,7 +77,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "votuonghuan@gmail.com",
                     phone = "0898237228",
                     role = 2,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 },
                     new User{
                     id = "8",
@@ -80,7 +87,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     email = "nguyentruongson@gmail.com",
                     phone = "0898237228",
                     role = 2,
-                    address = "193 NLB"
+                    address = "193 NLB",
+                    permission=true
                 }        
             );
         }

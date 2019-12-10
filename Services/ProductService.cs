@@ -28,14 +28,14 @@ namespace final_project.Services
 
         public dynamic GetProductById(string  id)
         {   var product=new Product();
-            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
+            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name,p.Shop.shop_name});
             return s;
             
         }
 
         public dynamic GetProducts()
         {    var products =new List<Product>();
-            products=_context.Products.ToList();
+            products=_context.Products.Where(p=>p.Shop.User.permission==true&&p.permission==true&&p.quantity>0).ToList();
             return products.GroupBy(p=>p.product_name).Select(p=>p.FirstOrDefault()).ToList();
              
         }
@@ -55,27 +55,20 @@ namespace final_project.Services
         }
           public List<Product> GetProductsByName(string name){
            List<Product> list=new List<Product>();
-           var s=_context.Products.Select(p=>p).Where(s=>s.product_name.Contains(name)).ToList();
+           var s=_context.Products.Select(p=>p).Where(s=>s.product_name.Contains(name)).Where(p=>p.Shop.User.permission==true&&p.permission==true&&p.quantity>0).ToList();
            return s.GroupBy(p=>p.product_name).Select(p=>p.FirstOrDefault()).ToList();
           }
-              public string GetName(string id){
-               
-               var s=from p in _context.Products where (p.id==id) select  new {p.Shop.name};
-               return s.First().name;
-              }
-               public List<Color> GetColors(string name)
-               { List<Color> list=new List<Color>();
-                 var s=_context.Products.Where(p=>p.product_name==name).Select(p=>p.id);
-                 foreach( var i in s.ToList())
-                 { var c=_context.product_Colors.Where(p=>p.product_id==i).Select(p=>p.Color);
-                    list.Add(c.First());
-                     
-                     
-                 }
+           public List<Color> GetColors(string name)
+            { List<Color> list=new List<Color>();
+              var s=_context.Products.Where(p=>p.product_name==name&&p.permission==true&&p.quantity>0).Select(p=>p.id);
+             foreach( var i in s.ToList())
+             { var c=_context.product_Colors.Where(p=>p.product_id==i).Select(p=>p.Color);
+               list.Add(c.First());
+             }
                  return list;
-               }
+          }
               
-                 public int GetRating(string id){
+         public int GetRating(string id){
                     int sum=0;
                     int count=0;
                    var s=_context.Comments.Select(p=>p).Where(p=>p.product_id==id);
@@ -86,7 +79,7 @@ namespace final_project.Services
                    }
                    if(count!=0) return sum/count;
                    else return 0;
-                 }
+          }
              public dynamic GetProductByNameAndColor(string name,string color,string shop_id){
               dynamic a=new object();
              var s1=_context.Colors.Where(p=>p.name==color).Select(p=>p.id);
@@ -94,7 +87,7 @@ namespace final_project.Services
              foreach(var i in s.ToList())
              {
                if(i.product_name==name&&i.shop_id==shop_id) {
-                  var pro= _context.Products.Where(x=>x.id==i.id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
+                  var pro= _context.Products.Where(x=>x.id==i.id &&x.permission==true&&x.quantity>0).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
                   return pro;
              }
              }
@@ -110,7 +103,7 @@ namespace final_project.Services
                List<Product> products=new List<Product>();
                var s=_context.Products.Select(p=>p);
                foreach(var i in s.ToList())
-               {  var comments=_context.Comments.Select(p=>p).Where(p=>p.product_id==i.id);
+               {  var comments=_context.Comments.Select(p=>p).Where(p=>p.product_id==i.id&&p.Product.Shop.User.permission==true&&p.Product.permission==true&&p.Product.quantity>0);
                    foreach(var j in comments.ToList())
                    {  sum+=j.rate;
                       count++;
@@ -131,7 +124,7 @@ namespace final_project.Services
                List<Product> products=new List<Product>();
                var s=_context.Products.Select(p=>p);
                foreach(var i in s.ToList())
-               {  var comments=_context.Comments.Select(p=>p).Where(p=>p.product_id==i.id);
+               {  var comments=_context.Comments.Select(p=>p).Where(p=>p.product_id==i.id&&p.Product.Shop.User.permission==true&&p.Product.permission==true&&p.Product.quantity>0);
                    foreach(var j in comments.ToList())
                    {  sum+=j.rate;
                       count++;

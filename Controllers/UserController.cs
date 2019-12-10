@@ -122,7 +122,7 @@ namespace final_project.Controllers
             authHeader = authHeader.Replace("Bearer ", "");
             var jsonToken = handler.ReadToken(authHeader);
              var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
-
+             
         
         var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
         if(Role=="Admin")

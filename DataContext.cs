@@ -24,12 +24,13 @@ namespace final_project
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product_Color> product_Colors {get;set;}
         public DbSet<Check_paid_shop> Check_Paid_Shops{get;set;}
+        public DbSet<Website> Websites{get;set;}
              protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
           
             modelBuilder.ApplyConfiguration(new ShopConfiguration());
-         
+           modelBuilder.ApplyConfiguration(new WebsiteConfiguration());
              modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new Check_paid_shopConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
