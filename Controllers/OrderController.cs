@@ -65,7 +65,12 @@ namespace final_project.Controllers
         
             _orderService.DeleteOrder(id);
         }
-
+         [HttpGet("Products")]
+        public  ActionResult<dynamic> GetProducts()//get list product for order
+        {  
+           return _orderService.GetListProduct();
+        
+        }
 
           
       

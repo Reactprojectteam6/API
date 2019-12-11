@@ -14,5 +14,6 @@ namespace final_project.Services
         public void cancelOrder(string id);
         public void DeleteOrder(string id);
         public dynamic GetOrderByID(string id);
+        public dynamic GetListProduct();
     }
 }

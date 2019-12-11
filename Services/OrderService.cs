@@ -59,5 +59,11 @@ namespace final_project.Services
             var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create,p.Reciever.phone,p.Reciever.address});
             return s;
           }
+           public dynamic GetListProduct()
+           {   var products =new List<Product>();
+            products=_context.Products.Where(p=>p.quantity>0).ToList();
+            return products;
+
+           }
     }
 }
