@@ -92,7 +92,7 @@ namespace final_project.Services
             var shop = _context.Shops.FirstOrDefault(x=>x.id==shop_id);
             if(shop != null)
             {
-              shop.name = newShop.name;
+              shop.shop_name = newShop.shop_name;
               shop.address = newShop.address;
             }
             _context.SaveChanges();

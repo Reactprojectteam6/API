@@ -12,9 +12,40 @@ namespace final_project.Services
         public ProductService(DataContext context)
       { _context=context;
       }
-        public void AddProduct(Product product)
-        {   _context.Products.Add(product);
+        public void AddProduct(dynamic product)
+        { Product p=new Product();
+          int max = 1;
+          var s = _context.Products.Select(p=>p.id);
+          foreach( var i in s)
+          {
+            if(max< int.Parse(i)) max = int.Parse(i);
+          }
+          p.id = (max+1).ToString();
+          //gan cho doi tuong moi
+          p.product_name=product.product_name;
+          p.cat_id=product.cat_id;
+          p.permission=product.permission;
+         p.description=product.description;
+         p.price=product.price;
+         p.quantity=product.quantity;
+         p.shop_id = product.shop_id;
+         p.image = product.image;
+          _context.Products.Add(p);
          _context.SaveChanges();
+         //tao 1 doi tuong product color
+         Product_Color product_Color=new Product_Color();
+           int max2 = 1;
+            var s2 = _context.product_Colors.Select(p=>p.id);
+            foreach( var i in s2)
+            {
+              if(max2< int.Parse(i)) max2 = int.Parse(i);
+            }
+            product_Color.id = (max2+1).ToString();
+            product_Color.product_id=p.id;
+            product_Color.color_id=product.color_id;
+            _context.product_Colors.Add(product_Color);
+            _context.SaveChanges();
+
             //throw new NotImplementedException();
         }
 
@@ -52,8 +83,8 @@ namespace final_project.Services
 
         public dynamic GetProductById(string id)
         {   var product=new Product();
-            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.image,p.price,p.quantity,p.Shop.name});
-            return s.FirstOrDefault();
+            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
+            return s;
             
         }
 
@@ -64,16 +95,16 @@ namespace final_project.Services
            
         }
 
-        public void UpdateProduct(string id, Product product)
+        public void UpdateProductShop(string id, Product product)
         {  
              var old_product=new Product();
              old_product=_context.Products.FirstOrDefault(x=>x.id==id);
              old_product.product_name=product.product_name;
              old_product.description=product.description;
-             old_product.cat_id=old_product.cat_id;
-             old_product.price=old_product.price;
-             old_product.quantity=old_product.quantity;
-             old_product.shop_id=old_product.shop_id;
+             old_product.cat_id=product.cat_id;
+             old_product.price=product.price;
+             old_product.quantity=product.quantity;
+             old_product.permission = product.permission;
              _context.SaveChanges();
             //throw new NotImplementedException();
         }
@@ -87,19 +118,46 @@ namespace final_project.Services
           }
               public string GetName(string id){
                
-               var s=from p in _context.Products where (p.id==id) select  new {p.Shop.name};
-               return s.First().name;
+               var s=from p in _context.Products where (p.id==id) select  new {p.Shop.shop_name};
+               return s.First().shop_name;
               }
                public List<Color> GetColors()
                {
                  var s=_context.Colors.Select(p=>p);
                  return s.ToList();
                }
-        public List<Product> GetProductsOnShop(string shop_id)
+        public dynamic GetProductsOnShop(string shop_id)
         {
-            List<Product> list=new List<Product>();
-            list=_context.Products.Select(p=>p).Where(s=>s.shop_id==shop_id).ToList();
+            
+            var list=_context.Products.Select(p=>new {p.id,p.product_name,p.shop_id,p.price,p.quantity,p.image,p.Category.name,p.description,p.permission,p.cat_id}).Where(s=>s.shop_id==shop_id);
             return list;
+        }
+
+        public dynamic GetProductDetailByID(string id)
+        {
+            var s = _context.Products.Where(p=>p.id == id).Select(p=>new {p.id,p.Shop.shop_name,p.price,p.quantity,p.description,p.image,p.cat_id,p.product_name,p.permission,p.product_Colors.First().color_id});
+            return s; 
+        }
+
+        public void UpdatePermission(string id,Product product)
+        {
+            var old_product=new Product();
+            old_product=_context.Products.FirstOrDefault(x=>x.id==id);
+            old_product.permission = product.permission;
+            _context.SaveChanges();
+        }
+
+        public void AddColor(Product_Color product_Color)
+        {
+            int max2 = 1;
+            var s2 = _context.product_Colors.Select(p=>p.id);
+            foreach( var i in s2)
+            {
+              if(max2< int.Parse(i)) max2 = int.Parse(i);
+            }
+            product_Color.id = (max2+1).ToString();
+            _context.product_Colors.Add(product_Color);
+            _context.SaveChanges();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace final_project.Models.Entities.DataConfiguration
             builder.HasData(
                 new Shop{
                     id = "1",
-                    name = "Shop mỹ phẩm bà Kèo",
+                    shop_name = "Shop mỹ phẩm bà Kèo",
                     payment_account = "abcxyz",
                     user_id = "2",
                     address = "193 NLB",
@@ -20,7 +20,7 @@ namespace final_project.Models.Entities.DataConfiguration
                 },
                 new Shop{
                     id = "2",
-                    name = "Ông Huân Vlog",
+                    shop_name = "Ông Huân Vlog",
                     payment_account = "abcxyz",
                     user_id = "7",
                     address = "194 NLB",
@@ -28,7 +28,7 @@ namespace final_project.Models.Entities.DataConfiguration
                 },
                 new Shop{
                     id = "3",
-                    name = "Bé Sơn Parody",
+                    shop_name = "Bé Sơn Parody",
                     payment_account = "abcxyz",
                     user_id = "8",
                     address = "195 NLB",

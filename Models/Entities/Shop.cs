@@ -11,7 +11,7 @@ namespace final_project.Models.Entities
     public class Shop
     {
         public string id {get;set;}
-        public  string name{get;set;}
+        public  string shop_name{get;set;}
         public string payment_account{get;set;}
         public string user_id{get;set;}
         public string address{get;set;}

@@ -33,14 +33,14 @@ namespace final_project.Controllers
         }
 
         [HttpPost]  //tao sv
-        public void Post([FromBody] Product product)
+        public void Post([FromBody] dynamic product)
         { _productservice.AddProduct(product);
         }
 
-        [HttpPut("{id}")]  //update sv
+        [HttpPut("{id}/shop")]  //update sv
         public void Put(string id, [FromBody] Product product)
         {
-           _productservice.UpdateProduct(id,product);
+           _productservice.UpdateProductShop(id,product);
              
         }
 
@@ -68,9 +68,20 @@ namespace final_project.Controllers
         }
         [HttpGet("Shop/{shop_id}")]
         [Authorize]
-        public ActionResult<IEnumerable<Product>> GetProductsOnShop(string shop_id)
+        public ActionResult<dynamic> GetProductsOnShop(string shop_id)
         {
             return _productservice.GetProductsOnShop(shop_id);
         }
+        [HttpGet("{id}/detail")]
+        public ActionResult<dynamic> GetProductDetailByID(string id)
+        {
+            return _productservice.GetProductDetailByID(id);
+        }
+        [HttpPut("{id}/permission")]
+        public void UpdatePermission(string id, [FromBody] Product product)
+        {
+            _productservice.UpdatePermission(id,product);
+        }
+        
     }
 }

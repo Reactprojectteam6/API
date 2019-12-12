@@ -44,7 +44,7 @@ namespace final_project.Services
 
         }
         public void DeleteOrder(string id){
-           var order=new Order();
+          var order=new Order();
           order=_context.Orders.FirstOrDefault(x=>x.id==id);
           var order_details = _context.Order_details.Select(p=>p).Where(p=>p.order_id == order.id);
           foreach(Order_detail i in order_details)

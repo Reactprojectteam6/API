@@ -17,6 +17,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "3",
                     price = 900000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image = "ChongNang1.jpg"
                 },
@@ -27,6 +28,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "3",
                     price = 800000,
                     quantity = 150,
+                    permission = true,
                     shop_id = "1",
                     image = "ChongNang3.jpg"
                 },
@@ -37,6 +39,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "3",
                     price = 1000000,
                     quantity = 50,
+                    permission = true,
                     shop_id = "1",
                     image = "ChongNang2.jpg"
                 },
@@ -47,6 +50,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "3",
                     price = 1500000,
                     quantity = 50,
+                    permission = true,
                     shop_id = "1",
                     image = "ChongNang4.jpg"
                 },
@@ -57,6 +61,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "3",
                     price = 900000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image = "ChongNang5.jpg"
                 },
@@ -68,6 +73,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 800000,
                     quantity = 150,
                     shop_id = "2",
+                    permission = true,
                     image = "ChongNang6.jpg"
                 },
                 new Product{
@@ -76,6 +82,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     description = "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.",
                     cat_id = "3",
                     price = 1000000,
+                    permission = true,
                     quantity = 50,
                     shop_id = "3",
                     image = "ChongNang7.jpg"
@@ -86,6 +93,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     description="Sản phẩm đến từ Hàn Quốc chất lượng cao",
                     cat_id = "3",
                     price = 1500000,
+                    permission = true,
                     quantity = 50,
                     shop_id = "3",
                     image = "ChongNang8.jpg"
@@ -98,6 +106,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 450000,
                     quantity = 100,
                     shop_id = "1",
+                    permission = false,
                     image="DuongAmSau.jpg"
                 },
                 new Product{
@@ -107,6 +116,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "4",
                     price = 700000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="DuongAmSauDanHoi.jpg"
                 },
@@ -117,6 +127,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "4",
                     price = 600000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="DuongAm.jpg"
                 },
@@ -127,6 +138,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "5",
                     price = 400000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="MatNaDatSet.jpg"
                 },
@@ -137,6 +149,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "5",
                     price = 900000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="MatNaCam.jpg"
                 },
@@ -147,6 +160,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "5",
                     price = 300000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="MatNa1.jpg"
                 },
@@ -157,6 +171,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "5",
                     price = 500000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="MatNa2.jpg"
                 },
@@ -167,6 +182,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "5",
                     price = 270000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="MatNa4.jpg"
                 },
@@ -177,6 +193,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 200000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="MatNa3.jpg"
                 },
@@ -187,6 +204,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "6",
                     price = 820000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="NuocHoaHong1.jpg"
                 },
@@ -197,6 +215,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "6",
                     price = 900000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="NuocHoaHong2.jpg"
                 },
@@ -207,6 +226,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 210000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="ChamSocMoi2.jpg"
                 },  
@@ -217,6 +237,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 110000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="DuongMoi1.jpg"
                 },
@@ -227,6 +248,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 810000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="DuongMoi2.jpg"
                 },   
@@ -237,6 +259,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 170000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="DuongMoi3.jpg"
                 },
@@ -247,6 +270,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 920000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="DuongMoi4.jpg"
                 },
@@ -257,6 +281,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "8",
                     price = 280000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="DuongMoi5.jpg"
                 },
@@ -267,6 +292,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "9",
                     price = 670000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="KemNen1.jpg"
                 },
@@ -277,6 +303,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "9",
                     price = 100000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="KemNen2.jpg"
                 },
@@ -287,6 +314,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "9",
                     price = 800000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="KemNen3.jpg"
                 },
@@ -307,6 +335,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "9",
                     price = 300000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="KemNen5.jpg"
                 },
@@ -317,6 +346,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "10",
                     price = 200000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="Mascara1.jpg"
                 },
@@ -337,6 +367,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "10",
                     price = 150000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="Mascara2.jpg"
                 },
@@ -347,6 +378,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "10",
                     price = 350000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="Mascara3.jpg"
                 },
@@ -357,6 +389,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "10",
                     price = 180000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="Mascara4.jpg"
                 },
@@ -367,6 +400,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "10",
                     price = 210000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="Mascara5.jpg"
                 },
@@ -378,6 +412,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 230000,
                     quantity = 100,
                     shop_id = "1",
+                    permission = true,
                     image="PhanPhu1.jpg"
                 },
                 new Product{
@@ -388,6 +423,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 340000,
                     quantity = 100,
                     shop_id = "2",
+                    permission = true,
                     image="PhanPhu2.jpg"
                 },
                 new Product{
@@ -397,6 +433,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "11",
                     price = 290000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="PhanPhu3.jpg"
                 },
@@ -407,6 +444,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "11",
                     price = 320000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="PhanPhu4.jpg"
                 },
@@ -417,6 +455,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "11",
                     price = 450000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="PhanPhu5.jpg"
                 },
@@ -427,6 +466,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "11",
                     price = 290000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="PhanPhu6.jpg"
                 },
@@ -436,6 +476,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                     cat_id = "12",
                     price = 430000,
+                    permission = true,
                     quantity = 100,
                     shop_id = "1",
                     image="SonLi.jpg"
@@ -446,6 +487,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                     cat_id = "12",
                     price = 850000,
+                    permission = true,
                     quantity = 100,
                     shop_id = "2",
                     image="SonThoi.jpg"
@@ -457,6 +499,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "12",
                     price = 350000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="Son1.jpg"
                 },
@@ -467,6 +510,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "12",
                     price = 210000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "1",
                     image="Son2.jpg"
                 },
@@ -477,6 +521,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "12",
                     price = 370000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "2",
                     image="Son3.jpg"
                 },
@@ -487,6 +532,7 @@ namespace final_project.Models.Entities.DataConfiguration
                     cat_id = "12",
                     price = 800000,
                     quantity = 100,
+                    permission = true,
                     shop_id = "3",
                     image="Son4.jpg"
                 }
@@ -497,6 +543,7 @@ namespace final_project.Models.Entities.DataConfiguration
                      description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                     cat_id = "7",
                     price = 800000,
+                    permission = true,
                     quantity = 100,
                     shop_id = "3",
                     image="Tinhchat.jpg"

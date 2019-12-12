@@ -17,6 +17,7 @@ namespace final_project.Models.Entities
         public int price{get;set;}
         public int quantity{get;set;}
         public string image {get;set;}
+        public bool permission {get;set;}
         public string shop_id {get;set;}
         [ForeignKey("cat_id")]
         public Category Category{get;set;}
