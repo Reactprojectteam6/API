@@ -18,6 +18,8 @@ using System.Security.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
  using Microsoft.IdentityModel.Tokens;
 using final_project.Controllers;
+using Microsoft.AspNetCore.Http;
+
 namespace final_project
 {
     public class Startup
@@ -94,6 +96,7 @@ namespace final_project
            //app.UseCors(options => options.AllowAnyOrigin());  
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+           
            app.UseRouting();
             app.UseAuthentication();  // Must be before app.UseMvc
             //app.UseMvc();

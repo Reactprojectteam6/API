@@ -74,6 +74,7 @@ namespace final_project.Services
               existUser = _context.Users.FirstOrDefault(u => u.email ==email);
                if(existUser!=null) return existUser;
                else return existUser;
+               
           }
        public List<User> getUserByName(string name)
        {  List<User> list=new List<User>();
