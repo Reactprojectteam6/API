@@ -1,3 +1,5 @@
+
+
 using System;
 using final_project.Models.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +21,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image = "ChongNang1.jpg"
+                    image = "ChongNang1.jpg",
+                    permission=true
                 },
                 new Product{
                     id = "2",
@@ -30,7 +33,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 150,
                     permission = true,
                     shop_id = "1",
-                    image = "ChongNang3.jpg"
+                    image = "ChongNang3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "3",
@@ -41,7 +45,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 50,
                     permission = true,
                     shop_id = "1",
-                    image = "ChongNang2.jpg"
+                    image = "ChongNang2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "4",
@@ -52,7 +57,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 50,
                     permission = true,
                     shop_id = "1",
-                    image = "ChongNang4.jpg"
+                    image = "ChongNang4.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "5",
@@ -63,7 +69,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image = "ChongNang5.jpg"
+                    image = "ChongNang5.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "6",
@@ -73,8 +80,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 800000,
                     quantity = 150,
                     shop_id = "2",
-                    permission = true,
-                    image = "ChongNang6.jpg"
+                    image = "ChongNang6.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "7",
@@ -85,7 +92,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     permission = true,
                     quantity = 50,
                     shop_id = "3",
-                    image = "ChongNang7.jpg"
+                    image = "ChongNang7.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "8",
@@ -96,7 +104,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     permission = true,
                     quantity = 50,
                     shop_id = "3",
-                    image = "ChongNang8.jpg"
+                    image = "ChongNang8.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "9",
@@ -106,8 +115,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 450000,
                     quantity = 100,
                     shop_id = "1",
-                    permission = false,
-                    image="DuongAmSau.jpg"
+                    image="DuongAmSau.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "10",
@@ -118,7 +127,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="DuongAmSauDanHoi.jpg"
+                    image="DuongAmSauDanHoi.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "11",
@@ -129,7 +139,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="DuongAm.jpg"
+                    image="DuongAm.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "12",
@@ -140,7 +151,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="MatNaDatSet.jpg"
+                    image="MatNaDatSet.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "13",
@@ -151,7 +163,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="MatNaCam.jpg"
+                    image="MatNaCam.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "14",
@@ -162,7 +175,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="MatNa1.jpg"
+                    image="MatNa1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "15",
@@ -173,7 +187,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="MatNa2.jpg"
+                    image="MatNa2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "16",
@@ -184,7 +199,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="MatNa4.jpg"
+                    image="MatNa4.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "17",
@@ -195,7 +211,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="MatNa3.jpg"
+                    image="MatNa3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "18",
@@ -206,7 +223,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="NuocHoaHong1.jpg"
+                    image="NuocHoaHong1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "19",
@@ -217,7 +235,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="NuocHoaHong2.jpg"
+                    image="NuocHoaHong2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "20",
@@ -228,7 +247,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="ChamSocMoi2.jpg"
+                    image="ChamSocMoi2.jpg",
+                     permission=true
                 },  
                 new Product{
                     id = "21",
@@ -239,7 +259,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="DuongMoi1.jpg"
+                    image="DuongMoi1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "22",
@@ -250,7 +271,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="DuongMoi2.jpg"
+                    image="DuongMoi2.jpg",
+                     permission=true
                 },   
                 new Product{
                     id = "23",
@@ -261,7 +283,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="DuongMoi3.jpg"
+                    image="DuongMoi3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "24",
@@ -272,7 +295,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="DuongMoi4.jpg"
+                    image="DuongMoi4.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "25",
@@ -283,7 +307,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="DuongMoi5.jpg"
+                    image="DuongMoi5.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "26",
@@ -294,7 +319,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="KemNen1.jpg"
+                    image="KemNen1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "27",
@@ -305,7 +331,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="KemNen2.jpg"
+                    image="KemNen2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "28",
@@ -316,7 +343,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="KemNen3.jpg"
+                    image="KemNen3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "29",
@@ -326,7 +354,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 700000,
                     quantity = 100,
                     shop_id = "2",
-                    image="KemNen4.jpg"
+                    image="KemNen4.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "30",
@@ -337,7 +366,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="KemNen5.jpg"
+                    image="KemNen5.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "31",
@@ -348,7 +378,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="Mascara1.jpg"
+                    image="Mascara1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "32",
@@ -358,7 +389,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 100000,
                     quantity = 100,
                     shop_id = "2",
-                    image="Mascara.jpg"
+                    image="Mascara.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "33",
@@ -369,7 +401,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="Mascara2.jpg"
+                    image="Mascara2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "34",
@@ -380,7 +413,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="Mascara3.jpg"
+                    image="Mascara3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "35",
@@ -391,7 +425,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="Mascara4.jpg"
+                    image="Mascara4.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "36",
@@ -402,7 +437,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="Mascara5.jpg"
+                    image="Mascara5.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "37",
@@ -412,8 +448,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 230000,
                     quantity = 100,
                     shop_id = "1",
-                    permission = true,
-                    image="PhanPhu1.jpg"
+                    image="PhanPhu1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "38",
@@ -423,8 +459,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     price = 340000,
                     quantity = 100,
                     shop_id = "2",
-                    permission = true,
-                    image="PhanPhu2.jpg"
+                    image="PhanPhu2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "39",
@@ -435,7 +471,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="PhanPhu3.jpg"
+                    image="PhanPhu3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "40",
@@ -446,7 +483,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="PhanPhu4.jpg"
+                    image="PhanPhu4.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "41",
@@ -457,7 +495,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="PhanPhu5.jpg"
+                    image="PhanPhu5.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "42",
@@ -468,7 +507,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="PhanPhu6.jpg"
+                    image="PhanPhu6.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "43",
@@ -479,7 +519,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     permission = true,
                     quantity = 100,
                     shop_id = "1",
-                    image="SonLi.jpg"
+                    image="SonLi.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "44",
@@ -490,7 +531,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     permission = true,
                     quantity = 100,
                     shop_id = "2",
-                    image="SonThoi.jpg"
+                    image="SonThoi.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "45",
@@ -501,7 +543,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="Son1.jpg"
+                    image="Son1.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "46",
@@ -512,7 +555,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "1",
-                    image="Son2.jpg"
+                    image="Son2.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "47",
@@ -523,7 +567,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "2",
-                    image="Son3.jpg"
+                    image="Son3.jpg",
+                     permission=true
                 },
                 new Product{
                     id = "48",
@@ -534,7 +579,8 @@ namespace final_project.Models.Entities.DataConfiguration
                     quantity = 100,
                     permission = true,
                     shop_id = "3",
-                    image="Son4.jpg"
+                    image="Son4.jpg",
+                     permission=true
                 }
                 ,
                  new Product{
@@ -546,7 +592,18 @@ namespace final_project.Models.Entities.DataConfiguration
                     permission = true,
                     quantity = 100,
                     shop_id = "3",
-                    image="Tinhchat.jpg"
+                    image="Tinhchat.jpg",
+                     permission=true
+                } , new Product{
+                    id = "50",
+                    product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
+                    description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
+                    cat_id = "3",
+                    price = 900000,
+                    quantity = 100,
+                    shop_id = "1",
+                    image = "ChongNang1.jpg",
+                    permission=true
                 }
             );
         }

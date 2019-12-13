@@ -43,7 +43,7 @@ namespace final_project.Controllers
 
         [HttpGet("{id}")]
         [Authorize]
-        public ActionResult<User> Get(string id)
+        public  ActionResult<User> Get(string id)
         {   //Get user by id chi co user do or admin dc get
             var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
@@ -53,31 +53,31 @@ namespace final_project.Controllers
 
         var ID = tokenS.Claims.First(claim => claim.Type =="ID").Value;
         var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
-        if(ID==id||Role=="Admin")
+        if(ID==id.ToString()||Role=="Admin")
         return _userService.GetUserById(id);
         else return BadRequest();
         }
 
         [HttpPut("{id}")]
         [Authorize]
-        public void Put(string id, [FromBody] User user)
+        public void Put([FromBody] User user)
         {  //Chi co user do or admin dc update infor
             var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
             authHeader = authHeader.Replace("Bearer ", "");
             var jsonToken = handler.ReadToken(authHeader);
              var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
-
+   
         var ID = tokenS.Claims.First(claim => claim.Type =="ID").Value;
         var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
-        if(ID==id||Role=="Admin")
-            _userService.UpdateUser(id,user);
+        if(ID==user.id||Role=="Admin")
+            _userService.UpdateUser(user);
         }
          
 
         [HttpDelete("{id}")]
         [Authorize]
-        public void Delete(string id)
+        public void Delete(string  id)
         {  //Chi co admin moi dc quyen xoa
              var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
@@ -92,7 +92,7 @@ namespace final_project.Controllers
 
         [HttpPost]
         public void Post([FromBody] User user)
-        {    user.id=(int.Parse(_userService.GetMaxId())+1).ToString();
+        {    //(_userService.GetMaxId())+1;
             _userService.AddUser(user);
         }
         
@@ -131,5 +131,25 @@ namespace final_project.Controllers
         {
             _userService.UpdateShop(shop_id,newShop);
         }
+       [HttpGet("name={name}")]
+        [Authorize]
+        public ActionResult<IEnumerable<User>> GetUserByName(string name)
+        {  //Get all user chi co admin dc get
+            
+             var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+             
+        
+        var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
+        if(Role=="Admin")
+            return _userService.getUserByName(name);
+            else return BadRequest();
+        }
+
     }
+
+
 }

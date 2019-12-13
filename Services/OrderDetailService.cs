@@ -33,5 +33,15 @@ namespace final_project.Services
             return s;
 
         }
+            var s=_context.Order_details.Where(p=>p.order_id==id).Select(p=>new{p.Product.product_name,p.quantity,p.price,p.id,p.Product.product_Colors.First().Color.name,p.Product.Shop.shop_name});
+            return s;
+
+        }
+        public void DeleteOrderDetail(string id)
+         { var Order_detail=new Order_detail();
+            Order_detail=_context.Order_details.FirstOrDefault(x=>x.id==id);
+           _context.Order_details.Remove(Order_detail);
+           _context.SaveChanges();
+        }
     }
 }

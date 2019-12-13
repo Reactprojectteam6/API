@@ -19,12 +19,13 @@ namespace final_project.Models.Entities
         public string image {get;set;}
         public bool permission {get;set;}
         public string shop_id {get;set;}
+        public bool permission{get;set;}
         [ForeignKey("cat_id")]
         public Category Category{get;set;}
         [ForeignKey("shop_id")]
        
         public Shop Shop{get;set;}
         public ICollection<Product_Color> product_Colors {get;set;}
-       
+        
     }
 }

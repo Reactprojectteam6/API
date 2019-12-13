@@ -24,7 +24,6 @@ namespace final_project.Controllers
             _context = context;
         }
        
-
         [HttpPost]
         public Order_detail Post([FromBody] Order_detail order)
         {  return   _Service.AddOrderDetail(order);
@@ -35,6 +34,14 @@ namespace final_project.Controllers
            return _Service.GetOrderDetailOfOrder(id);
         
         }
+        [HttpDelete("{id}")]
+        [Authorize]
+        public void Delete(string  id)
+        {   _Service.DeleteOrderDetail(id);
+        }
+
+
+        
 
       
     }

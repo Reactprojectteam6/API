@@ -13,9 +13,8 @@ namespace final_project.Services
        {  _context=context;
 
        }
-        public List<Order> GetOrderByUser(string id){
-       
-        var s=_context.Orders.Where(p=>p.user_id==id).Select(p=>p);
+        public dynamic GetOrderByUser(string id){
+        var s=_context.Orders.Where(p=>p.user_id==id).Select(p=>new{p.id,p.date_create,p.status,p.total,p.Payment_Method.name,p.Order_Details}).OrderByDescending(p=>p.date_create);
         return s.ToList();
         }
           
@@ -40,6 +39,16 @@ namespace final_project.Services
           var old_order=_context.Orders.FirstOrDefault(x=>x.id==id);
             old_order.date_paid=order.date_paid;
             old_order.status=order.status;
+        public void cancelOrder(string id){
+          var old_order=_context.Orders.FirstOrDefault(x=>x.id==id);
+            old_order.status=3;
+             old_order.date_create=old_order.date_create;
+             old_order.date_paid=old_order.date_paid;
+             old_order.total=old_order.total;
+             old_order.payment_id=old_order.payment_id;
+             old_order.receiver_id=old_order.receiver_id;
+             old_order.user_id=old_order.user_id;
+             old_order.shop_id=old_order.shop_id;
            _context.SaveChanges();
 
         }
@@ -64,5 +73,14 @@ namespace final_project.Services
             var s = _context.Orders.Where(p=>p.shop_id==shop_id).Select(p=>new{p.id,p.date_create,p.date_paid,p.status,p.total,p.User.user_name,p.Reciever.fullname,p.Order_Details,p.Payment_Method.name}).OrderByDescending(g=>g.date_create);
             return s;
           }
+            var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create,p.Reciever.phone,p.Reciever.address});
+            return s;
+          }
+           public dynamic GetListProduct()
+           {   var products =new List<Product>();
+            products=_context.Products.Where(p=>p.quantity>0).ToList();
+            return products;
+
+           }
     }
 }

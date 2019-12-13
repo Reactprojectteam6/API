@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,13 +7,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace final_project.Models.Entities
 {
-    public class Reciever
+    public class Website
     {
-        public string id {get;set;}
+        public string id{get;set;}
         public string address {get;set;}
         public string email {get;set;}
-        public string fullname{get;set;}
-        public string phone{get;set;}
-        public Order Order{get;set;}
+        public string phone {get;set;}
+        public string sandbox{get;set;}
+        public string production{get;set;}
     }
 }

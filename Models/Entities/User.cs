@@ -16,6 +16,7 @@ namespace final_project.Models.Entities
         public string phone {get;set;}
 
         public int role {get;set;}
+        public bool permission{get;set;}
         public string address{get;set;} 
         public ICollection<Comment> Comments{get;set;}
         public Shop Shop{get;set;}

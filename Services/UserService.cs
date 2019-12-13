@@ -15,17 +15,25 @@ namespace final_project.Services
 
        }
         public void AddUser(User user)
-        {  _context.Users.Add(user);
+        {    int max=1;
+            var s=_context.Users.Select(p=>p.id);
+             foreach(var i in s)
+             { if(max<int.Parse(i)) max=int.Parse(i);
+
+             }
+             user.id=(max+1).ToString();
+          _context.Users.Add(user);
           _context.SaveChanges();
             //throw new NotImplementedException();
         }
 
         public void DeleteUser(string id)
-        {  var user=new User();
-          user=_context.Users.FirstOrDefault(x=>x.id==id);
-          _context.Users.Remove(user);
-          _context.SaveChanges();
-            //throw new NotImplementedException();
+        { //delete shop
+          
+               var old_user=new User();
+               old_user=_context.Users.FirstOrDefault(x=>x.id==id);
+               old_user.permission=false;
+               _context.SaveChanges();
         }
 
         public User GetUserById(string id)
@@ -37,17 +45,20 @@ namespace final_project.Services
 
         public List<User> GetUsers()
         {   var users=new List<User>();
-            users=_context.Users.ToList();
+            users=_context.Users.Where(p=>p.permission==true).ToList();
             return users;
             //throw new NotImplementedException();
         }
-
-        public void UpdateUser(string id, User user)
-        {     if (id == user.id)
-            {
-                _context.Entry(user).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                _context.SaveChanges();
-            }
+          public void UpdateUser( User user)
+        {     var old_user=new User();
+              old_user=_context.Users.FirstOrDefault(x=>x.id==user.id);
+              old_user.user_name =user.user_name;
+              old_user.password =user.password;
+              old_user.email =user.email;
+              old_user.phone =user.phone;
+              old_user.role =user.role;
+              old_user.address =user.address;
+             _context.SaveChanges();
             //throw new NotImplementedException();
         }
            public User CheckLoginUser(string email,string password)
@@ -63,6 +74,7 @@ namespace final_project.Services
               existUser = _context.Users.FirstOrDefault(u => u.email ==email);
                if(existUser!=null) return existUser;
                else return existUser;
+               
           }
           public string GetMaxId()
           {   string id="";
@@ -98,5 +110,11 @@ namespace final_project.Services
             _context.SaveChanges();
           }
 
+       public List<User> getUserByName(string name)
+       {  List<User> list=new List<User>();
+          var s=_context.Users.Select(p=>p).Where(s=>s.user_name.Contains(name)&&s.permission==true);
+           return s.ToList();
+       }
+       
     }
 }

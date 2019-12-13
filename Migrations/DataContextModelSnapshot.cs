@@ -130,34 +130,40 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("shop_id")
-                        .IsUnique()
-                        .HasFilter("[shop_id] IS NOT NULL");
+                    b.HasIndex("shop_id");
 
-                    b.ToTable("Check_paid_shop");
+                    b.ToTable("Check_Paid_Shops");
 
                     b.HasData(
                         new
                         {
                             id = "1",
-                            date_expired = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(6539),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 6, DateTimeKind.Local).AddTicks(6959),
+                            date_expired = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             money = 200000,
                             shop_id = "1"
                         },
                         new
                         {
                             id = "2",
-                            date_expired = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9567),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9529),
+                            date_expired = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             money = 200000,
                             shop_id = "2"
                         },
                         new
                         {
                             id = "3",
-                            date_expired = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9631),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 8, DateTimeKind.Local).AddTicks(9626),
+                            date_expired = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            money = 200000,
+                            shop_id = "3"
+                        },
+                        new
+                        {
+                            id = "4",
+                            date_expired = new DateTime(2019, 10, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(2019, 9, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             money = 200000,
                             shop_id = "3"
                         });
@@ -287,6 +293,70 @@ namespace final_project.Migrations
                             product_id = "3",
                             rate = 5,
                             user_id = "4"
+                        },
+                        new
+                        {
+                            id = "9",
+                            contents = "Oke",
+                            product_id = "4",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "10",
+                            contents = "Oke",
+                            product_id = "5",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "11",
+                            contents = "Oke",
+                            product_id = "6",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "12",
+                            contents = "Oke",
+                            product_id = "7",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "13",
+                            contents = "Oke",
+                            product_id = "8",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "14",
+                            contents = "Oke",
+                            product_id = "9",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "15",
+                            contents = "Oke",
+                            product_id = "10",
+                            rate = 1,
+                            user_id = "4"
+                        },
+                        new
+                        {
+                            id = "16",
+                            contents = "Oke",
+                            product_id = "11",
+                            rate = 1,
+                            user_id = "4"
                         });
                 });
 
@@ -304,7 +374,10 @@ namespace final_project.Migrations
                     b.Property<string>("payment_id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("reciever_id")
+                    b.Property<string>("receiver_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("shop_id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("status")
@@ -320,9 +393,11 @@ namespace final_project.Migrations
 
                     b.HasIndex("payment_id");
 
-                    b.HasIndex("reciever_id")
+                    b.HasIndex("receiver_id")
                         .IsUnique()
-                        .HasFilter("[reciever_id] IS NOT NULL");
+                        .HasFilter("[receiver_id] IS NOT NULL");
+
+                    b.HasIndex("shop_id");
 
                     b.HasIndex("user_id");
 
@@ -332,10 +407,11 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            date_create = new DateTime(2019, 12, 1, 15, 52, 3, 26, DateTimeKind.Local).AddTicks(5746),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 26, DateTimeKind.Local).AddTicks(6659),
+                            date_create = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             payment_id = "1",
-                            reciever_id = "1",
+                            receiver_id = "1",
+                            shop_id = "1",
                             status = 1,
                             total = 900000,
                             user_id = "1"
@@ -343,10 +419,11 @@ namespace final_project.Migrations
                         new
                         {
                             id = "2",
-                            date_create = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3114),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3165),
+                            date_create = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             payment_id = "1",
-                            reciever_id = "3",
+                            receiver_id = "3",
+                            shop_id = "1",
                             status = 2,
                             total = 800000,
                             user_id = "3"
@@ -354,10 +431,11 @@ namespace final_project.Migrations
                         new
                         {
                             id = "3",
-                            date_create = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3301),
-                            date_paid = new DateTime(2019, 12, 1, 15, 52, 3, 27, DateTimeKind.Local).AddTicks(3307),
+                            date_create = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            date_paid = new DateTime(1998, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             payment_id = "1",
-                            reciever_id = "4",
+                            receiver_id = "4",
+                            shop_id = "1",
                             status = 3,
                             total = 1000000,
                             user_id = "4"
@@ -455,6 +533,9 @@ namespace final_project.Migrations
                     b.Property<string>("image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("permission")
+                        .HasColumnType("bit");
+
                     b.Property<int>("price")
                         .HasColumnType("int");
 
@@ -482,6 +563,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
                             image = "ChongNang1.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
                             quantity = 100,
@@ -493,6 +575,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Có khả năng bảo vệ da mạnh mẽ dưới tác động của ánh nắng mặt trời, cung cấp độ ẩm cho da, làn da trắng hồng rạng rỡ, đầy sức sống",
                             image = "ChongNang3.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Kem Chống Nắng Dịu Nhẹ Với Chiết xuất Từ Thiên Nhiên Black Rouge Cica Green Sun Cream SPF50+/PA++++",
                             quantity = 150,
@@ -504,6 +587,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Kem chống nắng vật lý, chăm sóc da mẫn cảm, dưỡng trắng",
                             image = "ChongNang2.jpg",
+                            permission = true,
                             price = 1000000,
                             product_name = "Kem chống nắng Uriage Bariesun SPF50+ - Kem chống nắng tốt nhất giúp tái tạo da và ngừa da hư tổn",
                             quantity = 50,
@@ -515,6 +599,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang4.jpg",
+                            permission = true,
                             price = 1500000,
                             product_name = "Kem chống nắng kiêm kem lót nâng tone da A'pieu Pure Block Tone-Up Sun Base SPF50+ PA+++",
                             quantity = 50,
@@ -526,6 +611,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang5.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Kem Chống Nắng Dạng Gel Chống Tia Hồng Ngoại, Giảm Nhiệt Độ Tức Thì Make Prem UV Defense Me Blue Ray Sun Gel SPF50/PA++++",
                             quantity = 100,
@@ -537,6 +623,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang6.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream",
                             quantity = 150,
@@ -548,6 +635,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.",
                             image = "ChongNang7.jpg",
+                            permission = true,
                             price = 1000000,
                             product_name = "Kem Chống Nắng Chiết Xuất Măng Cụt It's Skin Tropical Sun Gel Mangosteen SPF50+/PA++++ ",
                             quantity = 50,
@@ -559,6 +647,7 @@ namespace final_project.Migrations
                             cat_id = "3",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "ChongNang8.jpg",
+                            permission = true,
                             price = 1500000,
                             product_name = "Xịt Chống Nắng Làm Dịu Da Giảm Nhiệt Tức Thì Mediheal Labocare Ceramatica Sun Spray",
                             quantity = 50,
@@ -570,6 +659,7 @@ namespace final_project.Migrations
                             cat_id = "4",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "DuongAmSau.jpg",
+                            permission = true,
                             price = 450000,
                             product_name = "Serum  dưỡng ẩm Innisfree",
                             quantity = 100,
@@ -581,6 +671,7 @@ namespace final_project.Migrations
                             cat_id = "4",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "DuongAmSauDanHoi.jpg",
+                            permission = true,
                             price = 700000,
                             product_name = "Serum dưỡng ẩm đàn hồi Innisfree",
                             quantity = 100,
@@ -592,6 +683,7 @@ namespace final_project.Migrations
                             cat_id = "4",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
                             image = "DuongAm.jpg",
+                            permission = true,
                             price = 600000,
                             product_name = "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream",
                             quantity = 100,
@@ -603,6 +695,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNaDatSet.jpg",
+                            permission = true,
                             price = 400000,
                             product_name = "Mặt nạ dưỡng da đất sét",
                             quantity = 100,
@@ -614,6 +707,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt",
                             image = "MatNaCam.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Mặt nạ dưỡng da từ quả Cam",
                             quantity = 100,
@@ -625,6 +719,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNa1.jpg",
+                            permission = true,
                             price = 300000,
                             product_name = "Mặt Nạ Vitamin Dưỡng Trắng Da By Wishtrend Natural Vitamin 21.5% Enhancing Sheet Mask",
                             quantity = 100,
@@ -636,6 +731,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Táo được biết đến là top thực phẩm giàu chất chống oxy hóa, giúp ngăn quá trình lão hóa",
                             image = "MatNa2.jpg",
+                            permission = true,
                             price = 500000,
                             product_name = "Mặt Nạ Làm Sáng Da, Loại Bỏ Tế Bào Chết Chiết Xuất Từ TáoROUNDLAB Apple Peeling Mask ",
                             quantity = 100,
@@ -647,6 +743,7 @@ namespace final_project.Migrations
                             cat_id = "5",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNa4.jpg",
+                            permission = true,
                             price = 270000,
                             product_name = "Mặt Nạ Ngủ Dưỡng Trắng Chiết Xuất Từ Trái Thanh Yên Some By Mi Yuja Niacin 30 Days Miracle Brightening Sleeping Mask",
                             quantity = 100,
@@ -658,6 +755,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "MatNa3.jpg",
+                            permission = true,
                             price = 200000,
                             product_name = "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask",
                             quantity = 100,
@@ -669,6 +767,7 @@ namespace final_project.Migrations
                             cat_id = "6",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "NuocHoaHong1.jpg",
+                            permission = true,
                             price = 820000,
                             product_name = "Nước hoa hồng Innisfree",
                             quantity = 100,
@@ -680,6 +779,7 @@ namespace final_project.Migrations
                             cat_id = "6",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "NuocHoaHong2.jpg",
+                            permission = true,
                             price = 900000,
                             product_name = "Nước hoa hồng Tea Tree Cica",
                             quantity = 100,
@@ -691,6 +791,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "ChamSocMoi2.jpg",
+                            permission = true,
                             price = 210000,
                             product_name = "Son Dưỡng Môi Innisfree",
                             quantity = 100,
@@ -702,6 +803,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi1.jpg",
+                            permission = true,
                             price = 110000,
                             product_name = "Son Dưỡng Innisfree Canola Honey Lip Balm",
                             quantity = 100,
@@ -713,6 +815,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi2.jpg",
+                            permission = true,
                             price = 810000,
                             product_name = "Son Dưỡng Môi Có Màu Innisfree Glow Tint Lip Balm",
                             quantity = 100,
@@ -724,6 +827,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi3.jpg",
+                            permission = true,
                             price = 170000,
                             product_name = "Son Dưỡng 16Brand Fruit Chu Petit Lip Balm",
                             quantity = 100,
@@ -735,6 +839,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi4.jpg",
+                            permission = true,
                             price = 920000,
                             product_name = "Mặt Nạ Ngủ Môi Carenel Berry Lip Night Mask",
                             quantity = 100,
@@ -746,6 +851,7 @@ namespace final_project.Migrations
                             cat_id = "8",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "DuongMoi5.jpg",
+                            permission = true,
                             price = 280000,
                             product_name = "Mặt Nạ Ngủ Môi Chiết Xuất Rau Má A'pieu Madecassoside Lip Sleeping Mask 20g",
                             quantity = 100,
@@ -757,6 +863,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen1.jpg",
+                            permission = true,
                             price = 670000,
                             product_name = "Kem nền Innisfree",
                             quantity = 100,
@@ -768,6 +875,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen2.jpg",
+                            permission = true,
                             price = 100000,
                             product_name = "Kem nền Power Perfection BB cream",
                             quantity = 100,
@@ -779,6 +887,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen3.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Kem Nền Siêu Lì, Lâu Trôi A'pieu BB Maker Long Wear SPF30 PA+++",
                             quantity = 100,
@@ -790,6 +899,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen4.jpg",
+                            permission = true,
                             price = 700000,
                             product_name = "Kem Nền Che Phủ Hoàn Hảo, Giúp Da Bóng Khỏe, Rạng Rỡ Suốt 24 Tiếng Etude House Double Lasting Serum Foundation SPF25 PA++",
                             quantity = 100,
@@ -801,6 +911,7 @@ namespace final_project.Migrations
                             cat_id = "9",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "KemNen5.jpg",
+                            permission = true,
                             price = 300000,
                             product_name = "Kem Nền Che Phủ Tốt, Lâu Trôi I'm Meme I'm Genius Foundation All Cover",
                             quantity = 100,
@@ -812,6 +923,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara1.jpg",
+                            permission = true,
                             price = 200000,
                             product_name = "Mascara Làm Dày Mi Không Lem Missha 4D Mascara",
                             quantity = 100,
@@ -823,6 +935,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara.jpg",
+                            permission = true,
                             price = 100000,
                             product_name = "Mascara Siêu Dày Mi Innisfree Super Volumecara ",
                             quantity = 100,
@@ -834,6 +947,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara2.jpg",
+                            permission = true,
                             price = 150000,
                             product_name = "Mascara Chân Mày Missha Color Wear Browcara",
                             quantity = 100,
@@ -845,6 +959,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara3.jpg",
+                            permission = true,
                             price = 350000,
                             product_name = "Mascara Chuốt Mi Cong Vút Tự Nhiên, Chống Trôi Etude House Lash Perm Curl Fix Mascara",
                             quantity = 100,
@@ -856,6 +971,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara4.jpg",
+                            permission = true,
                             price = 180000,
                             product_name = "Mascara Giúp Dài Mi Chống Trôi Missha Length Boost Cara",
                             quantity = 100,
@@ -867,6 +983,7 @@ namespace final_project.Migrations
                             cat_id = "10",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Mascara5.jpg",
+                            permission = true,
                             price = 210000,
                             product_name = "Mascara Chống Trôi , Làm Cong Mi Tự Nhiên Shionle Fixing High Heel Cara",
                             quantity = 100,
@@ -878,6 +995,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu1.jpg",
+                            permission = true,
                             price = 230000,
                             product_name = "Phấn phủ Play 101 Setting",
                             quantity = 100,
@@ -889,6 +1007,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu2.jpg",
+                            permission = true,
                             price = 340000,
                             product_name = "Phấn phủ LANEIGE",
                             quantity = 100,
@@ -900,6 +1019,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu3.jpg",
+                            permission = true,
                             price = 290000,
                             product_name = "Phấn Phủ Bột Kiềm Dầu Innisfree No Sebum Mineral Powder",
                             quantity = 100,
@@ -911,6 +1031,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu4.jpg",
+                            permission = true,
                             price = 320000,
                             product_name = "Phấn Phủ Bột Kiềm Dầu, Cố Định Lớp Makeup A'pieu Mineral 100 HD Powder",
                             quantity = 100,
@@ -922,6 +1043,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu5.jpg",
+                            permission = true,
                             price = 450000,
                             product_name = "Phấn Phủ Dạng Nén Kiềm Dầu, Che Phủ Lỗ Chân Lông A'pieu Oil Control Film Pact",
                             quantity = 100,
@@ -933,6 +1055,7 @@ namespace final_project.Migrations
                             cat_id = "11",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "PhanPhu6.jpg",
+                            permission = true,
                             price = 290000,
                             product_name = "Phấn Phủ Kiềm Dầu I'm Meme I'm Oil Cut Pact ",
                             quantity = 100,
@@ -944,6 +1067,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "SonLi.jpg",
+                            permission = true,
                             price = 430000,
                             product_name = "Son Thỏi Lì Merzy The First Lipstick",
                             quantity = 100,
@@ -955,6 +1079,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "SonThoi.jpg",
+                            permission = true,
                             price = 850000,
                             product_name = "Son Thỏi Lì ROM",
                             quantity = 100,
@@ -966,6 +1091,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son1.jpg",
+                            permission = true,
                             price = 350000,
                             product_name = "Son Kem Lì Black Rouge Air Fit Velvet Tint",
                             quantity = 100,
@@ -977,6 +1103,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son2.jpg",
+                            permission = true,
                             price = 210000,
                             product_name = "Son kem lì cực nhẹ môi Romand Zero Velvet Tint",
                             quantity = 100,
@@ -988,6 +1115,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son3.jpg",
+                            permission = true,
                             price = 370000,
                             product_name = "Son Kem Lì Black Rouge Air Fit Velvet",
                             quantity = 100,
@@ -999,6 +1127,7 @@ namespace final_project.Migrations
                             cat_id = "12",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Son4.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ",
                             quantity = 100,
@@ -1010,10 +1139,23 @@ namespace final_project.Migrations
                             cat_id = "7",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
                             image = "Tinhchat.jpg",
+                            permission = true,
                             price = 800000,
                             product_name = "Tinh chất dưỡng ",
                             quantity = 100,
                             shop_id = "3"
+                        },
+                        new
+                        {
+                            id = "50",
+                            cat_id = "3",
+                            description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
+                            image = "ChongNang1.jpg",
+                            permission = true,
+                            price = 900000,
+                            product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
+                            quantity = 100,
+                            shop_id = "1"
                         });
                 });
 
@@ -1137,303 +1279,209 @@ namespace final_project.Migrations
                         {
                             id = "17",
                             color_id = "1",
-                            product_id = "18"
+                            product_id = "17"
                         },
                         new
                         {
                             id = "18",
                             color_id = "2",
-                            product_id = "19"
+                            product_id = "18"
                         },
                         new
                         {
                             id = "19",
+                            color_id = "1",
+                            product_id = "19"
+                        },
+                        new
+                        {
+                            id = "20",
                             color_id = "1",
                             product_id = "20"
                         },
                         new
                         {
-                            id = "20",
-                            color_id = "1",
-                            product_id = "21"
-                        },
-                        new
-                        {
                             id = "21",
                             color_id = "2",
-                            product_id = "22"
+                            product_id = "21"
                         },
                         new
                         {
                             id = "22",
                             color_id = "1",
-                            product_id = "23"
+                            product_id = "22"
                         },
                         new
                         {
                             id = "23",
                             color_id = "2",
-                            product_id = "24"
+                            product_id = "23"
                         },
                         new
                         {
                             id = "24",
                             color_id = "4",
-                            product_id = "25"
+                            product_id = "24"
                         },
                         new
                         {
                             id = "25",
                             color_id = "4",
-                            product_id = "26"
+                            product_id = "25"
                         },
                         new
                         {
                             id = "26",
                             color_id = "4",
-                            product_id = "27"
+                            product_id = "26"
                         },
                         new
                         {
                             id = "27",
                             color_id = "4",
-                            product_id = "28"
+                            product_id = "27"
                         },
                         new
                         {
                             id = "28",
                             color_id = "4",
-                            product_id = "29"
+                            product_id = "28"
                         },
                         new
                         {
                             id = "29",
                             color_id = "4",
-                            product_id = "30"
+                            product_id = "29"
                         },
                         new
                         {
                             id = "30",
                             color_id = "3",
-                            product_id = "37"
+                            product_id = "30"
                         },
                         new
                         {
                             id = "31",
                             color_id = "3",
-                            product_id = "38"
+                            product_id = "31"
                         },
                         new
                         {
                             id = "32",
                             color_id = "3",
-                            product_id = "39"
+                            product_id = "32"
                         },
                         new
                         {
                             id = "33",
                             color_id = "3",
-                            product_id = "40"
+                            product_id = "33"
                         },
                         new
                         {
                             id = "34",
                             color_id = "3",
-                            product_id = "41"
+                            product_id = "34"
                         },
                         new
                         {
                             id = "35",
                             color_id = "3",
-                            product_id = "42"
+                            product_id = "35"
                         },
                         new
                         {
                             id = "36",
                             color_id = "1",
-                            product_id = "43"
+                            product_id = "36"
                         },
                         new
                         {
                             id = "37",
                             color_id = "1",
-                            product_id = "44"
+                            product_id = "37"
                         },
                         new
                         {
                             id = "38",
                             color_id = "2",
-                            product_id = "45"
+                            product_id = "38"
                         },
                         new
                         {
                             id = "39",
                             color_id = "2",
-                            product_id = "46"
+                            product_id = "39"
                         },
                         new
                         {
                             id = "40",
                             color_id = "2",
-                            product_id = "47"
+                            product_id = "40"
                         },
                         new
                         {
                             id = "41",
                             color_id = "1",
+                            product_id = "41"
+                        },
+                        new
+                        {
+                            id = "42",
+                            color_id = "1",
+                            product_id = "42"
+                        },
+                        new
+                        {
+                            id = "43",
+                            color_id = "1",
+                            product_id = "43"
+                        },
+                        new
+                        {
+                            id = "44",
+                            color_id = "1",
+                            product_id = "44"
+                        },
+                        new
+                        {
+                            id = "45",
+                            color_id = "1",
+                            product_id = "45"
+                        },
+                        new
+                        {
+                            id = "46",
+                            color_id = "1",
+                            product_id = "46"
+                        },
+                        new
+                        {
+                            id = "47",
+                            color_id = "1",
+                            product_id = "47"
+                        },
+                        new
+                        {
+                            id = "48",
+                            color_id = "1",
                             product_id = "48"
+                        },
+                        new
+                        {
+                            id = "49",
+                            color_id = "1",
+                            product_id = "49"
+                        },
+                        new
+                        {
+                            id = "50",
+                            color_id = "1",
+                            product_id = "50"
                         });
                 });
 
-            modelBuilder.Entity("final_project.Models.Entities.Product_Size", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("product_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("size_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("product_id");
-
-                    b.HasIndex("size_id");
-
-                    b.ToTable("product_Sizes");
-
-                    b.HasData(
-                        new
-                        {
-                            id = "1",
-                            product_id = "1",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "2",
-                            product_id = "1",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "3",
-                            product_id = "2",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "4",
-                            product_id = "2",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "5",
-                            product_id = "3",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "6",
-                            product_id = "3",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "7",
-                            product_id = "4",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "8",
-                            product_id = "5",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "9",
-                            product_id = "6",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "10",
-                            product_id = "7",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "11",
-                            product_id = "8",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "12",
-                            product_id = "9",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "13",
-                            product_id = "10",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "14",
-                            product_id = "11",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "15",
-                            product_id = "6",
-                            size_id = "1"
-                        },
-                        new
-                        {
-                            id = "16",
-                            product_id = "25",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "17",
-                            product_id = "26",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "18",
-                            product_id = "27",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "19",
-                            product_id = "28",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "20",
-                            product_id = "29",
-                            size_id = "2"
-                        },
-                        new
-                        {
-                            id = "21",
-                            product_id = "30",
-                            size_id = "2"
-                        });
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Reciever", b =>
+            modelBuilder.Entity("final_project.Models.Entities.Receiver", b =>
                 {
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
@@ -1452,7 +1500,7 @@ namespace final_project.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Recievers");
+                    b.ToTable("Receivers");
 
                     b.HasData(
                         new
@@ -1531,10 +1579,16 @@ namespace final_project.Migrations
                     b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("payment_account")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("payment_accont")
+                    b.Property<string>("production")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sandbox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("shop_name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("user_id")
@@ -1554,8 +1608,10 @@ namespace final_project.Migrations
                             id = "1",
                             address = "193 NLB",
                             email = "buithikieu@gmail.com",
-                            name = "Shop mỹ phẩm bà Kèo",
-                            payment_accont = "abcxyz",
+                            payment_account = "abcxyz",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AflZ3L1sfI6M45m8x1OvqF-cLAPO2uWwfQTkTiwqdNrgS-RTQhjuAYqXJYOHDHxW82G_lPur_gGkz2eC",
+                            shop_name = "Shop mỹ phẩm bà Kèo",
                             user_id = "2"
                         },
                         new
@@ -1563,8 +1619,10 @@ namespace final_project.Migrations
                             id = "2",
                             address = "194 NLB",
                             email = "votuonghuan@gmail.com",
-                            name = "Ông Huân Vlog",
-                            payment_accont = "abcxyz",
+                            payment_account = "abcxyz",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AaWOS3eowQdRfXGojWXfp15QEgw4ylIUYw5iittDOOde9XYNAsrwjYW9236KebkAF_FeKR30t4fCjp7w",
+                            shop_name = "Ông Huân Vlog",
                             user_id = "7"
                         },
                         new
@@ -1572,34 +1630,11 @@ namespace final_project.Migrations
                             id = "3",
                             address = "195 NLB",
                             email = "nguyentruongson@gmail.com",
-                            name = "Bé Sơn Parody",
-                            payment_accont = "abcxyz",
+                            payment_account = "abcxyz",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AQk3ajkq4FqLtnXsIliLZ1NZzAHKWJzR70yMQdTfTg_8EbfBrmCJ44Bby1_cVkzFpwsEibf8uu3xGuSS",
+                            shop_name = "Bé Sơn Parody",
                             user_id = "8"
-                        });
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Size", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Sizes");
-
-                    b.HasData(
-                        new
-                        {
-                            id = "1",
-                            name = "250 ml"
-                        },
-                        new
-                        {
-                            id = "2",
-                            name = "500 ml"
                         });
                 });
 
@@ -1616,6 +1651,9 @@ namespace final_project.Migrations
 
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("permission")
+                        .HasColumnType("bit");
 
                     b.Property<string>("phone")
                         .HasColumnType("nvarchar(max)");
@@ -1637,6 +1675,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "damhoangbuu@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 1,
                             user_name = "Đàm Văn Hoàng Bửu"
@@ -1647,6 +1686,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "buithikieu@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 2,
                             user_name = "Bùi Thị Kiều"
@@ -1657,6 +1697,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "tranthusuong@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Thu Sương"
@@ -1667,6 +1708,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "tranphuquy@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Phú Quy"
@@ -1677,6 +1719,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "tranchivi@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Chí Vĩ"
@@ -1687,6 +1730,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "trananhthu@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 3,
                             user_name = "Trần Thị Anh Thư"
@@ -1697,6 +1741,7 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "votuonghuan@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 2,
                             user_name = "Võ Tường Huân"
@@ -1707,9 +1752,46 @@ namespace final_project.Migrations
                             address = "193 NLB",
                             email = "nguyentruongson@gmail.com",
                             password = "123456",
+                            permission = true,
                             phone = "0898237228",
                             role = 2,
                             user_name = "Nguyễn Trường Sơn"
+                        });
+                });
+
+            modelBuilder.Entity("final_project.Models.Entities.Website", b =>
+                {
+                    b.Property<string>("id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("production")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sandbox")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Websites");
+
+                    b.HasData(
+                        new
+                        {
+                            id = "1",
+                            address = "Núi Thành,Quảng Nam",
+                            email = "buithikieu16tclc3@gmail",
+                            phone = "0372751805",
+                            production = "AakS9m2vudatyxfs7xLTHAiA_oEgZ5h7lK8D6JlhTOUv24riXWap8bTK5fatuvlLVsnQ1TVX8Lm55zVr",
+                            sandbox = "AYYYpz6WNLv_ibeOkju_7uX2SM1NWRmTd3VrE-HEu7UuXEdvSvQ1vLGUS6upj9TIGV_Cv_wTfG8fZo6O"
                         });
                 });
 
@@ -1723,8 +1805,8 @@ namespace final_project.Migrations
             modelBuilder.Entity("final_project.Models.Entities.Check_paid_shop", b =>
                 {
                     b.HasOne("final_project.Models.Entities.Shop", "Shop")
-                        .WithOne("Check_Paid_Shop")
-                        .HasForeignKey("final_project.Models.Entities.Check_paid_shop", "shop_id");
+                        .WithMany("Check_Paid_Shops")
+                        .HasForeignKey("shop_id");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Comment", b =>
@@ -1744,9 +1826,13 @@ namespace final_project.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("payment_id");
 
-                    b.HasOne("final_project.Models.Entities.Reciever", "Reciever")
+                    b.HasOne("final_project.Models.Entities.Receiver", "Reciever")
                         .WithOne("Order")
-                        .HasForeignKey("final_project.Models.Entities.Order", "reciever_id");
+                        .HasForeignKey("final_project.Models.Entities.Order", "receiver_id");
+
+                    b.HasOne("final_project.Models.Entities.Shop", "shop")
+                        .WithMany("Orders")
+                        .HasForeignKey("shop_id");
 
                     b.HasOne("final_project.Models.Entities.User", "User")
                         .WithMany("Orders")
@@ -1784,17 +1870,6 @@ namespace final_project.Migrations
                     b.HasOne("final_project.Models.Entities.Product", "Product")
                         .WithMany("product_Colors")
                         .HasForeignKey("product_id");
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Product_Size", b =>
-                {
-                    b.HasOne("final_project.Models.Entities.Product", "Product")
-                        .WithMany("Product_Sizes")
-                        .HasForeignKey("product_id");
-
-                    b.HasOne("final_project.Models.Entities.Size", "Size")
-                        .WithMany("Product_Sizes")
-                        .HasForeignKey("size_id");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Shop", b =>

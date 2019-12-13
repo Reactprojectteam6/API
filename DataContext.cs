@@ -12,9 +12,9 @@ namespace final_project
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
-    
+      
         public DbSet<Shop> Shops { get; set; }
-        public DbSet<Reciever> Recievers { get; set; }
+        public DbSet<Receiver> Receivers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Payment_method> Payment_methods { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -23,19 +23,21 @@ namespace final_project
         public DbSet<Color> Colors { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product_Color> product_Colors {get;set;}
-    
-          protected override void OnModelCreating(ModelBuilder modelBuilder)
+        public DbSet<Check_paid_shop> Check_Paid_Shops{get;set;}
+        public DbSet<Website> Websites{get;set;}
+             protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
-            modelBuilder.ApplyConfiguration(new ShopConfiguration());
           
+            modelBuilder.ApplyConfiguration(new ShopConfiguration());
+           modelBuilder.ApplyConfiguration(new WebsiteConfiguration());
+             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
             modelBuilder.ApplyConfiguration(new Check_paid_shopConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new Product_ColorConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
-            modelBuilder.ApplyConfiguration(new RecieverConfiguration());
+            modelBuilder.ApplyConfiguration(new ReceiverConfiguration());
             modelBuilder.ApplyConfiguration(new Payment_methodConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new Order_detailConfiguration());

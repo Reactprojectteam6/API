@@ -12,22 +12,31 @@ namespace final_project.Models.Entities.DataConfiguration
             builder.HasData(
                 new Check_paid_shop{
                     id = "1",
-                    date_paid = DateTime.Now,
-                    date_expired = DateTime.Now,
+                    date_paid = new DateTime(2019,8, 18),
+                    date_expired = new DateTime(2019,9, 18),
                     money = 200000,
                     shop_id = "1"
                 },
                 new Check_paid_shop{
                     id = "2",
-                    date_paid = DateTime.Now,
-                    date_expired = DateTime.Now,
+                    date_paid = new DateTime(2019,8, 18),
+                    date_expired = new DateTime(2019,9, 18),
                     money = 200000,
                     shop_id = "2"
                 },
                 new Check_paid_shop{
+                    
                     id = "3",
-                    date_paid = DateTime.Now,
-                    date_expired = DateTime.Now,
+                    date_paid =  new DateTime(2019,8, 18),
+                    date_expired = new DateTime(2019,9, 18),
+                    money = 200000,
+                    shop_id = "3"
+                },
+                   new Check_paid_shop{
+                    
+                    id = "4",
+                    date_paid = new DateTime(2019,9, 18),
+                    date_expired = new DateTime(2019,10, 18),
                     money = 200000,
                     shop_id = "3"
                 }

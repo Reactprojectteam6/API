@@ -18,6 +18,8 @@ using System.Security.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
  using Microsoft.IdentityModel.Tokens;
 using final_project.Controllers;
+using Microsoft.AspNetCore.Http;
+
 namespace final_project
 {
     public class Startup
@@ -39,9 +41,14 @@ namespace final_project
               services.AddScoped<IProductService,ProductService>();  
              services.AddScoped<ICategoryService,CategoryService>(); 
               services.AddScoped<IUserService,UserService>(); 
-              services.AddScoped<IOrderService,OrderService>();
+             // services.AddScoped<IOrderService,OrderService>();
               services.AddScoped<IOrderDetailService,OrderDetailService>();
               services.AddScoped<IColorService,ColorService>();  
+             services.AddScoped<ICommentService,CommentService>(); 
+            services.AddScoped<IOrderService,OrderService>();
+            services.AddScoped<IOrderDetailService,OrderDetailService>();
+            services.AddScoped<IReceiverService,ReceiverService>();
+            services.AddScoped<IShopService,ShopService>();
              services.AddMvc().AddNewtonsoftJson();
             services.AddMvc();
             services.AddAuthentication(options =>
@@ -92,8 +99,8 @@ namespace final_project
            //app.UseCors(options => options.AllowAnyOrigin());  
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
+           
+           app.UseRouting();
             app.UseAuthentication();  // Must be before app.UseMvc
             //app.UseMvc();
             app.UseAuthorization();

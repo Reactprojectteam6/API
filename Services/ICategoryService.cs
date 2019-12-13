@@ -13,6 +13,7 @@ namespace final_project.Services
         public void DeleteCategory(string id);
         public List <Category> GetSubCategory(); 
         public List<Category> GetCategory();
-        public  List<Product>  GetProductByCategory(string id);
+        public  List<Product>  GetProductByCategory(string  id);
+       
     }
 }

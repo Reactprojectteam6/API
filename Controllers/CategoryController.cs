@@ -26,7 +26,7 @@ namespace final_project.Controllers
         }
 
         [HttpGet("{id}")]   //get sv
-        public ActionResult<Category> Get(string id)
+        public ActionResult<Category> Get(string  id)
         { 
             return _categoryservice.GetCategoryById(id);
         }
@@ -37,14 +37,14 @@ namespace final_project.Controllers
         }
 
         [HttpPut("{id}")]  //update sv
-        public void Put(string id, [FromBody] Category category)
+        public void Put(string  id, [FromBody] Category category)
         {
            _categoryservice.UpdateCategory(id,category);
              
         }
 
         [HttpDelete("{id}")] //delete sv
-        public void Delete(string id)
+        public void Delete(string  id)
         {
            _categoryservice.DeleteCategory(id);
         }

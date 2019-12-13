@@ -16,9 +16,11 @@ namespace final_project.Models.Entities
         public string user_id{get;set;}
         public string address{get;set;}
         public string email {get;set;}
+        public string sandbox{get;set;}
+        public string production {get;set;}
         [ForeignKey("user_id")]
         public User User{get;set;}
-        public Check_paid_shop Check_Paid_Shop{get;set;}
+        public ICollection<Check_paid_shop> Check_Paid_Shops{get;set;}
          [JsonIgnore] 
         [IgnoreDataMember] 
         public ICollection<Product> Products{get;set;}

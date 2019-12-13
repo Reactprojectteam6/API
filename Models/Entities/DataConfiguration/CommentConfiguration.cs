@@ -65,6 +65,64 @@ namespace final_project.Models.Entities.DataConfiguration
                     rate = 5,
                     product_id = "3",
                     user_id = "4"
+                },
+                 new Comment{
+                    id = "9",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "4",
+                    user_id = "4"
+                },
+                 new Comment{
+                    id = "10",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "5",
+                    user_id = "4"
+                }
+                ,
+                 new Comment{
+                    id = "11",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "6",
+                    user_id = "4"
+                }
+                 ,
+                 new Comment{
+                    id = "12",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "7",
+                    user_id = "4"
+                } ,
+                 new Comment{
+                    id = "13",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "8",
+                    user_id = "4"
+                } ,
+                 new Comment{
+                    id = "14",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "9",
+                    user_id = "4"
+                } ,
+                 new Comment{
+                    id = "15",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "10",
+                    user_id = "4"
+                },
+                 new Comment{
+                    id = "16",
+                    contents = "Oke",
+                    rate = 1,
+                    product_id = "11",
+                    user_id = "4"
                 }
             );
         }
