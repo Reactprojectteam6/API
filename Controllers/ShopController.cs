@@ -76,7 +76,28 @@ namespace final_project.Controllers
             return _Service.getPaypal(id);
             
         }
- 
+        [HttpGet("Payment/{id}")]//lich su tra phi thanh toan cua shop
+        [Authorize]
+        public ActionResult<dynamic> getPaymentOfShop(string id)
+        {  //Get all user chi co admin dc get
+        
+            return _Service.getPaymentOfShop(id);
+            
+        }
+        [HttpGet("PaypalWeb")]//lay tai khoan paypal cua web de thanh toan
+        [Authorize]
+        public ActionResult<dynamic>  GetPaypalWeb()
+        {  //Get all user chi co admin dc get
+        
+            return _Service.getPayPalWeb();
+            
+        }
+          [HttpPost("pay/web")]
+         public Check_paid_shop Post([FromBody] Check_paid_shop check_Paid_Shop)//tao hoa don khi thah toan cho web
+        { return _Service.createBilltoPayforShop(check_Paid_Shop);
+        }
+        
+     
           
       
     }

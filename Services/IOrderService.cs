@@ -15,5 +15,7 @@ namespace final_project.Services
         public void DeleteOrder(string id);
         public dynamic GetOrderByID(string id);
         public dynamic GetListProduct();
+        public void UpdateOrder(string id,Order order);
+         public dynamic GetOrdersOnShop(string shop_id);
     }
 }

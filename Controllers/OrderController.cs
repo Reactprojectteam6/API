@@ -71,7 +71,17 @@ namespace final_project.Controllers
            return _orderService.GetListProduct();
         
         }
-
+          [HttpGet("shop/{shop_id}")]
+        public ActionResult<dynamic> GetOrdersOnShop(string shop_id)
+        {
+            return _orderService.GetOrdersOnShop(shop_id);
+        }
+        [HttpPut("{id}")]
+        public void Put(string id, [FromBody] Order order)
+        {
+            _orderService.UpdateOrder(id,order);
+        }
+        
           
       
     }

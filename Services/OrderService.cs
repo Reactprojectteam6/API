@@ -65,5 +65,18 @@ namespace final_project.Services
             return products;
 
            }
+           //shop
+          public dynamic GetOrdersOnShop(string shop_id)
+          {
+            var s = _context.Orders.Where(p=>p.shop_id==shop_id).Select(p=>new{p.id,p.date_create,p.date_paid,p.status,p.total,p.User.user_name,p.Reciever.fullname,p.Order_Details,p.Payment_Method.name}).OrderByDescending(g=>g.date_create);
+            return s;
+          }
+            public void UpdateOrder(string id,Order order){
+          var old_order=_context.Orders.FirstOrDefault(x=>x.id==id);
+            old_order.date_paid=order.date_paid;
+            old_order.status=order.status;
+           _context.SaveChanges();
+
+        }
     }
 }

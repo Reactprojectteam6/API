@@ -16,5 +16,10 @@ namespace final_project.Services
       
        public List<User> getUserByName(string name);
 
+       //shop
+        public string GetShopID(string id);
+        public Shop GetShop(string id);
+        public void UpdateShop(string shop_id,Shop newShop);
+
     }
 }

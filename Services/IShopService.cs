@@ -11,5 +11,9 @@ namespace final_project.Services
        public dynamic GetAllShop();
        public dynamic getShopByName(string name);
        public dynamic getPaypal(string id);
+       public dynamic getPaymentOfShop(string id);
+       public dynamic getPayPalWeb();
+       public Check_paid_shop createBilltoPayforShop(Check_paid_shop check_Paid_Shop);
+
     }
 }

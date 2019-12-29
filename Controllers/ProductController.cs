@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using final_project;
 using final_project.Models.Entities;
 using final_project.Services;
+using Microsoft.AspNetCore.Authorization;
+
 namespace final_project.Controllers
 {
     [Route("api/[controller]")]
@@ -27,18 +29,6 @@ namespace final_project.Controllers
         public ActionResult<dynamic> Get(string id)
         { 
             return _productservice.GetProductById(id);
-        }
-
-        [HttpPost]  //tao sv
-        public void Post([FromBody] Product product)
-        { _productservice.AddProduct(product);
-        }
-
-        [HttpPut("{id}")]  //update sv
-        public void Put( [FromBody] Product product)
-        {
-           _productservice.UpdateProduct(product);
-             
         }
 
         [HttpDelete("{id}")] //delete sv
@@ -82,6 +72,35 @@ namespace final_project.Controllers
         {  
             return _productservice.GetHotProduct();
 
+        }
+
+        //shop
+        [HttpGet("Shop/{shop_id}")]
+        [Authorize]
+        public ActionResult<dynamic> GetProductsOnShop(string shop_id)
+        {
+            return _productservice.GetProductsOnShop(shop_id);
+        }
+        [HttpGet("{id}/detail")]
+        public ActionResult<dynamic> GetProductDetailByID(string id)
+        {
+            return _productservice.GetProductDetailByID(id);
+        }
+        [HttpPut("{id}/permission")]
+        public void UpdatePermission(string id, [FromBody] Product product)
+        {
+            _productservice.UpdatePermission(id,product);
+        }
+         [HttpPost]  //tao sv
+        public void Post([FromBody] dynamic product)
+        { _productservice.AddProduct(product);
+        }
+
+        [HttpPut("{id}/shop")]  //update sv
+        public void Put(string id, [FromBody] Product product)
+        {
+           _productservice.UpdateProductShop(id,product);
+             
         }
     }
 }
