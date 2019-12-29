@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using System.Runtime.Serialization;
 
 namespace final_project.Models.Entities
 {
@@ -19,6 +21,8 @@ namespace final_project.Models.Entities
         public string receiver_id{get;set;}
         [ForeignKey("receiver_id")]
         public Receiver Reciever{get;set;}
+         [JsonIgnore] 
+        [IgnoreDataMember] 
         public ICollection<Order_detail> Order_Details{get;set;}
         public string user_id{get;set;}
         [ForeignKey("user_id")]

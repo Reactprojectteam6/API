@@ -25,5 +25,7 @@ namespace final_project.Services
         public void UpdatePermission(string id,Product product);
         public void AddProduct(dynamic product);
         public void UpdateProductShop(string id,Product product);
+        public dynamic getProductOnShopByName(string shop_id,string name);
+        public List<Product> GetListProductToRating(string id);
     }
 }

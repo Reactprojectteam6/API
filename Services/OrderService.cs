@@ -17,12 +17,6 @@ namespace final_project.Services
         var s=_context.Orders.Where(p=>p.user_id==id).Select(p=>new{p.id,p.date_create,p.status,p.total,p.Payment_Method.name,p.Order_Details}).OrderByDescending(p=>p.date_create);
         return s.ToList();
         }
-          
-        public Order GetOrderById(string  id)
-        { var s=_context.Orders.Where(p=>p.id==id).Select(p=>p).FirstOrDefault();
-        return s;
-
-        }
         public Order AddOrder(Order order){
             int max=1;
             var s=_context.Orders.Select(p=>p.id);
@@ -49,14 +43,19 @@ namespace final_project.Services
 
         }
         public void DeleteOrder(string id){
-             var order=new Order();
+            var order=new Order();
           order=_context.Orders.FirstOrDefault(x=>x.id==id);
+          var order_details = _context.Order_details.Select(p=>p).Where(p=>p.order_id == order.id);
+          foreach(Order_detail i in order_details)
+          {
+            _context.Order_details.Remove(i);
+          }
           _context.Orders.Remove(order);
           _context.SaveChanges();
         }
           public dynamic GetOrderByID(string id)
           {
-            var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create,p.Reciever.phone,p.Reciever.address});
+            var s=_context.Orders.Where(p=>p.id==id).Select(p=>new{p.id,p.Reciever.fullname,p.Payment_Method.name,p.total,p.status,p.date_create,p.Reciever.phone,p.Reciever.address,p.User.user_name,p.Order_Details});
             return s;
           }
            public dynamic GetListProduct()

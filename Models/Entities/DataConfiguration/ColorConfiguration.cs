@@ -12,19 +12,19 @@ namespace final_project.Models.Entities.DataConfiguration
             builder.HasData(
                 new Color{
                     id = "1",
-                    name = "Đỏ"
+                    color_name = "Đỏ"
                 },
                 new Color{
                     id = "2",
-                    name = "Hồng"
+                    color_name = "Hồng"
                 },
                 new Color{
                     id = "3",
-                    name = "Trắng"
+                    color_name = "Trắng"
                 },
                 new Color{
                     id = "4",
-                    name = "Đen"
+                    color_name = "Đen"
                 }
             );
         }

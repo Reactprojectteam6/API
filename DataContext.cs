@@ -22,7 +22,6 @@ namespace final_project
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Product_Color> product_Colors {get;set;}
         public DbSet<Check_paid_shop> Check_Paid_Shops{get;set;}
         public DbSet<Website> Websites{get;set;}
              protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -35,7 +34,6 @@ namespace final_project
             modelBuilder.ApplyConfiguration(new Check_paid_shopConfiguration());
             modelBuilder.ApplyConfiguration(new ColorConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
-            modelBuilder.ApplyConfiguration(new Product_ColorConfiguration());
             modelBuilder.ApplyConfiguration(new CommentConfiguration());
             modelBuilder.ApplyConfiguration(new ReceiverConfiguration());
             modelBuilder.ApplyConfiguration(new Payment_methodConfiguration());

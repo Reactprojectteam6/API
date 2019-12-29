@@ -23,7 +23,7 @@ namespace final_project.Controllers
             _context = context;
         }
       
-        //delete order
+       
         [HttpDelete("{id}")]
         [Authorize]
         public void Delete(string  id)//xoa shop/xoa product/xoa order lien quan den shop
@@ -31,7 +31,7 @@ namespace final_project.Controllers
         
             _Service.Delete(id);
         }
-     //get all shop
+    
         [HttpGet]
         [Authorize]
         public ActionResult<dynamic> Get()
@@ -72,23 +72,43 @@ namespace final_project.Controllers
         [Authorize]
         public ActionResult<dynamic> GetPayPal(string id)
         {  //Get all user chi co admin dc get
+            var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+             
         
+        var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
+        var Shop_ID=tokenS.Claims.First(claim => claim.Type =="Shop_ID").Value;
+         if(Role=="Shop"&&Shop_ID==id)
             return _Service.getPaypal(id);
+            else return BadRequest();
             
         }
         [HttpGet("Payment/{id}")]//lich su tra phi thanh toan cua shop
         [Authorize]
         public ActionResult<dynamic> getPaymentOfShop(string id)
-        {  //Get all user chi co admin dc get
+        {   var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+             
+        
+        var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
+        var Shop_ID=tokenS.Claims.First(claim => claim.Type =="Shop_ID").Value;
+         if(Role=="Shop"&&Shop_ID==id)
         
             return _Service.getPaymentOfShop(id);
+            else return BadRequest();
             
         }
         [HttpGet("PaypalWeb")]//lay tai khoan paypal cua web de thanh toan
         [Authorize]
         public ActionResult<dynamic>  GetPaypalWeb()
         {  //Get all user chi co admin dc get
-        
+            
             return _Service.getPayPalWeb();
             
         }

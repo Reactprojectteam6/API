@@ -31,14 +31,16 @@ public class TokenController : ControllerBase
     public IActionResult Get(string email, string password)
     {      var user=_userservice.CheckLoginUser(email,password);
            if(user!=null&&user.permission==true)
-            return new ObjectResult(GenerateToken(user.role.ToString(),user.id));
+           { string shop_id=_userservice.GetShopByUser(user.id);
+            return new ObjectResult(GenerateToken(user.role.ToString(),user.id,shop_id));
+           }
             else
             return new OkResult();
     }
 
     // Generate a Token with expiration date and Claim meta-data.
     // And sign the token with the SIGNING_KEY
-    private string GenerateToken(string role,string id)
+    private string GenerateToken(string role,string id,string shop_id)
     {       string roles="";
        
             if(role=="1") roles="User";
@@ -47,6 +49,7 @@ public class TokenController : ControllerBase
            var claims = new List<Claim>();
             claims.Add(new Claim("Role",roles));
             claims.Add(new Claim("ID",id));
+            claims.Add(new Claim("Shop_ID",shop_id));
             claims.Add(new Claim("Our_Custom_Claim", "Our custom value"));
             claims.Add(new Claim("Id", "110"));
            var token = new JwtSecurityToken(

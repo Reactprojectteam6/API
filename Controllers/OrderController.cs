@@ -14,6 +14,7 @@ namespace final_project.Controllers
 {  
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OrderController : ControllerBase
     {   
         private IOrderService _orderService;
@@ -49,6 +50,7 @@ namespace final_project.Controllers
         public  ActionResult<dynamic> GetOrderByID(string id)
         {  
            return _orderService.GetOrderByID(id);
+           
         
         }
         [HttpPut("{id}/Cancel")]  //update sv
@@ -71,9 +73,12 @@ namespace final_project.Controllers
            return _orderService.GetListProduct();
         
         }
+        //shop buu
           [HttpGet("shop/{shop_id}")]
         public ActionResult<dynamic> GetOrdersOnShop(string shop_id)
-        {
+        {     
+
+
             return _orderService.GetOrdersOnShop(shop_id);
         }
         [HttpPut("{id}")]

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using System.Runtime.Serialization;
 
 namespace final_project.Models.Entities
 {
@@ -12,6 +14,8 @@ namespace final_project.Models.Entities
         public int price{get;set;}
         public string product_id{get;set;}
         [ForeignKey("product_id")]
+         [JsonIgnore] 
+        [IgnoreDataMember] 
         public Product Product{get;set;}
         public int quantity{get;set;}
         public string order_id{get;set;}

@@ -60,7 +60,7 @@ namespace final_project.Controllers
 
         [HttpPut("{id}")]
         [Authorize]
-        public void Put([FromBody] User user)
+        public ActionResult<User> Put([FromBody] User user)
         {  //Chi co user do or admin dc update infor
             var handler = new JwtSecurityTokenHandler();
             string authHeader = Request.Headers["Authorization"];
@@ -71,7 +71,9 @@ namespace final_project.Controllers
         var ID = tokenS.Claims.First(claim => claim.Type =="ID").Value;
         var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
         if(ID==user.id||Role=="Admin")
-            _userService.UpdateUser(user);
+            return _userService.UpdateUser(user);
+            else return BadRequest();
+        
         }
          
 
@@ -91,9 +93,9 @@ namespace final_project.Controllers
 
 
         [HttpPost]
-        public void Post([FromBody] User user)
+        public ActionResult<User> Post([FromBody] User user)
         {    //(_userService.GetMaxId())+1;
-            _userService.AddUser(user);
+            return _userService.AddUser(user);
         }
         
 

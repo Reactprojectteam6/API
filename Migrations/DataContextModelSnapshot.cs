@@ -174,7 +174,7 @@ namespace final_project.Migrations
                     b.Property<string>("id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("name")
+                    b.Property<string>("color_name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -185,22 +185,22 @@ namespace final_project.Migrations
                         new
                         {
                             id = "1",
-                            name = "Đỏ"
+                            color_name = "Đỏ"
                         },
                         new
                         {
                             id = "2",
-                            name = "Hồng"
+                            color_name = "Hồng"
                         },
                         new
                         {
                             id = "3",
-                            name = "Trắng"
+                            color_name = "Trắng"
                         },
                         new
                         {
                             id = "4",
-                            name = "Đen"
+                            color_name = "Đen"
                         });
                 });
 
@@ -527,6 +527,9 @@ namespace final_project.Migrations
                     b.Property<string>("cat_id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("color_id")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
@@ -552,6 +555,8 @@ namespace final_project.Migrations
 
                     b.HasIndex("cat_id");
 
+                    b.HasIndex("color_id");
+
                     b.HasIndex("shop_id");
 
                     b.ToTable("Products");
@@ -561,8 +566,9 @@ namespace final_project.Migrations
                         {
                             id = "1",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
-                            image = "ChongNang1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang1.jpg",
                             permission = true,
                             price = 900000,
                             product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
@@ -573,11 +579,12 @@ namespace final_project.Migrations
                         {
                             id = "2",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Có khả năng bảo vệ da mạnh mẽ dưới tác động của ánh nắng mặt trời, cung cấp độ ẩm cho da, làn da trắng hồng rạng rỡ, đầy sức sống",
-                            image = "ChongNang3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang3.jpg",
                             permission = true,
-                            price = 800000,
-                            product_name = "Kem Chống Nắng Dịu Nhẹ Với Chiết xuất Từ Thiên Nhiên Black Rouge Cica Green Sun Cream SPF50+/PA++++",
+                            price = 900000,
+                            product_name = "Kem chống nắng dâu",
                             quantity = 150,
                             shop_id = "1"
                         },
@@ -585,8 +592,9 @@ namespace final_project.Migrations
                         {
                             id = "3",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Kem chống nắng vật lý, chăm sóc da mẫn cảm, dưỡng trắng",
-                            image = "ChongNang2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang2.jpg",
                             permission = true,
                             price = 1000000,
                             product_name = "Kem chống nắng Uriage Bariesun SPF50+ - Kem chống nắng tốt nhất giúp tái tạo da và ngừa da hư tổn",
@@ -597,8 +605,9 @@ namespace final_project.Migrations
                         {
                             id = "4",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "ChongNang4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang4.jpg",
                             permission = true,
                             price = 1500000,
                             product_name = "Kem chống nắng kiêm kem lót nâng tone da A'pieu Pure Block Tone-Up Sun Base SPF50+ PA+++",
@@ -609,8 +618,9 @@ namespace final_project.Migrations
                         {
                             id = "5",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "ChongNang5.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang5.jpg",
                             permission = true,
                             price = 900000,
                             product_name = "Kem Chống Nắng Dạng Gel Chống Tia Hồng Ngoại, Giảm Nhiệt Độ Tức Thì Make Prem UV Defense Me Blue Ray Sun Gel SPF50/PA++++",
@@ -621,8 +631,9 @@ namespace final_project.Migrations
                         {
                             id = "6",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "ChongNang6.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang6.jpg",
                             permission = true,
                             price = 800000,
                             product_name = " Kem Chống Nắng Dưỡng Trắng Da Milky Dress Aqua Sun Cream",
@@ -633,8 +644,9 @@ namespace final_project.Migrations
                         {
                             id = "7",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Giúp làm dịu da, kháng viêm, giảm kích ứng da ngay lần đầu sử dụng.",
-                            image = "ChongNang7.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang7.jpg",
                             permission = true,
                             price = 1000000,
                             product_name = "Kem Chống Nắng Chiết Xuất Măng Cụt It's Skin Tropical Sun Gel Mangosteen SPF50+/PA++++ ",
@@ -645,8 +657,9 @@ namespace final_project.Migrations
                         {
                             id = "8",
                             cat_id = "3",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "ChongNang8.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang8.jpg",
                             permission = true,
                             price = 1500000,
                             product_name = "Xịt Chống Nắng Làm Dịu Da Giảm Nhiệt Tức Thì Mediheal Labocare Ceramatica Sun Spray",
@@ -657,8 +670,9 @@ namespace final_project.Migrations
                         {
                             id = "9",
                             cat_id = "4",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "DuongAmSau.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongAmSau.jpg",
                             permission = true,
                             price = 450000,
                             product_name = "Serum  dưỡng ẩm Innisfree",
@@ -669,8 +683,9 @@ namespace final_project.Migrations
                         {
                             id = "10",
                             cat_id = "4",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "DuongAmSauDanHoi.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongAmSauDanHoi.jpg",
                             permission = true,
                             price = 700000,
                             product_name = "Serum dưỡng ẩm đàn hồi Innisfree",
@@ -681,8 +696,9 @@ namespace final_project.Migrations
                         {
                             id = "11",
                             cat_id = "4",
+                            color_id = "1",
                             description = "Sản phẩm đến từ Hàn Quốc chất lượng cao",
-                            image = "DuongAm.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongAm.jpg",
                             permission = true,
                             price = 600000,
                             product_name = "Kem Dưỡng Ẩm Và Giữ Ẩm Chuyên Sâu Với Chiết Xuất Từ Gừng Và Mật Ong Innisfree Ginger Honey Cream",
@@ -693,8 +709,9 @@ namespace final_project.Migrations
                         {
                             id = "12",
                             cat_id = "5",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "MatNaDatSet.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/MatNaDatSet.jpg",
                             permission = true,
                             price = 400000,
                             product_name = "Mặt nạ dưỡng da đất sét",
@@ -705,8 +722,9 @@ namespace final_project.Migrations
                         {
                             id = "13",
                             cat_id = "5",
+                            color_id = "1",
                             description = "Không chỉ là loại quả bổ dưỡng, cam còn có tác dụng làm đẹp da tuyệt vời và lành tính nhất. Cam chứa nhiều vitamin A, B, E, Kali…giúp cung cấp dưỡng chất nuôi dưỡng da. Đồng thời cam cung cấp độ ẩm cho da giúp da khỏe mạnh và đàn hồi tốt",
-                            image = "MatNaCam.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/MatNaCam.jpg",
                             permission = true,
                             price = 900000,
                             product_name = "Mặt nạ dưỡng da từ quả Cam",
@@ -717,8 +735,9 @@ namespace final_project.Migrations
                         {
                             id = "14",
                             cat_id = "5",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "MatNa1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/MatNa1.jpg",
                             permission = true,
                             price = 300000,
                             product_name = "Mặt Nạ Vitamin Dưỡng Trắng Da By Wishtrend Natural Vitamin 21.5% Enhancing Sheet Mask",
@@ -729,8 +748,9 @@ namespace final_project.Migrations
                         {
                             id = "15",
                             cat_id = "5",
+                            color_id = "1",
                             description = "Táo được biết đến là top thực phẩm giàu chất chống oxy hóa, giúp ngăn quá trình lão hóa",
-                            image = "MatNa2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/MatNa2.jpg",
                             permission = true,
                             price = 500000,
                             product_name = "Mặt Nạ Làm Sáng Da, Loại Bỏ Tế Bào Chết Chiết Xuất Từ TáoROUNDLAB Apple Peeling Mask ",
@@ -741,8 +761,9 @@ namespace final_project.Migrations
                         {
                             id = "16",
                             cat_id = "5",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "MatNa4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/MatNa4.jpg",
                             permission = true,
                             price = 270000,
                             product_name = "Mặt Nạ Ngủ Dưỡng Trắng Chiết Xuất Từ Trái Thanh Yên Some By Mi Yuja Niacin 30 Days Miracle Brightening Sleeping Mask",
@@ -753,8 +774,9 @@ namespace final_project.Migrations
                         {
                             id = "17",
                             cat_id = "8",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "MatNa3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/MatNa3.jpg",
                             permission = true,
                             price = 200000,
                             product_name = "Mặt Nạ Ngủ Môi Laneige Lip Sleeping Mask",
@@ -765,8 +787,9 @@ namespace final_project.Migrations
                         {
                             id = "18",
                             cat_id = "6",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "NuocHoaHong1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/NuocHoaHong1.jpg",
                             permission = true,
                             price = 820000,
                             product_name = "Nước hoa hồng Innisfree",
@@ -777,8 +800,9 @@ namespace final_project.Migrations
                         {
                             id = "19",
                             cat_id = "6",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "NuocHoaHong2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/NuocHoaHong2.jpg",
                             permission = true,
                             price = 900000,
                             product_name = "Nước hoa hồng Tea Tree Cica",
@@ -789,8 +813,9 @@ namespace final_project.Migrations
                         {
                             id = "20",
                             cat_id = "8",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "ChamSocMoi2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChamSocMoi2.jpg",
                             permission = true,
                             price = 210000,
                             product_name = "Son Dưỡng Môi Innisfree",
@@ -801,8 +826,9 @@ namespace final_project.Migrations
                         {
                             id = "21",
                             cat_id = "8",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "DuongMoi1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongMoi1.jpg",
                             permission = true,
                             price = 110000,
                             product_name = "Son Dưỡng Innisfree Canola Honey Lip Balm",
@@ -813,8 +839,9 @@ namespace final_project.Migrations
                         {
                             id = "22",
                             cat_id = "8",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "DuongMoi2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongMoi2.jpg",
                             permission = true,
                             price = 810000,
                             product_name = "Son Dưỡng Môi Có Màu Innisfree Glow Tint Lip Balm",
@@ -825,8 +852,9 @@ namespace final_project.Migrations
                         {
                             id = "23",
                             cat_id = "8",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "DuongMoi3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongMoi3.jpg",
                             permission = true,
                             price = 170000,
                             product_name = "Son Dưỡng 16Brand Fruit Chu Petit Lip Balm",
@@ -837,8 +865,9 @@ namespace final_project.Migrations
                         {
                             id = "24",
                             cat_id = "8",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "DuongMoi4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongMoi4.jpg",
                             permission = true,
                             price = 920000,
                             product_name = "Mặt Nạ Ngủ Môi Carenel Berry Lip Night Mask",
@@ -849,8 +878,9 @@ namespace final_project.Migrations
                         {
                             id = "25",
                             cat_id = "8",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "DuongMoi5.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/DuongMoi5.jpg",
                             permission = true,
                             price = 280000,
                             product_name = "Mặt Nạ Ngủ Môi Chiết Xuất Rau Má A'pieu Madecassoside Lip Sleeping Mask 20g",
@@ -861,8 +891,9 @@ namespace final_project.Migrations
                         {
                             id = "26",
                             cat_id = "9",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "KemNen1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/KemNen1.jpg",
                             permission = true,
                             price = 670000,
                             product_name = "Kem nền Innisfree",
@@ -873,8 +904,9 @@ namespace final_project.Migrations
                         {
                             id = "27",
                             cat_id = "9",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "KemNen2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/KemNen2.jpg",
                             permission = true,
                             price = 100000,
                             product_name = "Kem nền Power Perfection BB cream",
@@ -885,8 +917,9 @@ namespace final_project.Migrations
                         {
                             id = "28",
                             cat_id = "9",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "KemNen3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/KemNen3.jpg",
                             permission = true,
                             price = 800000,
                             product_name = "Kem Nền Siêu Lì, Lâu Trôi A'pieu BB Maker Long Wear SPF30 PA+++",
@@ -897,8 +930,9 @@ namespace final_project.Migrations
                         {
                             id = "29",
                             cat_id = "9",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "KemNen4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/KemNen4.jpg",
                             permission = true,
                             price = 700000,
                             product_name = "Kem Nền Che Phủ Hoàn Hảo, Giúp Da Bóng Khỏe, Rạng Rỡ Suốt 24 Tiếng Etude House Double Lasting Serum Foundation SPF25 PA++",
@@ -909,8 +943,9 @@ namespace final_project.Migrations
                         {
                             id = "30",
                             cat_id = "9",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "KemNen5.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/KemNen5.jpg",
                             permission = true,
                             price = 300000,
                             product_name = "Kem Nền Che Phủ Tốt, Lâu Trôi I'm Meme I'm Genius Foundation All Cover",
@@ -921,8 +956,9 @@ namespace final_project.Migrations
                         {
                             id = "31",
                             cat_id = "10",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Mascara1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Mascara1.jpg",
                             permission = true,
                             price = 200000,
                             product_name = "Mascara Làm Dày Mi Không Lem Missha 4D Mascara",
@@ -933,8 +969,9 @@ namespace final_project.Migrations
                         {
                             id = "32",
                             cat_id = "10",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Mascara.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Mascara.jpg",
                             permission = true,
                             price = 100000,
                             product_name = "Mascara Siêu Dày Mi Innisfree Super Volumecara ",
@@ -945,8 +982,9 @@ namespace final_project.Migrations
                         {
                             id = "33",
                             cat_id = "10",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Mascara2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Mascara2.jpg",
                             permission = true,
                             price = 150000,
                             product_name = "Mascara Chân Mày Missha Color Wear Browcara",
@@ -957,8 +995,9 @@ namespace final_project.Migrations
                         {
                             id = "34",
                             cat_id = "10",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Mascara3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Mascara3.jpg",
                             permission = true,
                             price = 350000,
                             product_name = "Mascara Chuốt Mi Cong Vút Tự Nhiên, Chống Trôi Etude House Lash Perm Curl Fix Mascara",
@@ -969,8 +1008,9 @@ namespace final_project.Migrations
                         {
                             id = "35",
                             cat_id = "10",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Mascara4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Mascara4.jpg",
                             permission = true,
                             price = 180000,
                             product_name = "Mascara Giúp Dài Mi Chống Trôi Missha Length Boost Cara",
@@ -981,8 +1021,9 @@ namespace final_project.Migrations
                         {
                             id = "36",
                             cat_id = "10",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Mascara5.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Mascara5.jpg",
                             permission = true,
                             price = 210000,
                             product_name = "Mascara Chống Trôi , Làm Cong Mi Tự Nhiên Shionle Fixing High Heel Cara",
@@ -993,8 +1034,9 @@ namespace final_project.Migrations
                         {
                             id = "37",
                             cat_id = "11",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "PhanPhu1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/PhanPhu1.jpg",
                             permission = true,
                             price = 230000,
                             product_name = "Phấn phủ Play 101 Setting",
@@ -1005,8 +1047,9 @@ namespace final_project.Migrations
                         {
                             id = "38",
                             cat_id = "11",
+                            color_id = "4",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "PhanPhu2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/PhanPhu2.jpg",
                             permission = true,
                             price = 340000,
                             product_name = "Phấn phủ LANEIGE",
@@ -1017,8 +1060,9 @@ namespace final_project.Migrations
                         {
                             id = "39",
                             cat_id = "11",
+                            color_id = "4",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "PhanPhu3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/PhanPhu3.jpg",
                             permission = true,
                             price = 290000,
                             product_name = "Phấn Phủ Bột Kiềm Dầu Innisfree No Sebum Mineral Powder",
@@ -1029,8 +1073,9 @@ namespace final_project.Migrations
                         {
                             id = "40",
                             cat_id = "11",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "PhanPhu4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/PhanPhu4.jpg",
                             permission = true,
                             price = 320000,
                             product_name = "Phấn Phủ Bột Kiềm Dầu, Cố Định Lớp Makeup A'pieu Mineral 100 HD Powder",
@@ -1041,8 +1086,9 @@ namespace final_project.Migrations
                         {
                             id = "41",
                             cat_id = "11",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "PhanPhu5.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/PhanPhu5.jpg",
                             permission = true,
                             price = 450000,
                             product_name = "Phấn Phủ Dạng Nén Kiềm Dầu, Che Phủ Lỗ Chân Lông A'pieu Oil Control Film Pact",
@@ -1053,8 +1099,9 @@ namespace final_project.Migrations
                         {
                             id = "42",
                             cat_id = "11",
+                            color_id = "2",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "PhanPhu6.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/PhanPhu6.jpg",
                             permission = true,
                             price = 290000,
                             product_name = "Phấn Phủ Kiềm Dầu I'm Meme I'm Oil Cut Pact ",
@@ -1065,8 +1112,9 @@ namespace final_project.Migrations
                         {
                             id = "43",
                             cat_id = "12",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "SonLi.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/SonLi.jpg",
                             permission = true,
                             price = 430000,
                             product_name = "Son Thỏi Lì Merzy The First Lipstick",
@@ -1077,8 +1125,9 @@ namespace final_project.Migrations
                         {
                             id = "44",
                             cat_id = "12",
+                            color_id = "4",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "SonThoi.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/SonThoi.jpg",
                             permission = true,
                             price = 850000,
                             product_name = "Son Thỏi Lì ROM",
@@ -1089,8 +1138,9 @@ namespace final_project.Migrations
                         {
                             id = "45",
                             cat_id = "12",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Son1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Son1.jpg",
                             permission = true,
                             price = 350000,
                             product_name = "Son Kem Lì Black Rouge Air Fit Velvet Tint",
@@ -1101,8 +1151,9 @@ namespace final_project.Migrations
                         {
                             id = "46",
                             cat_id = "12",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Son2.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Son2.jpg",
                             permission = true,
                             price = 210000,
                             product_name = "Son kem lì cực nhẹ môi Romand Zero Velvet Tint",
@@ -1113,8 +1164,9 @@ namespace final_project.Migrations
                         {
                             id = "47",
                             cat_id = "12",
+                            color_id = "3",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Son3.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Son3.jpg",
                             permission = true,
                             price = 370000,
                             product_name = "Son Kem Lì Black Rouge Air Fit Velvet",
@@ -1125,8 +1177,9 @@ namespace final_project.Migrations
                         {
                             id = "48",
                             cat_id = "12",
+                            color_id = "1",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Son4.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Son4.jpg",
                             permission = true,
                             price = 800000,
                             product_name = "Son Tint Lì Lâu Trôi Black Rouge Power Proof Matte Tint ",
@@ -1137,8 +1190,9 @@ namespace final_project.Migrations
                         {
                             id = "49",
                             cat_id = "7",
+                            color_id = "4",
                             description = "Sản phẩm chất lượng cao đến từ Hàn Quốc",
-                            image = "Tinhchat.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/Tinhchat.jpg",
                             permission = true,
                             price = 800000,
                             product_name = "Tinh chất dưỡng ",
@@ -1149,335 +1203,14 @@ namespace final_project.Migrations
                         {
                             id = "50",
                             cat_id = "3",
+                            color_id = "4",
                             description = "Kem trang điểm chống nắng Innisfree SPF50+ PA++++ được rất nhiều chị em trên khắp thế giới yêu thích là bởi chất kem nhẹ bẫng, mềm mượt, tạo nên một lớp trang điểm hoàn hảo mà vẫn có chỉ số chống nắng cao ngất ngưởng, có thể bảo vệ làn da tuyệt đối dưới ánh nắng mặt trời ngày hè",
-                            image = "ChongNang1.jpg",
+                            image = "https://127.0.0.1:5001/api/Image/ChongNang1.jpg",
                             permission = true,
                             price = 900000,
                             product_name = "Kem chống nắng Innisfree SPF50+ PA++++",
                             quantity = 100,
                             shop_id = "1"
-                        });
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Product_Color", b =>
-                {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("color_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("product_id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("color_id");
-
-                    b.HasIndex("product_id");
-
-                    b.ToTable("product_Colors");
-
-                    b.HasData(
-                        new
-                        {
-                            id = "1",
-                            color_id = "3",
-                            product_id = "1"
-                        },
-                        new
-                        {
-                            id = "2",
-                            color_id = "3",
-                            product_id = "2"
-                        },
-                        new
-                        {
-                            id = "3",
-                            color_id = "3",
-                            product_id = "3"
-                        },
-                        new
-                        {
-                            id = "4",
-                            color_id = "3",
-                            product_id = "4"
-                        },
-                        new
-                        {
-                            id = "5",
-                            color_id = "3",
-                            product_id = "5"
-                        },
-                        new
-                        {
-                            id = "6",
-                            color_id = "3",
-                            product_id = "6"
-                        },
-                        new
-                        {
-                            id = "7",
-                            color_id = "3",
-                            product_id = "7"
-                        },
-                        new
-                        {
-                            id = "8",
-                            color_id = "3",
-                            product_id = "8"
-                        },
-                        new
-                        {
-                            id = "9",
-                            color_id = "3",
-                            product_id = "9"
-                        },
-                        new
-                        {
-                            id = "10",
-                            color_id = "3",
-                            product_id = "10"
-                        },
-                        new
-                        {
-                            id = "11",
-                            color_id = "3",
-                            product_id = "11"
-                        },
-                        new
-                        {
-                            id = "12",
-                            color_id = "3",
-                            product_id = "12"
-                        },
-                        new
-                        {
-                            id = "13",
-                            color_id = "3",
-                            product_id = "13"
-                        },
-                        new
-                        {
-                            id = "14",
-                            color_id = "3",
-                            product_id = "14"
-                        },
-                        new
-                        {
-                            id = "15",
-                            color_id = "3",
-                            product_id = "15"
-                        },
-                        new
-                        {
-                            id = "16",
-                            color_id = "3",
-                            product_id = "16"
-                        },
-                        new
-                        {
-                            id = "17",
-                            color_id = "1",
-                            product_id = "17"
-                        },
-                        new
-                        {
-                            id = "18",
-                            color_id = "2",
-                            product_id = "18"
-                        },
-                        new
-                        {
-                            id = "19",
-                            color_id = "1",
-                            product_id = "19"
-                        },
-                        new
-                        {
-                            id = "20",
-                            color_id = "1",
-                            product_id = "20"
-                        },
-                        new
-                        {
-                            id = "21",
-                            color_id = "2",
-                            product_id = "21"
-                        },
-                        new
-                        {
-                            id = "22",
-                            color_id = "1",
-                            product_id = "22"
-                        },
-                        new
-                        {
-                            id = "23",
-                            color_id = "2",
-                            product_id = "23"
-                        },
-                        new
-                        {
-                            id = "24",
-                            color_id = "4",
-                            product_id = "24"
-                        },
-                        new
-                        {
-                            id = "25",
-                            color_id = "4",
-                            product_id = "25"
-                        },
-                        new
-                        {
-                            id = "26",
-                            color_id = "4",
-                            product_id = "26"
-                        },
-                        new
-                        {
-                            id = "27",
-                            color_id = "4",
-                            product_id = "27"
-                        },
-                        new
-                        {
-                            id = "28",
-                            color_id = "4",
-                            product_id = "28"
-                        },
-                        new
-                        {
-                            id = "29",
-                            color_id = "4",
-                            product_id = "29"
-                        },
-                        new
-                        {
-                            id = "30",
-                            color_id = "3",
-                            product_id = "30"
-                        },
-                        new
-                        {
-                            id = "31",
-                            color_id = "3",
-                            product_id = "31"
-                        },
-                        new
-                        {
-                            id = "32",
-                            color_id = "3",
-                            product_id = "32"
-                        },
-                        new
-                        {
-                            id = "33",
-                            color_id = "3",
-                            product_id = "33"
-                        },
-                        new
-                        {
-                            id = "34",
-                            color_id = "3",
-                            product_id = "34"
-                        },
-                        new
-                        {
-                            id = "35",
-                            color_id = "3",
-                            product_id = "35"
-                        },
-                        new
-                        {
-                            id = "36",
-                            color_id = "1",
-                            product_id = "36"
-                        },
-                        new
-                        {
-                            id = "37",
-                            color_id = "1",
-                            product_id = "37"
-                        },
-                        new
-                        {
-                            id = "38",
-                            color_id = "2",
-                            product_id = "38"
-                        },
-                        new
-                        {
-                            id = "39",
-                            color_id = "2",
-                            product_id = "39"
-                        },
-                        new
-                        {
-                            id = "40",
-                            color_id = "2",
-                            product_id = "40"
-                        },
-                        new
-                        {
-                            id = "41",
-                            color_id = "1",
-                            product_id = "41"
-                        },
-                        new
-                        {
-                            id = "42",
-                            color_id = "1",
-                            product_id = "42"
-                        },
-                        new
-                        {
-                            id = "43",
-                            color_id = "1",
-                            product_id = "43"
-                        },
-                        new
-                        {
-                            id = "44",
-                            color_id = "1",
-                            product_id = "44"
-                        },
-                        new
-                        {
-                            id = "45",
-                            color_id = "1",
-                            product_id = "45"
-                        },
-                        new
-                        {
-                            id = "46",
-                            color_id = "1",
-                            product_id = "46"
-                        },
-                        new
-                        {
-                            id = "47",
-                            color_id = "1",
-                            product_id = "47"
-                        },
-                        new
-                        {
-                            id = "48",
-                            color_id = "1",
-                            product_id = "48"
-                        },
-                        new
-                        {
-                            id = "49",
-                            color_id = "1",
-                            product_id = "49"
-                        },
-                        new
-                        {
-                            id = "50",
-                            color_id = "1",
-                            product_id = "50"
                         });
                 });
 
@@ -1856,20 +1589,13 @@ namespace final_project.Migrations
                         .WithMany("Products")
                         .HasForeignKey("cat_id");
 
+                    b.HasOne("final_project.Models.Entities.Color", "color")
+                        .WithMany("Product")
+                        .HasForeignKey("color_id");
+
                     b.HasOne("final_project.Models.Entities.Shop", "Shop")
                         .WithMany("Products")
                         .HasForeignKey("shop_id");
-                });
-
-            modelBuilder.Entity("final_project.Models.Entities.Product_Color", b =>
-                {
-                    b.HasOne("final_project.Models.Entities.Color", "Color")
-                        .WithMany("Product_Colors")
-                        .HasForeignKey("color_id");
-
-                    b.HasOne("final_project.Models.Entities.Product", "Product")
-                        .WithMany("product_Colors")
-                        .HasForeignKey("product_id");
                 });
 
             modelBuilder.Entity("final_project.Models.Entities.Shop", b =>

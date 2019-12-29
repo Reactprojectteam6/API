@@ -9,7 +9,7 @@ namespace final_project.Models.Entities
     public class Color
     {
         public string id{get;set;}
-        public string name{get;set;}
-        public ICollection<Product_Color> Product_Colors{get;set;}
+        public string color_name{get;set;}
+        public ICollection<Product> Product{get;set;}
     }
 }

@@ -7,6 +7,7 @@ using final_project;
 using final_project.Models.Entities;
 using final_project.Services;
 using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace final_project.Controllers
 {
@@ -48,7 +49,13 @@ namespace final_project.Controllers
         {  
             return _productservice.GetColors(name);
         }
-       
+        //update so luong
+        [HttpPut("{id}")]  //update sv
+        public void Put([FromBody] Product product)
+        {   
+           _productservice.UpdateProduct(product);
+             
+        }
        [HttpGet("{id}/Rating")]
         public ActionResult<int> GetRating(string  id) //get list
         {  
@@ -73,7 +80,22 @@ namespace final_project.Controllers
             return _productservice.GetHotProduct();
 
         }
+        [HttpGet("Rating/{id}")]//get list_order_detail_to_rating
+          public ActionResult<IEnumerable<Product>> GetProductToRating(string id) //get list
+        {    var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+             
+        
+        var ID=tokenS.Claims.First(claim => claim.Type =="ID").Value;
+        if(ID==id)
+            return _productservice.GetListProductToRating(id);
+            else return BadRequest();
 
+        }
+          
         //shop
         [HttpGet("Shop/{shop_id}")]
         [Authorize]
@@ -93,14 +115,31 @@ namespace final_project.Controllers
         }
          [HttpPost]  //tao sv
         public void Post([FromBody] dynamic product)
-        { _productservice.AddProduct(product);
+        {    
+             _productservice.AddProduct(product);
+           
         }
-
+         
         [HttpPut("{id}/shop")]  //update sv
         public void Put(string id, [FromBody] Product product)
-        {
+        {        var handler = new JwtSecurityTokenHandler();
+            string authHeader = Request.Headers["Authorization"];
+            authHeader = authHeader.Replace("Bearer ", "");
+            var jsonToken = handler.ReadToken(authHeader);
+             var tokenS = handler.ReadToken(authHeader) as JwtSecurityToken;
+             
+        
+        var Role=tokenS.Claims.First(claim => claim.Type =="Role").Value;
+        var Shop_ID=tokenS.Claims.First(claim => claim.Type =="Shop_ID").Value;
+         if(Role=="Shop"&&Shop_ID==id)
            _productservice.UpdateProductShop(id,product);
              
+        }
+        [HttpGet("Shop/{shop_id}/ProductName={name}")]
+        [Authorize]
+        public ActionResult<dynamic> getProductShopByName(string shop_id,string name)
+        {
+            return _productservice.getProductOnShopByName(shop_id,name);
         }
     }
 }

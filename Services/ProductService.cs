@@ -24,7 +24,7 @@ namespace final_project.Services
 
         public dynamic GetProductById(string  id)
         {   var product=new Product();
-            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name,p.Shop.shop_name});
+            var s= _context.Products.Where(x=>x.id==id).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.color.color_name,p.Shop.shop_name});
             return s;
             
         }
@@ -56,12 +56,9 @@ namespace final_project.Services
           }
            public List<Color> GetColors(string name)
             { List<Color> list=new List<Color>();
-              var s=_context.Products.Where(p=>p.product_name==name&&p.permission==true&&p.quantity>0).Select(p=>p.id);
-             foreach( var i in s.ToList())
-             { var c=_context.product_Colors.Where(p=>p.product_id==i).Select(p=>p.Color);
-               list.Add(c.First());
-             }
-                 return list;
+              var s=_context.Products.Where(p=>p.product_name==name&&p.permission==true&&p.quantity>0).Select(p=>p.color).ToList();
+              if(s!=null) list=s;
+              return list;
           }
               
          public int GetRating(string id){
@@ -78,16 +75,10 @@ namespace final_project.Services
           }
              public dynamic GetProductByNameAndColor(string name,string color,string shop_id){
               dynamic a=new object();
-             var s1=_context.Colors.Where(p=>p.name==color).Select(p=>p.id);
-             var s=_context.product_Colors.Where(p=>p.color_id==s1.First()).Select(p=>p.Product);
-             foreach(var i in s.ToList())
-             {
-               if(i.product_name==name&&i.shop_id==shop_id) {
-                  var pro= _context.Products.Where(x=>x.id==i.id &&x.permission==true&&x.quantity>0).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.product_Colors.First().Color.name});
+            
+                  var pro= _context.Products.Where(x=>x.product_name==name&&x.permission==true&&x.quantity>0&&x.color.color_name==color).Select(p=>new{p.id,p.product_name,p.description,p.cat_id,p.price,p.quantity,p.image,p.shop_id,p.color.color_name});
                   return pro;
-             }
-             }
-             return a;
+         
             
              }
 
@@ -132,10 +123,34 @@ namespace final_project.Services
 
                }
              return products;
+
                 }
+                
+                  public List<Product> GetListProductToRating(string id)
+                  {  List<Product> list=new List<Product>();
+                    var a=_context.Orders.Where(p=>p.user_id==id&&p.status==2).Select(p=>p).ToList();
+                    if(a.Count()>=1)
+                    {
+                    foreach(var i in a)
+                    {   
+                       var p=_context.Order_details.Where(p=>p.order_id==i.id).Select(p=>p).ToList();
+                       if(p.Count()>=1)
+                       {
+                       foreach(var j in p)
+                       {
+                        var n=_context.Products.Where(p=>p.id==j.product_id).Select(p=>p).FirstOrDefault();
+                        var c=_context.Comments.Where(p=>p.user_id==id&&p.product_id==n.id).ToList();
+                        if(c.Count()<1)
+                        list.Add(n);
+                       }
+                       }
+                       
+                    }
+                    }
+                    return list;
+                  }
             //shop    
 
-#region Shop
             public void AddProduct(dynamic product)
         { Product p=new Product();
           int max = 1;
@@ -153,21 +168,12 @@ namespace final_project.Services
          p.price=product.price;
          p.quantity=product.quantity;
          p.shop_id = product.shop_id;
-         p.image = product.image;
-          _context.Products.Add(p);
+         p.image=product.image;
+         p.color_id=product.color_id;
+        _context.Products.Add(p);
          _context.SaveChanges();
          //tao 1 doi tuong product color
-         Product_Color product_Color=new Product_Color();
-           int max2 = 1;
-            var s2 = _context.product_Colors.Select(p=>p.id);
-            foreach( var i in s2)
-            {
-              if(max2< int.Parse(i)) max2 = int.Parse(i);
-            }
-            product_Color.id = (max2+1).ToString();
-            product_Color.product_id=p.id;
-            product_Color.color_id=product.color_id;
-            _context.product_Colors.Add(product_Color);
+          
             _context.SaveChanges();
 
             //throw new NotImplementedException();
@@ -182,6 +188,7 @@ namespace final_project.Services
              old_product.price=product.price;
              old_product.quantity=product.quantity;
              old_product.permission = product.permission;
+
              _context.SaveChanges();
             //throw new NotImplementedException();
         }
@@ -195,7 +202,7 @@ namespace final_project.Services
 
         public dynamic GetProductDetailByID(string id)
         {
-            var s = _context.Products.Where(p=>p.id == id).Select(p=>new {p.id,p.Shop.shop_name,p.price,p.quantity,p.description,p.image,p.cat_id,p.product_name,p.permission,p.product_Colors.First().color_id});
+            var s = _context.Products.Where(p=>p.id == id).Select(p=>new {p.id,p.Shop.shop_name,p.price,p.quantity,p.description,p.image,p.cat_id,p.product_name,p.permission,p.color_id});
             return s; 
         }
 
@@ -206,8 +213,13 @@ namespace final_project.Services
             old_product.permission = product.permission;
             _context.SaveChanges();
         }
+         public dynamic getProductOnShopByName(string shop_id,string name)
+         {
+            var list=_context.Products.Select(p=>new {p.id,p.product_name,p.shop_id,p.price,p.quantity,p.image,p.Category.name,p.description,p.permission,p.cat_id}).Where(s=>s.shop_id==shop_id&&s.product_name.Contains(name));
+            return list;
+         }
 
-#endregion
+
              }
     
 }

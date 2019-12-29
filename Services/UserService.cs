@@ -14,7 +14,7 @@ namespace final_project.Services
        {  _context=context;
 
        }
-        public void AddUser(User user)
+        public User AddUser(User user)
         {    int max=1;
             var s=_context.Users.Select(p=>p.id);
              foreach(var i in s)
@@ -23,7 +23,9 @@ namespace final_project.Services
              }
              user.id=(max+1).ToString();
           _context.Users.Add(user);
-          _context.SaveChanges();
+           _context.SaveChanges();
+          return user;
+         
             //throw new NotImplementedException();
         }
 
@@ -49,7 +51,7 @@ namespace final_project.Services
             return users;
             //throw new NotImplementedException();
         }
-          public void UpdateUser( User user)
+          public User UpdateUser( User user)
         {     var old_user=new User();
               old_user=_context.Users.FirstOrDefault(x=>x.id==user.id);
               old_user.user_name =user.user_name;
@@ -58,7 +60,8 @@ namespace final_project.Services
               old_user.phone =user.phone;
               old_user.role =user.role;
               old_user.address =user.address;
-             _context.SaveChanges();
+               _context.SaveChanges();
+              return old_user;
             //throw new NotImplementedException();
         }
            public User CheckLoginUser(string email,string password)
@@ -108,6 +111,15 @@ namespace final_project.Services
             }
             _context.SaveChanges();
           }
+           public string GetShopByUser(string id)
+           { string a="none";
+             var shop_id=_context.Shops.Where(p=>p.user_id==id).Select(p=>p.id).FirstOrDefault();
+             if(shop_id!=null)
+             a=shop_id;
+             return a;
+
+           }
+
        
     }
 }
